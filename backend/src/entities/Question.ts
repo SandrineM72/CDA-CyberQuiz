@@ -2,13 +2,10 @@ import { Field, Int, ObjectType } from "type-graphql";
 import {
 	BaseEntity,
 	Column,
-	// CreateDateColumn,
 	Entity,
-	ManyToMany,
 	ManyToOne,
 	OneToMany,
-	PrimaryGeneratedColumn,
-	// UpdateDateColumn,
+	PrimaryGeneratedColumn
 } from "typeorm";
 import { Choice } from "./Choice";
 import { Quiz } from "./Quiz";

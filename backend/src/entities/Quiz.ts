@@ -89,7 +89,7 @@ export class Quiz extends BaseEntity {
 	)
 	attempts: Attempt[];
 
-	// one to many pour garder l'historique du nombre de like portées par l'association
+	// one to many to keep history of the number of likes carried by the association
 	@Field(() => [User])
 	@JoinTable()
 	@ManyToMany(() => User)

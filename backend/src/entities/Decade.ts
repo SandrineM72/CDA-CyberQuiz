@@ -2,11 +2,9 @@ import { Field, Int, ObjectType } from "type-graphql";
 import {
 	BaseEntity,
 	Column,
-	// CreateDateColumn,
 	Entity,
 	OneToMany,
-	PrimaryGeneratedColumn,
-	// UpdateDateColumn,
+	PrimaryGeneratedColumn
 } from "typeorm";
 import { Quiz } from "./Quiz";
 

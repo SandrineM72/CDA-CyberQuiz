@@ -2,12 +2,10 @@ import { Field, Int, ObjectType } from "type-graphql";
 import {
 	BaseEntity,
 	Column,
-	CreateDateColumn,
 	Entity,
 	JoinTable,
 	ManyToMany,
-	PrimaryGeneratedColumn,
-	UpdateDateColumn,
+	PrimaryGeneratedColumn
 } from "typeorm";
 import { User } from "./User";
 

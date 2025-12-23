@@ -54,7 +54,7 @@ export class User extends BaseEntity {
 	@UpdateDateColumn()
 	updated_at: Date;
 
-	// one to many pour garder l'historique des données portées par l'association
+	// one to many pour to keep the data's history carried by the association 
 	@Field()
   @OneToMany(
 		() => Attempt,
