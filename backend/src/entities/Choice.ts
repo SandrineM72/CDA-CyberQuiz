@@ -23,7 +23,7 @@ export class Choice extends BaseEntity {
 	@Column()
 	is_correct: boolean;
 
-	@Field()
+	@Field(() => Question)
 	@ManyToOne(
 		() => Question,
 		(question) => question.choices,

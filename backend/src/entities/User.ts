@@ -32,7 +32,7 @@ export class User extends BaseEntity {
 
 	@Field()
 	@Column()
-	age_range: AgeRange;
+	age_range: AgeRange ;
 
 	@Field()
 	@Column()
@@ -55,7 +55,7 @@ export class User extends BaseEntity {
 	updated_at: Date;
 
 	// one to many pour to keep the data's history carried by the association 
-	@Field()
+	@Field(() => [Attempt])
   @OneToMany(
 		() => Attempt,
 		(attempt) => attempt.user,

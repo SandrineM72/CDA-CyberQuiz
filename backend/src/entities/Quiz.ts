@@ -62,21 +62,21 @@ export class Quiz extends BaseEntity {
 	@UpdateDateColumn()
 	updated_at: Date;
 
-	@Field()
+	@Field(()=> Decade)
 	@ManyToOne(
 		() => Decade,
 		(decade) => decade.quizzes,
 	)
 	decade: Decade;
 
-	@Field()
+	@Field(() => Category)
 	@ManyToOne(
 		() => Category,
 		(category) => category.quizzes,
 	)
 	category: Category;
 
-	@Field()
+	@Field(() => [Question])
 	@OneToMany(
 		() => Question,
 		(question) => question.quiz,

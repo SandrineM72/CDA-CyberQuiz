@@ -29,7 +29,7 @@ export class Attempt extends BaseEntity {
 	percentage_success: number;
 
 	@Field()
-	@Column()
+	@Column({nullable: true})
 	finished_at: Date;
 
 	@Field()
@@ -40,11 +40,11 @@ export class Attempt extends BaseEntity {
 	@Column()
 	passed: boolean;
 
-	@Field()
+	@Field(() => User)
 	@ManyToOne(() => User)
 	user: User;
 
-	@Field()
+	@Field(() => Quiz)
 	@ManyToOne(() => Quiz)
 	quiz: Quiz;
 }

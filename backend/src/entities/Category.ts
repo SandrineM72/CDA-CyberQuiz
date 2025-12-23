@@ -19,7 +19,7 @@ export class Category extends BaseEntity {
 	@Column({ type: "text", nullable: false })
 	name: string;
 
-	@Field()
+	@Field(() => [Quiz])
 	@OneToMany(
 		() => Quiz,
 		(quiz) => quiz.category,

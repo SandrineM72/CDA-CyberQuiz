@@ -21,14 +21,14 @@ export class Question extends BaseEntity {
 	@Column({ type: "text", nullable: false })
 	title: string;
 
-	@Field()
+	@Field(() => [Choice])
 	@OneToMany(
 		() => Choice,
 		(choice) => choice.question,
 	)
 	choices: Choice[];
 
-	@Field()
+	@Field(() => Quiz)
 	@ManyToOne(
 		() => Quiz,
 		(quiz) => quiz.questions,

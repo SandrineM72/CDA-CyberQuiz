@@ -12,9 +12,10 @@ import { Choice } from "../entities/Choice";
 
 
 import db from "./index";
+import { AgeRange } from "../types";
 
 export async function clearDB() {
-  await unlink(resolve("src/db/cine_quizz.sqlite"));
+  await unlink(resolve("src/db/db.sqlite"));
 }
 
 async function main() {
@@ -71,7 +72,7 @@ async function main() {
   const user1 = await User.create({
     email: "marie@example.com",
     pseudo: "MarieCinephile",
-    age_range: "tous publics",
+    age_range: AgeRange.TOUS_PUBLICS,
     password: "password123",
     avatar: "https://example.com/avatar1.png",
     is_admin: false
@@ -80,7 +81,7 @@ async function main() {
   const user2 = await User.create({
     email: "jean@example.com",
     pseudo: "JeanDuCinema",
-    age_range: "-12",
+    age_range: AgeRange.TOUS_PUBLICS,
     password: "password123",
     avatar: "https://example.com/avatar2.png",
     is_admin: false
@@ -89,7 +90,7 @@ async function main() {
   const admin = await User.create({
     email: "admin@cinequizz.com",
     pseudo: "AdminCineQuizz",
-    age_range: "tous publics",
+    age_range: AgeRange.TOUS_PUBLICS,
     password: "admin123",
     avatar: "https://example.com/admin.png",
     is_admin: true
@@ -101,7 +102,7 @@ async function main() {
     title: "Les Comédies Françaises Cultes",
     description: "Testez vos connaissances sur les comédies françaises incontournables",
     image: "https://example.com/quiz1.jpg",
-    age_range: "tous publics",
+    age_range: AgeRange.TOUS_PUBLICS,
     time_limit: 300,
     is_public: true,
     is_draft: false,
@@ -113,7 +114,7 @@ async function main() {
     title: "Le Cinéma d'Action des Années 80",
     description: "Plongez dans l'univers explosif du cinéma d'action",
     image: "https://example.com/quiz2.jpg",
-    age_range: "-16",
+    age_range: AgeRange.MOINS_16,
     time_limit: 600,
     is_public: true,
     is_draft: false,
@@ -125,7 +126,7 @@ async function main() {
     title: "Les Drames des Années 2000",
     description: "Explorez les films dramatiques qui ont marqué les années 2000",
     image: "https://example.com/quiz3.jpg",
-    age_range: "-12",
+    age_range: AgeRange.MOINS_12,
     time_limit: 450,
     is_public: false,
     is_draft: true,
@@ -439,20 +440,20 @@ async function main() {
   
   // Likes (table like_)
   // user1 aime quiz1 et quiz2
-  user1.likedQuizzes = [quiz1, quiz2];
+  user1.liked_quizzes = [quiz1, quiz2];
   await user1.save();
 
   // user2 aime quiz1
-  user2.likedQuizzes = [quiz1];
+  user2.liked_quizzes = [quiz1];
   await user2.save();
 
   // Trophies (table trophy)
   // user1 a débloqué le trophée bronze et argent
-  user1.rewards = [bronzeReward, silverReward];
+  user1.won_rewards = [bronzeReward, silverReward];
   await user1.save();
 
   // user2 a débloqué le trophée bronze
-  user2.rewards = [bronzeReward];
+  user2.won_rewards = [bronzeReward];
   await user2.save();
 
   await db.destroy();
