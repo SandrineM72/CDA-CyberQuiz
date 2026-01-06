@@ -1,16 +1,7 @@
 import * as React from "react"
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-
-
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -48,39 +39,47 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                 placeholder="m@example.com"
                 required
               />
-              <FieldDescription>
-                Nous utiliserons cet email pour vos contacter, nous ne le partagerons pas.
+              <FieldDescription className="text-xs">
+                Nous utiliserons cet email pour vous contacter, nous ne le partagerons pas.
               </FieldDescription>
             </Field>
 
             <Field>
               <FieldLabel htmlFor="pseudo">Pseudo</FieldLabel>
               <Input id="pseudo" type="text" placeholder="Tom Cruise" required />
+              <FieldDescription className="text-xs">
+                Votre pseudo aparaîtra à l'écran.
+              </FieldDescription>
             </Field>
 
             <Field>
-              <FieldLabel htmlFor="age_range">Tranche d'âge</FieldLabel>
+            <FieldLabel>Tranche d'âge</FieldLabel>
+            <RadioGroup defaultValue="moins_12" className="flex gap-4">
+                <div className="flex items-center space-x-2">
+                <RadioGroupItem value="moins_12" id="moins_12" />
+                <Label htmlFor="moins_12">Moins de 12 ans</Label>
+                </div>
 
-              <Select>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Sélectionnez votre tranche d'âge" />
-                </SelectTrigger>
-                
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Tranche d'âge</SelectLabel>
-                    <SelectItem value="touspublics">Moins de 12 ans</SelectItem>
-                    <SelectItem value="moins_12">Plus de 12 ans</SelectItem>
-                    <SelectItem value="moins_16">Plus de 16 ans</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+                <div className="flex items-center space-x-2">
+                <RadioGroupItem value="12_16" id="12_16" />
+                <Label htmlFor="12_16">12-16 ans</Label>
+                </div>
+
+                <div className="flex items-center space-x-2">
+                <RadioGroupItem value="plus_16" id="plus_16" />
+                <Label htmlFor="plus_16">Plus de 16 ans</Label>
+                </div>
+            </RadioGroup>
+              <FieldDescription className="text-xs">
+                Merci de renseigner votre tranche d'âge. Cette information est utilisée pour vous proposer des films correspondant à votre âge.
+              </FieldDescription>
             </Field>
+
 
             <Field>
               <FieldLabel htmlFor="password">Mot de passe</FieldLabel>
               <Input id="password" type="password" required />
-              <FieldDescription>
+              <FieldDescription className="text-xs">
                 Le mot de passe doit contenir un minimum de 8 caractères, dont une minuscule, une majuscule, un chiffre et un caractère spécial.
               </FieldDescription>
             </Field>

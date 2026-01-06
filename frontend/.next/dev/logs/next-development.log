@@ -1,271 +1,91 @@
-[00:00:00.877] Server  LOG      ✓ Ready in 614ms
-[00:00:27.308] Server  LOG     {}
-[00:00:27.560] Browser LOG     {"uri":"http://localhost:3000"}
-[00:00:35.647] Browser LOG     {"uri":"http://localhost:3000"}
-[00:00:46.661] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/
-[00:01:20.964] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\compiled\next-server\pages-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.972] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\.next\dev\server\chunks\ssr\node_modules_0eac85f2._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.976] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.977] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.978] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.978] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.979] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.979] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.980] Server  ERROR    ⨯ Error: The default export is not a React Component in page: "/signup"
-[00:01:20.982] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\compiled\next-server\pages-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.982] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\.next\dev\server\chunks\ssr\node_modules_0eac85f2._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.983] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.983] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.983] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.984] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.984] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.984] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:20.985] Server  ERROR    ⨯ Error: The default export is not a React Component in page: "/signup"
-[00:01:21.259] Browser LOG     {"uri":"http://localhost:3000"}
-[00:01:23.326] Browser ERROR   uncaughtError: Error: The default export is not a React Component in page: "/signup"
-[00:01:26.788] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:01:26.789] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:01:26.840] Server  ERROR    ⨯ ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
+[00:00:01.048] Server  LOG      ✓ Ready in 734ms
+[00:00:30.228] Server  LOG     {}
+[00:00:30.578] Browser LOG     {"uri":"http://localhost:3000"}
+[00:00:41.615] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/
+[00:04:32.348] Server  LOG      ✓ Compiled in 75ms
+[00:04:39.489] Server  LOG      ✓ Compiled in 67ms
+[00:04:46.136] Server  LOG      ✓ Compiled in 53ms
+[00:04:55.740] Server  LOG      ✓ Compiled in 57ms
+[00:05:00.646] Server  LOG      ✓ Compiled in 65ms
+[00:05:04.933] Server  LOG      ✓ Compiled in 27ms
+[00:05:06.697] Server  LOG      ✓ Compiled in 72ms
+[00:05:07.915] Server  LOG      ✓ Compiled in 48ms
+[00:05:16.454] Server  LOG      ✓ Compiled in 39ms
+[00:06:40.896] Server  LOG      ✓ Compiled in 45ms
+[00:06:44.177] Server  LOG      ✓ Compiled in 38ms
+[00:06:45.980] Server  LOG      ✓ Compiled in 38ms
+[00:06:47.892] Server  LOG      ✓ Compiled in 37ms
+[00:06:48.942] Server  LOG      ✓ Compiled in 42ms
+[00:06:50.231] Server  LOG      ✓ Compiled in 38ms
+[00:07:07.134] Server  LOG      ✓ Compiled in 21ms
+[00:07:07.241] Browser ERROR   ./src/components/signup/signup-form.tsx:44:34
+Parsing ecmascript source code failed
+  42 |               <ieldDescription className="text-xs">
+  43 |                 Nous utiliserons cet email pour vous contacter, nous ne le partagerons pas.
+> 44 |               </FieldDescription>
+     |                                  ^
+> 45 |             </Field>
+     | ^^^^^^^^^^^^^
+  46 |
+  47 |             <Field>
+  48 |               <FieldLabel htmlFor="pseudo">Pseudo</FieldLabel>
 
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
+Expected '</', got 'jsx text (
+            )'
 
+Import traces:
+  Browser:
+    ./src/components/signup/signup-form.tsx
+    ./src/pages/signup.tsx
 
-https://nextjs.org/docs/messages/module-not-found
+  SSR:
+    ./src/components/signup/signup-form.tsx
+    ./src/pages/signup.tsx
+[00:07:07.241] Browser ERROR   ./src/components/signup/signup-form.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/components/signup/signup-form.tsx [ssr] (ecmascript)
 
+Caused by:
+- CJS module can't be async.
 
-[00:01:26.840] Server  ERROR    ⨯ ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
+Debug info:
+- An error occurred while generating the chunk item [project]/src/components/signup/signup-form.tsx [ssr] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
 
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
+Import traces:
+  Browser:
+    ./src/components/signup/signup-form.tsx
+    ./src/pages/signup.tsx
 
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-[00:01:26.841] Server  ERROR    ⨯ ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-[00:01:26.841] Server  ERROR    ⨯ ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-[00:01:26.842] Server  ERROR    ⨯ ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-[00:01:26.892] Server  LOG      ✓ Compiled in 68ms
-[00:01:27.077] Browser LOG     {"uri":"http://localhost:3000"}
-[00:01:29.116] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:01:29.116] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:01:29.117] Browser ERROR   uncaughtError: Error: ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-[00:01:38.425] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/
-[00:03:25.658] Server  LOG      ✓ Compiled in 34ms
-[00:03:26.613] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:03:26.736] Server  LOG      ✓ Compiled in 18ms
-[00:03:27.799] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:03:29.110] Server  LOG      ✓ Compiled in 21ms
-[00:03:29.816] Server  LOG      ✓ Compiled in 18ms
-[00:03:30.829] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:03:30.829] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:03:31.544] Server  LOG      ✓ Compiled in 19ms
-[00:03:32.562] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:03:33.187] Server  LOG      ✓ Compiled in 15ms
-[00:03:34.201] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:03:34.420] Server  LOG      ✓ Compiled in 17ms
-[00:03:35.155] Server  LOG      ✓ Compiled in 15ms
-[00:03:36.168] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:03:36.168] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:03:43.701] Server  LOG      ✓ Compiled in 17ms
-[00:03:44.716] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:03:44.949] Server  LOG      ✓ Compiled in 17ms
-[00:03:45.964] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:03:48.107] Server  LOG      ✓ Compiled in 329ms
-[00:03:48.751] Browser ERROR   ./src/pages/signup.tsx:1:1
-Module not found: Can't resolve '@/components/signup-form'
-> 1 | import { SignupForm } from "@/components/signup-form"
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | export default function Page() {
-  4 |   return (
-
-Import map: aliased to relative './src/components/signup-form' inside of [project]/
-
-https://nextjs.org/docs/messages/module-not-found
-[00:04:03.583] Server  LOG     {}
-[00:04:03.758] Browser LOG     {"uri":"http://localhost:3000"}
-[00:04:14.291] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/
+  SSR:
+    ./src/components/signup/signup-form.tsx
+    ./src/pages/signup.tsx
+[00:07:11.404] Server  LOG      ✓ Compiled in 821ms
+[00:07:20.656] Server  LOG      ✓ Compiled in 52ms
+[00:07:35.143] Server  LOG      ✓ Compiled in 76ms
+[00:07:36.324] Server  LOG      ✓ Compiled in 45ms
+[00:07:42.014] Server  LOG      ✓ Compiled in 59ms
+[00:07:47.114] Server  LOG      ✓ Compiled in 54ms
+[00:07:49.353] Server  LOG      ✓ Compiled in 32ms
+[00:07:50.230] Server  LOG      ✓ Compiled in 72ms
+[00:07:56.821] Server  LOG      ✓ Compiled in 49ms
+[00:07:59.975] Server  LOG      ✓ Compiled in 55ms
+[00:08:00.663] Server  LOG      ✓ Compiled in 108ms
+[00:08:01.664] Server  LOG      ✓ Compiled in 41ms
+[00:08:03.238] Server  LOG      ✓ Compiled in 28ms
+[00:08:05.008] Server  LOG      ✓ Compiled in 73ms
+[00:08:08.420] Server  LOG      ✓ Compiled in 45ms
+[00:08:22.386] Server  LOG      ✓ Compiled in 59ms
+[00:27:09.146] Server  LOG      ✓ Compiled in 133ms
+[00:27:09.790] Server  LOG      ✓ Compiled in 52ms
+[00:27:34.091] Server  LOG      ✓ Compiled in 64ms
+[00:27:35.098] Server  LOG      ✓ Compiled in 43ms
+[00:27:36.184] Server  LOG      ✓ Compiled in 27ms
+[00:27:41.488] Server  LOG     {}
+[00:27:41.672] Browser LOG     {"uri":"http://localhost:3000"}
+[00:27:51.816] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/
+[00:28:02.996] Server  LOG      ✓ Compiled in 44ms
+[00:28:06.066] Server  LOG      ✓ Compiled in 42ms
+[00:28:09.169] Server  LOG      ✓ Compiled in 22ms

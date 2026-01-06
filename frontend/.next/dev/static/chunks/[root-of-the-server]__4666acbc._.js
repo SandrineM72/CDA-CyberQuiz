@@ -481,677 +481,6 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/src/components/ui/select.tsx [client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "Select",
-    ()=>Select,
-    "SelectContent",
-    ()=>SelectContent,
-    "SelectGroup",
-    ()=>SelectGroup,
-    "SelectItem",
-    ()=>SelectItem,
-    "SelectLabel",
-    ()=>SelectLabel,
-    "SelectScrollDownButton",
-    ()=>SelectScrollDownButton,
-    "SelectScrollUpButton",
-    ()=>SelectScrollUpButton,
-    "SelectSeparator",
-    ()=>SelectSeparator,
-    "SelectTrigger",
-    ()=>SelectTrigger,
-    "SelectValue",
-    ()=>SelectValue
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/compiler-runtime.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@radix-ui/react-select/dist/index.mjs [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckIcon$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/check.js [client] (ecmascript) <export default as CheckIcon>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDownIcon$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/chevron-down.js [client] (ecmascript) <export default as ChevronDownIcon>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$up$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronUpIcon$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/chevron-up.js [client] (ecmascript) <export default as ChevronUpIcon>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/utils.ts [client] (ecmascript)");
-;
-;
-;
-;
-;
-function Select(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(5);
-    if ($[0] !== "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47") {
-        for(let $i = 0; $i < 5; $i += 1){
-            $[$i] = Symbol.for("react.memo_cache_sentinel");
-        }
-        $[0] = "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47";
-    }
-    let props;
-    if ($[1] !== t0) {
-        ({ ...props } = t0);
-        $[1] = t0;
-        $[2] = props;
-    } else {
-        props = $[2];
-    }
-    let t1;
-    if ($[3] !== props) {
-        t1 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Root"], {
-            "data-slot": "select",
-            ...props
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 26,
-            columnNumber: 10
-        }, this);
-        $[3] = props;
-        $[4] = t1;
-    } else {
-        t1 = $[4];
-    }
-    return t1;
-}
-_c = Select;
-function SelectGroup(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(5);
-    if ($[0] !== "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47") {
-        for(let $i = 0; $i < 5; $i += 1){
-            $[$i] = Symbol.for("react.memo_cache_sentinel");
-        }
-        $[0] = "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47";
-    }
-    let props;
-    if ($[1] !== t0) {
-        ({ ...props } = t0);
-        $[1] = t0;
-        $[2] = props;
-    } else {
-        props = $[2];
-    }
-    let t1;
-    if ($[3] !== props) {
-        t1 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Group"], {
-            "data-slot": "select-group",
-            ...props
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 54,
-            columnNumber: 10
-        }, this);
-        $[3] = props;
-        $[4] = t1;
-    } else {
-        t1 = $[4];
-    }
-    return t1;
-}
-_c1 = SelectGroup;
-function SelectValue(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(5);
-    if ($[0] !== "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47") {
-        for(let $i = 0; $i < 5; $i += 1){
-            $[$i] = Symbol.for("react.memo_cache_sentinel");
-        }
-        $[0] = "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47";
-    }
-    let props;
-    if ($[1] !== t0) {
-        ({ ...props } = t0);
-        $[1] = t0;
-        $[2] = props;
-    } else {
-        props = $[2];
-    }
-    let t1;
-    if ($[3] !== props) {
-        t1 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Value"], {
-            "data-slot": "select-value",
-            ...props
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 82,
-            columnNumber: 10
-        }, this);
-        $[3] = props;
-        $[4] = t1;
-    } else {
-        t1 = $[4];
-    }
-    return t1;
-}
-_c2 = SelectValue;
-function SelectTrigger(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(14);
-    if ($[0] !== "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47") {
-        for(let $i = 0; $i < 14; $i += 1){
-            $[$i] = Symbol.for("react.memo_cache_sentinel");
-        }
-        $[0] = "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47";
-    }
-    let children;
-    let className;
-    let props;
-    let t1;
-    if ($[1] !== t0) {
-        ({ className, size: t1, children, ...props } = t0);
-        $[1] = t0;
-        $[2] = children;
-        $[3] = className;
-        $[4] = props;
-        $[5] = t1;
-    } else {
-        children = $[2];
-        className = $[3];
-        props = $[4];
-        t1 = $[5];
-    }
-    const size = t1 === undefined ? "default" : t1;
-    let t2;
-    if ($[6] !== className) {
-        t2 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["cn"])("border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", className);
-        $[6] = className;
-        $[7] = t2;
-    } else {
-        t2 = $[7];
-    }
-    let t3;
-    if ($[8] === Symbol.for("react.memo_cache_sentinel")) {
-        t3 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Icon"], {
-            asChild: true,
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDownIcon$3e$__["ChevronDownIcon"], {
-                className: "size-4 opacity-50"
-            }, void 0, false, {
-                fileName: "[project]/src/components/ui/select.tsx",
-                lineNumber: 131,
-                columnNumber: 47
-            }, this)
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 131,
-            columnNumber: 10
-        }, this);
-        $[8] = t3;
-    } else {
-        t3 = $[8];
-    }
-    let t4;
-    if ($[9] !== children || $[10] !== props || $[11] !== size || $[12] !== t2) {
-        t4 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Trigger"], {
-            "data-slot": "select-trigger",
-            "data-size": size,
-            className: t2,
-            ...props,
-            children: [
-                children,
-                t3
-            ]
-        }, void 0, true, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 138,
-            columnNumber: 10
-        }, this);
-        $[9] = children;
-        $[10] = props;
-        $[11] = size;
-        $[12] = t2;
-        $[13] = t4;
-    } else {
-        t4 = $[13];
-    }
-    return t4;
-}
-_c3 = SelectTrigger;
-function SelectContent(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(23);
-    if ($[0] !== "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47") {
-        for(let $i = 0; $i < 23; $i += 1){
-            $[$i] = Symbol.for("react.memo_cache_sentinel");
-        }
-        $[0] = "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47";
-    }
-    let children;
-    let className;
-    let props;
-    let t1;
-    let t2;
-    if ($[1] !== t0) {
-        ({ className, children, position: t1, align: t2, ...props } = t0);
-        $[1] = t0;
-        $[2] = children;
-        $[3] = className;
-        $[4] = props;
-        $[5] = t1;
-        $[6] = t2;
-    } else {
-        children = $[2];
-        className = $[3];
-        props = $[4];
-        t1 = $[5];
-        t2 = $[6];
-    }
-    const position = t1 === undefined ? "item-aligned" : t1;
-    const align = t2 === undefined ? "center" : t2;
-    const t3 = position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1";
-    let t4;
-    if ($[7] !== className || $[8] !== t3) {
-        t4 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["cn"])("bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-(--radix-select-content-available-height) min-w-32 origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border shadow-md", t3, className);
-        $[7] = className;
-        $[8] = t3;
-        $[9] = t4;
-    } else {
-        t4 = $[9];
-    }
-    let t5;
-    if ($[10] === Symbol.for("react.memo_cache_sentinel")) {
-        t5 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SelectScrollUpButton, {}, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 197,
-            columnNumber: 10
-        }, this);
-        $[10] = t5;
-    } else {
-        t5 = $[10];
-    }
-    const t6 = position === "popper" && "h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width) scroll-my-1";
-    let t7;
-    if ($[11] !== t6) {
-        t7 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["cn"])("p-1", t6);
-        $[11] = t6;
-        $[12] = t7;
-    } else {
-        t7 = $[12];
-    }
-    let t8;
-    if ($[13] !== children || $[14] !== t7) {
-        t8 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Viewport"], {
-            className: t7,
-            children: children
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 213,
-            columnNumber: 10
-        }, this);
-        $[13] = children;
-        $[14] = t7;
-        $[15] = t8;
-    } else {
-        t8 = $[15];
-    }
-    let t9;
-    if ($[16] === Symbol.for("react.memo_cache_sentinel")) {
-        t9 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SelectScrollDownButton, {}, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 222,
-            columnNumber: 10
-        }, this);
-        $[16] = t9;
-    } else {
-        t9 = $[16];
-    }
-    let t10;
-    if ($[17] !== align || $[18] !== position || $[19] !== props || $[20] !== t4 || $[21] !== t8) {
-        t10 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Portal"], {
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Content"], {
-                "data-slot": "select-content",
-                className: t4,
-                position: position,
-                align: align,
-                ...props,
-                children: [
-                    t5,
-                    t8,
-                    t9
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/components/ui/select.tsx",
-                lineNumber: 229,
-                columnNumber: 35
-            }, this)
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 229,
-            columnNumber: 11
-        }, this);
-        $[17] = align;
-        $[18] = position;
-        $[19] = props;
-        $[20] = t4;
-        $[21] = t8;
-        $[22] = t10;
-    } else {
-        t10 = $[22];
-    }
-    return t10;
-}
-_c4 = SelectContent;
-function SelectLabel(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(9);
-    if ($[0] !== "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47") {
-        for(let $i = 0; $i < 9; $i += 1){
-            $[$i] = Symbol.for("react.memo_cache_sentinel");
-        }
-        $[0] = "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47";
-    }
-    let className;
-    let props;
-    if ($[1] !== t0) {
-        ({ className, ...props } = t0);
-        $[1] = t0;
-        $[2] = className;
-        $[3] = props;
-    } else {
-        className = $[2];
-        props = $[3];
-    }
-    let t1;
-    if ($[4] !== className) {
-        t1 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["cn"])("text-muted-foreground px-2 py-1.5 text-xs", className);
-        $[4] = className;
-        $[5] = t1;
-    } else {
-        t1 = $[5];
-    }
-    let t2;
-    if ($[6] !== props || $[7] !== t1) {
-        t2 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Label"], {
-            "data-slot": "select-label",
-            className: t1,
-            ...props
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 273,
-            columnNumber: 10
-        }, this);
-        $[6] = props;
-        $[7] = t1;
-        $[8] = t2;
-    } else {
-        t2 = $[8];
-    }
-    return t2;
-}
-_c5 = SelectLabel;
-function SelectItem(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(14);
-    if ($[0] !== "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47") {
-        for(let $i = 0; $i < 14; $i += 1){
-            $[$i] = Symbol.for("react.memo_cache_sentinel");
-        }
-        $[0] = "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47";
-    }
-    let children;
-    let className;
-    let props;
-    if ($[1] !== t0) {
-        ({ className, children, ...props } = t0);
-        $[1] = t0;
-        $[2] = children;
-        $[3] = className;
-        $[4] = props;
-    } else {
-        children = $[2];
-        className = $[3];
-        props = $[4];
-    }
-    let t1;
-    if ($[5] !== className) {
-        t1 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["cn"])("focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2", className);
-        $[5] = className;
-        $[6] = t1;
-    } else {
-        t1 = $[6];
-    }
-    let t2;
-    if ($[7] === Symbol.for("react.memo_cache_sentinel")) {
-        t2 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-            "data-slot": "select-item-indicator",
-            className: "absolute right-2 flex size-3.5 items-center justify-center",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["ItemIndicator"], {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckIcon$3e$__["CheckIcon"], {
-                    className: "size-4"
-                }, void 0, false, {
-                    fileName: "[project]/src/components/ui/select.tsx",
-                    lineNumber: 318,
-                    columnNumber: 152
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/components/ui/select.tsx",
-                lineNumber: 318,
-                columnNumber: 121
-            }, this)
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 318,
-            columnNumber: 10
-        }, this);
-        $[7] = t2;
-    } else {
-        t2 = $[7];
-    }
-    let t3;
-    if ($[8] !== children) {
-        t3 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["ItemText"], {
-            children: children
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 325,
-            columnNumber: 10
-        }, this);
-        $[8] = children;
-        $[9] = t3;
-    } else {
-        t3 = $[9];
-    }
-    let t4;
-    if ($[10] !== props || $[11] !== t1 || $[12] !== t3) {
-        t4 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Item"], {
-            "data-slot": "select-item",
-            className: t1,
-            ...props,
-            children: [
-                t2,
-                t3
-            ]
-        }, void 0, true, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 333,
-            columnNumber: 10
-        }, this);
-        $[10] = props;
-        $[11] = t1;
-        $[12] = t3;
-        $[13] = t4;
-    } else {
-        t4 = $[13];
-    }
-    return t4;
-}
-_c6 = SelectItem;
-function SelectSeparator(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(9);
-    if ($[0] !== "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47") {
-        for(let $i = 0; $i < 9; $i += 1){
-            $[$i] = Symbol.for("react.memo_cache_sentinel");
-        }
-        $[0] = "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47";
-    }
-    let className;
-    let props;
-    if ($[1] !== t0) {
-        ({ className, ...props } = t0);
-        $[1] = t0;
-        $[2] = className;
-        $[3] = props;
-    } else {
-        className = $[2];
-        props = $[3];
-    }
-    let t1;
-    if ($[4] !== className) {
-        t1 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["cn"])("bg-border pointer-events-none -mx-1 my-1 h-px", className);
-        $[4] = className;
-        $[5] = t1;
-    } else {
-        t1 = $[5];
-    }
-    let t2;
-    if ($[6] !== props || $[7] !== t1) {
-        t2 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["Separator"], {
-            "data-slot": "select-separator",
-            className: t1,
-            ...props
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 375,
-            columnNumber: 10
-        }, this);
-        $[6] = props;
-        $[7] = t1;
-        $[8] = t2;
-    } else {
-        t2 = $[8];
-    }
-    return t2;
-}
-_c7 = SelectSeparator;
-function SelectScrollUpButton(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(10);
-    if ($[0] !== "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47") {
-        for(let $i = 0; $i < 10; $i += 1){
-            $[$i] = Symbol.for("react.memo_cache_sentinel");
-        }
-        $[0] = "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47";
-    }
-    let className;
-    let props;
-    if ($[1] !== t0) {
-        ({ className, ...props } = t0);
-        $[1] = t0;
-        $[2] = className;
-        $[3] = props;
-    } else {
-        className = $[2];
-        props = $[3];
-    }
-    let t1;
-    if ($[4] !== className) {
-        t1 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["cn"])("flex cursor-default items-center justify-center py-1", className);
-        $[4] = className;
-        $[5] = t1;
-    } else {
-        t1 = $[5];
-    }
-    let t2;
-    if ($[6] === Symbol.for("react.memo_cache_sentinel")) {
-        t2 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$up$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronUpIcon$3e$__["ChevronUpIcon"], {
-            className: "size-4"
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 416,
-            columnNumber: 10
-        }, this);
-        $[6] = t2;
-    } else {
-        t2 = $[6];
-    }
-    let t3;
-    if ($[7] !== props || $[8] !== t1) {
-        t3 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["ScrollUpButton"], {
-            "data-slot": "select-scroll-up-button",
-            className: t1,
-            ...props,
-            children: t2
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 423,
-            columnNumber: 10
-        }, this);
-        $[7] = props;
-        $[8] = t1;
-        $[9] = t3;
-    } else {
-        t3 = $[9];
-    }
-    return t3;
-}
-_c8 = SelectScrollUpButton;
-function SelectScrollDownButton(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(10);
-    if ($[0] !== "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47") {
-        for(let $i = 0; $i < 10; $i += 1){
-            $[$i] = Symbol.for("react.memo_cache_sentinel");
-        }
-        $[0] = "98d4d8e3b440ea7cceb6e711d82d9e6d986ff49d858850a6ade922f6bff37f47";
-    }
-    let className;
-    let props;
-    if ($[1] !== t0) {
-        ({ className, ...props } = t0);
-        $[1] = t0;
-        $[2] = className;
-        $[3] = props;
-    } else {
-        className = $[2];
-        props = $[3];
-    }
-    let t1;
-    if ($[4] !== className) {
-        t1 = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["cn"])("flex cursor-default items-center justify-center py-1", className);
-        $[4] = className;
-        $[5] = t1;
-    } else {
-        t1 = $[5];
-    }
-    let t2;
-    if ($[6] === Symbol.for("react.memo_cache_sentinel")) {
-        t2 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDownIcon$3e$__["ChevronDownIcon"], {
-            className: "size-4"
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 464,
-            columnNumber: 10
-        }, this);
-        $[6] = t2;
-    } else {
-        t2 = $[6];
-    }
-    let t3;
-    if ($[7] !== props || $[8] !== t1) {
-        t3 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$select$2f$dist$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["ScrollDownButton"], {
-            "data-slot": "select-scroll-down-button",
-            className: t1,
-            ...props,
-            children: t2
-        }, void 0, false, {
-            fileName: "[project]/src/components/ui/select.tsx",
-            lineNumber: 471,
-            columnNumber: 10
-        }, this);
-        $[7] = props;
-        $[8] = t1;
-        $[9] = t3;
-    } else {
-        t3 = $[9];
-    }
-    return t3;
-}
-_c9 = SelectScrollDownButton;
-;
-var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9;
-__turbopack_context__.k.register(_c, "Select");
-__turbopack_context__.k.register(_c1, "SelectGroup");
-__turbopack_context__.k.register(_c2, "SelectValue");
-__turbopack_context__.k.register(_c3, "SelectTrigger");
-__turbopack_context__.k.register(_c4, "SelectContent");
-__turbopack_context__.k.register(_c5, "SelectLabel");
-__turbopack_context__.k.register(_c6, "SelectItem");
-__turbopack_context__.k.register(_c7, "SelectSeparator");
-__turbopack_context__.k.register(_c8, "SelectScrollUpButton");
-__turbopack_context__.k.register(_c9, "SelectScrollDownButton");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
-}),
 "[project]/src/components/ui/button.tsx [client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -2543,7 +1872,6 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/compiler-runtime.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/select.tsx [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/button.tsx [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/card.tsx [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/field.tsx [client] (ecmascript)");
@@ -2554,14 +1882,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$i
 ;
 ;
 ;
-;
 function SignupForm(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(14);
-    if ($[0] !== "1e61d836a57f72bba44f5bacb3baa748c75bdba6da5e7cf0e46078e4f532cdae") {
-        for(let $i = 0; $i < 14; $i += 1){
+    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(15);
+    if ($[0] !== "b138bbf936d53f245231e29478b81789da023793b93648da88d7d16868f54555") {
+        for(let $i = 0; $i < 15; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "1e61d836a57f72bba44f5bacb3baa748c75bdba6da5e7cf0e46078e4f532cdae";
+        $[0] = "b138bbf936d53f245231e29478b81789da023793b93648da88d7d16868f54555";
     }
     let props;
     if ($[1] !== t0) {
@@ -2673,7 +2000,6 @@ function SignupForm(t0) {
     let t4;
     if ($[6] === Symbol.for("react.memo_cache_sentinel")) {
         t4 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldLabel"], {
-            htmlFor: "age_range",
             children: "Tranche d'âge"
         }, void 0, false, {
             fileName: "[project]/src/components/signup/signup-form.tsx",
@@ -2686,16 +2012,27 @@ function SignupForm(t0) {
     }
     let t5;
     if ($[7] === Symbol.for("react.memo_cache_sentinel")) {
-        t5 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-            className: "w-[180px]",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SelectValue"], {
-                placeholder: "S\xE9lectionnez votre tranche d'\xE2ge"
-            }, void 0, false, {
-                fileName: "[project]/src/components/signup/signup-form.tsx",
-                lineNumber: 56,
-                columnNumber: 47
-            }, this)
-        }, void 0, false, {
+        t5 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "flex items-center space-x-2",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioGroupItem, {
+                    value: "moins_12",
+                    id: "moins_12"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/signup/signup-form.tsx",
+                    lineNumber: 56,
+                    columnNumber: 55
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Label, {
+                    htmlFor: "moins_12",
+                    children: "Moins de 12 ans"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/signup/signup-form.tsx",
+                    lineNumber: 56,
+                    columnNumber: 104
+                }, this)
+            ]
+        }, void 0, true, {
             fileName: "[project]/src/components/signup/signup-form.tsx",
             lineNumber: 56,
             columnNumber: 10
@@ -2706,63 +2043,24 @@ function SignupForm(t0) {
     }
     let t6;
     if ($[8] === Symbol.for("react.memo_cache_sentinel")) {
-        t6 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
+        t6 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "flex items-center space-x-2",
             children: [
-                t4,
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Select"], {
-                    children: [
-                        t5,
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SelectContent"], {
-                            position: "item-aligned",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SelectGroup"], {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SelectLabel"], {
-                                        children: "Tranche d'âge"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/signup/signup-form.tsx",
-                                        lineNumber: 63,
-                                        columnNumber: 85
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                        value: "touspublics",
-                                        children: "Moins de 12 ans"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/signup/signup-form.tsx",
-                                        lineNumber: 63,
-                                        columnNumber: 125
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                        value: "moins_12",
-                                        children: "Plus de 12 ans"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/signup/signup-form.tsx",
-                                        lineNumber: 63,
-                                        columnNumber: 185
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                        value: "moins_16",
-                                        children: "Plus de 16 ans"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/signup/signup-form.tsx",
-                                        lineNumber: 63,
-                                        columnNumber: 241
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/signup/signup-form.tsx",
-                                lineNumber: 63,
-                                columnNumber: 72
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/signup/signup-form.tsx",
-                            lineNumber: 63,
-                            columnNumber: 33
-                        }, this)
-                    ]
-                }, void 0, true, {
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioGroupItem, {
+                    value: "12_16",
+                    id: "12_16"
+                }, void 0, false, {
                     fileName: "[project]/src/components/signup/signup-form.tsx",
                     lineNumber: 63,
-                    columnNumber: 21
+                    columnNumber: 55
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Label, {
+                    htmlFor: "12_16",
+                    children: "12-16 ans"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/signup/signup-form.tsx",
+                    lineNumber: 63,
+                    columnNumber: 98
                 }, this)
             ]
         }, void 0, true, {
@@ -2778,29 +2076,43 @@ function SignupForm(t0) {
     if ($[9] === Symbol.for("react.memo_cache_sentinel")) {
         t7 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
             children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldLabel"], {
-                    htmlFor: "password",
-                    children: "Mot de passe"
-                }, void 0, false, {
+                t4,
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioGroup, {
+                    defaultValue: "plus_16",
+                    className: "flex gap-4",
+                    children: [
+                        t5,
+                        t6,
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex items-center space-x-2",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioGroupItem, {
+                                    value: "plus_16",
+                                    id: "plus_16"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/signup/signup-form.tsx",
+                                    lineNumber: 70,
+                                    columnNumber: 132
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Label, {
+                                    htmlFor: "plus_16",
+                                    children: "Plus de 16 ans"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/signup/signup-form.tsx",
+                                    lineNumber: 70,
+                                    columnNumber: 179
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/signup/signup-form.tsx",
+                            lineNumber: 70,
+                            columnNumber: 87
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "[project]/src/components/signup/signup-form.tsx",
                     lineNumber: 70,
-                    columnNumber: 17
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Input"], {
-                    id: "password",
-                    type: "password",
-                    required: true
-                }, void 0, false, {
-                    fileName: "[project]/src/components/signup/signup-form.tsx",
-                    lineNumber: 70,
-                    columnNumber: 73
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldDescription"], {
-                    children: "Le mot de passe doit contenir un minimum de 8 caractères, dont une minuscule, une majuscule, un chiffre et un caractère spécial."
-                }, void 0, false, {
-                    fileName: "[project]/src/components/signup/signup-form.tsx",
-                    lineNumber: 70,
-                    columnNumber: 128
+                    columnNumber: 21
                 }, this)
             ]
         }, void 0, true, {
@@ -2814,12 +2126,34 @@ function SignupForm(t0) {
     }
     let t8;
     if ($[10] === Symbol.for("react.memo_cache_sentinel")) {
-        t8 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
-            type: "submit",
-            variant: "outline",
-            className: "cursor-pointer mb-4",
-            children: "Créer compte"
-        }, void 0, false, {
+        t8 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldLabel"], {
+                    htmlFor: "password",
+                    children: "Mot de passe"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/signup/signup-form.tsx",
+                    lineNumber: 77,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Input"], {
+                    id: "password",
+                    type: "password",
+                    required: true
+                }, void 0, false, {
+                    fileName: "[project]/src/components/signup/signup-form.tsx",
+                    lineNumber: 77,
+                    columnNumber: 73
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldDescription"], {
+                    children: "Le mot de passe doit contenir un minimum de 8 caractères, dont une minuscule, une majuscule, un chiffre et un caractère spécial."
+                }, void 0, false, {
+                    fileName: "[project]/src/components/signup/signup-form.tsx",
+                    lineNumber: 77,
+                    columnNumber: 128
+                }, this)
+            ]
+        }, void 0, true, {
             fileName: "[project]/src/components/signup/signup-form.tsx",
             lineNumber: 77,
             columnNumber: 10
@@ -2830,58 +2164,11 @@ function SignupForm(t0) {
     }
     let t9;
     if ($[11] === Symbol.for("react.memo_cache_sentinel")) {
-        t9 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["CardContent"], {
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldGroup"], {
-                    children: [
-                        t2,
-                        t3,
-                        t6,
-                        t7,
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldGroup"], {
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
-                                children: [
-                                    t8,
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldDescription"], {
-                                        className: "px-6 text-center",
-                                        children: [
-                                            "Avez-vous déjà un compte ? ",
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                href: "#",
-                                                children: "Connexion"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/signup/signup-form.tsx",
-                                                lineNumber: 84,
-                                                columnNumber: 154
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/signup/signup-form.tsx",
-                                        lineNumber: 84,
-                                        columnNumber: 80
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/signup/signup-form.tsx",
-                                lineNumber: 84,
-                                columnNumber: 69
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/signup/signup-form.tsx",
-                            lineNumber: 84,
-                            columnNumber: 57
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/src/components/signup/signup-form.tsx",
-                    lineNumber: 84,
-                    columnNumber: 29
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/components/signup/signup-form.tsx",
-                lineNumber: 84,
-                columnNumber: 23
-            }, this)
+        t9 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Button"], {
+            type: "submit",
+            variant: "outline",
+            className: "cursor-pointer mb-4",
+            children: "Créer compte"
         }, void 0, false, {
             fileName: "[project]/src/components/signup/signup-form.tsx",
             lineNumber: 84,
@@ -2892,24 +2179,87 @@ function SignupForm(t0) {
         t9 = $[11];
     }
     let t10;
-    if ($[12] !== props) {
-        t10 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Card"], {
-            ...props,
-            children: [
-                t1,
-                t9
-            ]
-        }, void 0, true, {
+    if ($[12] === Symbol.for("react.memo_cache_sentinel")) {
+        t10 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["CardContent"], {
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldGroup"], {
+                    children: [
+                        t2,
+                        t3,
+                        t7,
+                        t8,
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldGroup"], {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Field"], {
+                                children: [
+                                    t9,
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$field$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["FieldDescription"], {
+                                        className: "px-6 text-center",
+                                        children: [
+                                            "Avez-vous déjà un compte ? ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                href: "#",
+                                                children: "Connexion"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/signup/signup-form.tsx",
+                                                lineNumber: 91,
+                                                columnNumber: 155
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/signup/signup-form.tsx",
+                                        lineNumber: 91,
+                                        columnNumber: 81
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/signup/signup-form.tsx",
+                                lineNumber: 91,
+                                columnNumber: 70
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/signup/signup-form.tsx",
+                            lineNumber: 91,
+                            columnNumber: 58
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/signup/signup-form.tsx",
+                    lineNumber: 91,
+                    columnNumber: 30
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/components/signup/signup-form.tsx",
+                lineNumber: 91,
+                columnNumber: 24
+            }, this)
+        }, void 0, false, {
             fileName: "[project]/src/components/signup/signup-form.tsx",
             lineNumber: 91,
             columnNumber: 11
         }, this);
-        $[12] = props;
-        $[13] = t10;
+        $[12] = t10;
     } else {
-        t10 = $[13];
+        t10 = $[12];
     }
-    return t10;
+    let t11;
+    if ($[13] !== props) {
+        t11 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["Card"], {
+            ...props,
+            children: [
+                t1,
+                t10
+            ]
+        }, void 0, true, {
+            fileName: "[project]/src/components/signup/signup-form.tsx",
+            lineNumber: 98,
+            columnNumber: 11
+        }, this);
+        $[13] = props;
+        $[14] = t11;
+    } else {
+        t11 = $[14];
+    }
+    return t11;
 }
 _c = SignupForm;
 var _c;
@@ -2999,4 +2349,4 @@ __turbopack_context__.r("[next]/entry/page-loader.ts { PAGE => \"[project]/src/p
 }),
 ]);
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__2eb299f2._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__4666acbc._.js.map
