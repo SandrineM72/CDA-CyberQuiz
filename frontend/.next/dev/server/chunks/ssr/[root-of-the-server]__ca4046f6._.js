@@ -95,7 +95,6 @@ __turbopack_async_result__();
 
 return __turbopack_context__.a(async (__turbopack_handle_async_dependencies__, __turbopack_async_result__) => { try {
 
-// biome-ignore assist/source/organizeImports: '<explanation>
 __turbopack_context__.s([
     "Button",
     ()=>Button,
@@ -154,8 +153,8 @@ function Button({ className, variant = "default", size = "default", asChild = fa
         ...props
     }, void 0, false, {
         fileName: "[project]/src/components/ui/button.tsx",
-        lineNumber: 53,
-        columnNumber: 3
+        lineNumber: 52,
+        columnNumber: 5
     }, this);
 }
 ;
@@ -335,8 +334,12 @@ return __turbopack_context__.a(async (__turbopack_handle_async_dependencies__, _
 
 // @ts-nocheck
 __turbopack_context__.s([
+    "SignupDocument",
+    ()=>SignupDocument,
     "UsersDocument",
     ()=>UsersDocument,
+    "useSignupMutation",
+    ()=>useSignupMutation,
     "useUsersLazyQuery",
     ()=>useUsersLazyQuery,
     "useUsersQuery",
@@ -354,6 +357,20 @@ var __turbopack_async_dependencies__ = __turbopack_handle_async_dependencies__([
 ;
 ;
 const defaultOptions = {};
+const SignupDocument = __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__esm_import$29$__["gql"]`
+    mutation Signup($data: SignupInput!) {
+  signup(data: $data) {
+    id
+  }
+}
+    `;
+function useSignupMutation(baseOptions) {
+    const options = {
+        ...defaultOptions,
+        ...baseOptions
+    };
+    return __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client$2f$react__$5b$external$5d$__$2840$apollo$2f$client$2f$react$2c$__esm_import$29$__["useMutation"](SignupDocument, options);
+}
 const UsersDocument = __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__esm_import$29$__["gql"]`
     query Users {
   users {

@@ -9,11 +9,11 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/node_modules_react-dom_4411d9bd._.js",
       "static/chunks/node_modules_tailwind-merge_dist_bundle-mjs_mjs_0ab97e45._.js",
       "static/chunks/node_modules_graphql_f7d6c87c._.js",
-      "static/chunks/node_modules_@apollo_client_b430c419._.js",
+      "static/chunks/node_modules_@apollo_client_12920ac3._.js",
       "static/chunks/node_modules_623f6c3e._.js",
       "static/chunks/[root-of-the-server]__bd046eee._.js",
       "static/chunks/src_pages_index_2da965e7._.js",
-      "static/chunks/turbopack-src_pages_index_9e2b6536._.js"
+      "static/chunks/turbopack-src_pages_index_f0641639._.js"
     ],
     "/_app": [
       "static/chunks/node_modules_next_dist_compiled_8ca6b690._.js",
@@ -28,6 +28,31 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/src_styles_globals_5bb75e7e.css",
       "static/chunks/src_pages__app_2da965e7._.js",
       "static/chunks/turbopack-src_pages__app_cec3adf7._.js"
+    ],
+    "/_error": [
+      "static/chunks/node_modules_next_dist_compiled_8ca6b690._.js",
+      "static/chunks/node_modules_next_dist_shared_lib_cf5b50a6._.js",
+      "static/chunks/node_modules_next_dist_client_d0aa886c._.js",
+      "static/chunks/node_modules_next_dist_19fd0646._.js",
+      "static/chunks/node_modules_next_error_1cfbb379.js",
+      "static/chunks/[next]_entry_page-loader_ts_43b523b5._.js",
+      "static/chunks/node_modules_react-dom_4411d9bd._.js",
+      "static/chunks/node_modules_7f09fef0._.js",
+      "static/chunks/[root-of-the-server]__a2d5dfc8._.js",
+      "static/chunks/src_pages__error_2da965e7._.js",
+      "static/chunks/turbopack-src_pages__error_fc124685._.js"
+    ],
+    "/signup": [
+      "static/chunks/[root-of-the-server]__2eb299f2._.js",
+      "static/chunks/node_modules_next_dist_compiled_8ca6b690._.js",
+      "static/chunks/node_modules_next_dist_shared_lib_82dc2e9d._.js",
+      "static/chunks/node_modules_next_dist_client_d0aa886c._.js",
+      "static/chunks/node_modules_next_dist_6024eba3._.js",
+      "static/chunks/node_modules_react-dom_4411d9bd._.js",
+      "static/chunks/node_modules_tailwind-merge_dist_bundle-mjs_mjs_0ab97e45._.js",
+      "static/chunks/node_modules_4ef85ccc._.js",
+      "static/chunks/src_pages_signup_2da965e7._.js",
+      "static/chunks/turbopack-src_pages_signup_6828ecc0._.js"
     ]
   },
   "devFiles": [],

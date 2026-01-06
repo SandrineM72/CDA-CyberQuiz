@@ -7,9 +7,9 @@ __turbopack_load_page_chunks__("/", [
   "static/chunks/node_modules_react-dom_4411d9bd._.js",
   "static/chunks/node_modules_tailwind-merge_dist_bundle-mjs_mjs_0ab97e45._.js",
   "static/chunks/node_modules_graphql_f7d6c87c._.js",
-  "static/chunks/node_modules_@apollo_client_b430c419._.js",
+  "static/chunks/node_modules_@apollo_client_12920ac3._.js",
   "static/chunks/node_modules_623f6c3e._.js",
   "static/chunks/[root-of-the-server]__bd046eee._.js",
   "static/chunks/src_pages_index_2da965e7._.js",
-  "static/chunks/turbopack-src_pages_index_9e2b6536._.js"
+  "static/chunks/turbopack-src_pages_index_f0641639._.js"
 ])

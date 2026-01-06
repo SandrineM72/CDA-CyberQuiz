@@ -475,11 +475,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$com
 ;
 function Footer() {
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(2);
-    if ($[0] !== "0ddeabc8c37a2af4c7118c84f904eb2e013448027411922a0d1c28afae9be882") {
+    if ($[0] !== "229802badf9b92fbfcc252e450088e39eb552d737a7033ce91778ce0e26953bd") {
         for(let $i = 0; $i < 2; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "0ddeabc8c37a2af4c7118c84f904eb2e013448027411922a0d1c28afae9be882";
+        $[0] = "229802badf9b92fbfcc252e450088e39eb552d737a7033ce91778ce0e26953bd";
     }
     let t0;
     if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
@@ -575,11 +575,11 @@ const buttonVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_
 });
 function Button(t0) {
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(17);
-    if ($[0] !== "a9d7fd56dfb5458f9a230a93172d3f659bba96a0c51b08a29aed08ecdea62d5c") {
+    if ($[0] !== "4012b4d0846b1a9937b3822cd218fc0893353f7a8e3601ac83a6d24829266d2f") {
         for(let $i = 0; $i < 17; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "a9d7fd56dfb5458f9a230a93172d3f659bba96a0c51b08a29aed08ecdea62d5c";
+        $[0] = "4012b4d0846b1a9937b3822cd218fc0893353f7a8e3601ac83a6d24829266d2f";
     }
     let className;
     let props;
@@ -629,7 +629,7 @@ function Button(t0) {
             ...props
         }, void 0, false, {
             fileName: "[project]/src/components/ui/button.tsx",
-            lineNumber: 85,
+            lineNumber: 84,
             columnNumber: 10
         }, this);
         $[11] = Comp;
@@ -670,11 +670,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
 ;
 function Header() {
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(3);
-    if ($[0] !== "4ce4fa56a547501da28d6bbc9ad5b64d8a102a572bd6c6e326d1b19cf99e3480") {
+    if ($[0] !== "c6e9a9c11624089a2a2044bded556b4ca0e623c514e908edbad7af4db3645c77") {
         for(let $i = 0; $i < 3; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "4ce4fa56a547501da28d6bbc9ad5b64d8a102a572bd6c6e326d1b19cf99e3480";
+        $[0] = "c6e9a9c11624089a2a2044bded556b4ca0e623c514e908edbad7af4db3645c77";
     }
     let t0;
     if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
@@ -765,11 +765,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Header$
 ;
 function Layout(t0) {
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(17);
-    if ($[0] !== "2087d0f8b84390be1966a93701cf361c5ae460112501816e5aa874516117e97c") {
+    if ($[0] !== "9094fbe47f9344c80fa2590f06ab2ae6ee56b817684021569f1c32c24bfdceec") {
         for(let $i = 0; $i < 17; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "2087d0f8b84390be1966a93701cf361c5ae460112501816e5aa874516117e97c";
+        $[0] = "9094fbe47f9344c80fa2590f06ab2ae6ee56b817684021569f1c32c24bfdceec";
     }
     const { children, pageTitle } = t0;
     const t1 = `CinéQuizz - ${pageTitle}`;
@@ -925,8 +925,12 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 // @ts-nocheck
 __turbopack_context__.s([
+    "SignupDocument",
+    ()=>SignupDocument,
     "UsersDocument",
     ()=>UsersDocument,
+    "useSignupMutation",
+    ()=>useSignupMutation,
     "useUsersLazyQuery",
     ()=>useUsersLazyQuery,
     "useUsersQuery",
@@ -936,13 +940,34 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$graphql$2d$tag$2f$lib$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/graphql-tag/lib/index.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useSuspenseQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@apollo/client/react/hooks/useSuspenseQuery.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useMutation$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@apollo/client/react/hooks/useMutation.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@apollo/client/react/hooks/useQuery.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useLazyQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@apollo/client/react/hooks/useLazyQuery.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$constants$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@apollo/client/react/hooks/constants.js [client] (ecmascript)");
-var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature(), _s2 = __turbopack_context__.k.signature();
+var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature(), _s2 = __turbopack_context__.k.signature(), _s3 = __turbopack_context__.k.signature();
 ;
 ;
 const defaultOptions = {};
+const SignupDocument = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$graphql$2d$tag$2f$lib$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["gql"]`
+    mutation Signup($data: SignupInput!) {
+  signup(data: $data) {
+    id
+  }
+}
+    `;
+function useSignupMutation(baseOptions) {
+    _s();
+    const options = {
+        ...defaultOptions,
+        ...baseOptions
+    };
+    return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useMutation$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useMutation"](SignupDocument, options);
+}
+_s(useSignupMutation, "wwwtpB20p0aLiHIvSy5P98MwIUg=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useMutation$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useMutation"]
+    ];
+});
 const UsersDocument = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$graphql$2d$tag$2f$lib$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["gql"]`
     query Users {
   users {
@@ -952,40 +977,40 @@ const UsersDocument = __TURBOPACK__imported__module__$5b$project$5d2f$node_modul
 }
     `;
 function useUsersQuery(baseOptions) {
-    _s();
+    _s1();
     const options = {
         ...defaultOptions,
         ...baseOptions
     };
     return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useQuery"](UsersDocument, options);
 }
-_s(useUsersQuery, "4ZpngI1uv+Uo3WQHEZmTQ5FNM+k=", false, function() {
+_s1(useUsersQuery, "4ZpngI1uv+Uo3WQHEZmTQ5FNM+k=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useQuery"]
     ];
 });
 function useUsersLazyQuery(baseOptions) {
-    _s1();
+    _s2();
     const options = {
         ...defaultOptions,
         ...baseOptions
     };
     return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useLazyQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useLazyQuery"](UsersDocument, options);
 }
-_s1(useUsersLazyQuery, "On+3mFuZjiEOS3MQLgFXtHkppJ4=", false, function() {
+_s2(useUsersLazyQuery, "On+3mFuZjiEOS3MQLgFXtHkppJ4=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useLazyQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useLazyQuery"]
     ];
 });
 function useUsersSuspenseQuery(baseOptions) {
-    _s2();
+    _s3();
     const options = baseOptions === __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$constants$2e$js__$5b$client$5d$__$28$ecmascript$29$__["skipToken"] ? baseOptions : {
         ...defaultOptions,
         ...baseOptions
     };
     return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useSuspenseQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useSuspenseQuery"](UsersDocument, options);
 }
-_s2(useUsersSuspenseQuery, "wenOueM1EC87NIZJSyP2AsMhIMU=", false, function() {
+_s3(useUsersSuspenseQuery, "wenOueM1EC87NIZJSyP2AsMhIMU=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useSuspenseQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useSuspenseQuery"]
     ];
@@ -1013,11 +1038,11 @@ var _s = __turbopack_context__.k.signature();
 function Home() {
     _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(8);
-    if ($[0] !== "2b63588b1b32b792066446a0c440651d34a2eed409ad91fcd64b971e3cd687a4") {
+    if ($[0] !== "9dd0e5e48b73f8c94d1d0b1e18037b384499b24123f50282c8609983ad21beea") {
         for(let $i = 0; $i < 8; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "2b63588b1b32b792066446a0c440651d34a2eed409ad91fcd64b971e3cd687a4";
+        $[0] = "9dd0e5e48b73f8c94d1d0b1e18037b384499b24123f50282c8609983ad21beea";
     }
     const { data } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$graphql$2f$generated$2f$schema$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["useUsersQuery"])();
     let t0;

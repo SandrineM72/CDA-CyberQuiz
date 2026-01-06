@@ -1,245 +1,271 @@
-[00:00:01.538] Server  LOG      ✓ Ready in 1043ms
-[00:00:05.045] Server  LOG     {}
-[00:00:05.455] Browser LOG     {"uri":"http://localhost:3000"}
-[00:00:16.578] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm
-[01:04:56.159] Server  LOG      ✓ Compiled in 435ms
-[01:04:57.447] Server  LOG     {}
-[01:04:57.740] Browser LOG     {"uri":"http://localhost:3000"}
-[01:05:08.312] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm
-[01:14:37.639] Server  LOG      ✓ Compiled in 24ms
-[01:30:21.403] Server  ERROR    ⨯ ./src/components/Layout.tsx:6:1
-Module not found: Can't resolve './ProfileScreen'
-  4 | import Footer from "./Footer";
-  5 | import Header from "./Header";
-> 6 | import ProfileScreen from "./ProfileScreen";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | interface LayoutProps {
-  9 | 	children: ReactNode;
+[00:00:00.877] Server  LOG      ✓ Ready in 614ms
+[00:00:27.308] Server  LOG     {}
+[00:00:27.560] Browser LOG     {"uri":"http://localhost:3000"}
+[00:00:35.647] Browser LOG     {"uri":"http://localhost:3000"}
+[00:00:46.661] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/
+[00:01:20.964] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\compiled\next-server\pages-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.972] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\.next\dev\server\chunks\ssr\node_modules_0eac85f2._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.976] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.977] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.978] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.978] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.979] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.979] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.980] Server  ERROR    ⨯ Error: The default export is not a React Component in page: "/signup"
+[00:01:20.982] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\compiled\next-server\pages-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.982] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\.next\dev\server\chunks\ssr\node_modules_0eac85f2._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.983] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.983] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.983] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.984] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.984] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.984] Server  ERROR   C:\Users\sandr\Formation_WCS\Projet_1\CODE\PROJET\cda-nov25-p1-g2\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:01:20.985] Server  ERROR    ⨯ Error: The default export is not a React Component in page: "/signup"
+[00:01:21.259] Browser LOG     {"uri":"http://localhost:3000"}
+[00:01:23.326] Browser ERROR   uncaughtError: Error: The default export is not a React Component in page: "/signup"
+[00:01:26.788] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:26.789] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:26.840] Server  ERROR    ⨯ ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
-
-Import traces:
-  Browser:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
-
-  SSR:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:30:21.406] Server  ERROR    ⨯ ./src/components/Layout.tsx:6:1
-Module not found: Can't resolve './ProfileScreen'
-  4 | import Footer from "./Footer";
-  5 | import Header from "./Header";
-> 6 | import ProfileScreen from "./ProfileScreen";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | interface LayoutProps {
-  9 | 	children: ReactNode;
+[00:01:26.840] Server  ERROR    ⨯ ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
-
-Import traces:
-  Browser:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
-
-  SSR:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:30:21.410] Server  ERROR    ⨯ ./src/components/Layout.tsx:6:1
-Module not found: Can't resolve './ProfileScreen'
-  4 | import Footer from "./Footer";
-  5 | import Header from "./Header";
-> 6 | import ProfileScreen from "./ProfileScreen";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | interface LayoutProps {
-  9 | 	children: ReactNode;
+[00:01:26.841] Server  ERROR    ⨯ ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
-
-Import traces:
-  Browser:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
-
-  SSR:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:30:21.411] Server  ERROR    ⨯ ./src/components/Layout.tsx:6:1
-Module not found: Can't resolve './ProfileScreen'
-  4 | import Footer from "./Footer";
-  5 | import Header from "./Header";
-> 6 | import ProfileScreen from "./ProfileScreen";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | interface LayoutProps {
-  9 | 	children: ReactNode;
+[00:01:26.841] Server  ERROR    ⨯ ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
-
-Import traces:
-  Browser:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
-
-  SSR:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:30:21.413] Server  ERROR    ⨯ ./src/components/Layout.tsx:6:1
-Module not found: Can't resolve './ProfileScreen'
-  4 | import Footer from "./Footer";
-  5 | import Header from "./Header";
-> 6 | import ProfileScreen from "./ProfileScreen";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | interface LayoutProps {
-  9 | 	children: ReactNode;
+[00:01:26.842] Server  ERROR    ⨯ ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
-
-Import traces:
-  Browser:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
-
-  SSR:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:30:21.416] Server  ERROR    ⨯ ./src/components/Layout.tsx:6:1
-Module not found: Can't resolve './ProfileScreen'
-  4 | import Footer from "./Footer";
-  5 | import Header from "./Header";
-> 6 | import ProfileScreen from "./ProfileScreen";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | interface LayoutProps {
-  9 | 	children: ReactNode;
+[00:01:26.892] Server  LOG      ✓ Compiled in 68ms
+[00:01:27.077] Browser LOG     {"uri":"http://localhost:3000"}
+[00:01:29.116] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
+https://nextjs.org/docs/messages/module-not-found
+[00:01:29.116] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
-Import traces:
-  Browser:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
-  SSR:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
+https://nextjs.org/docs/messages/module-not-found
+[00:01:29.117] Browser ERROR   uncaughtError: Error: ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
+
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
+
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[01:30:21.422] Server  ERROR    ⨯ ./src/components/Layout.tsx:6:1
-Module not found: Can't resolve './ProfileScreen'
-  4 | import Footer from "./Footer";
-  5 | import Header from "./Header";
-> 6 | import ProfileScreen from "./ProfileScreen";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | interface LayoutProps {
-  9 | 	children: ReactNode;
+[00:01:38.425] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/
+[00:03:25.658] Server  LOG      ✓ Compiled in 34ms
+[00:03:26.613] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
-
-
-Import traces:
-  Browser:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
-
-  SSR:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
 https://nextjs.org/docs/messages/module-not-found
+[00:03:26.736] Server  LOG      ✓ Compiled in 18ms
+[00:03:27.799] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
-
-[01:30:21.426] Server  ERROR    ⨯ ./src/components/Layout.tsx:6:1
-Module not found: Can't resolve './ProfileScreen'
-  4 | import Footer from "./Footer";
-  5 | import Header from "./Header";
-> 6 | import ProfileScreen from "./ProfileScreen";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | interface LayoutProps {
-  9 | 	children: ReactNode;
-
-
-
-Import traces:
-  Browser:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
-
-  SSR:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
 https://nextjs.org/docs/messages/module-not-found
+[00:03:29.110] Server  LOG      ✓ Compiled in 21ms
+[00:03:29.816] Server  LOG      ✓ Compiled in 18ms
+[00:03:30.829] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
-
-[01:30:21.487] Server  LOG      ✓ Compiled in 70ms
-[01:30:23.398] Browser ERROR   ./src/components/Layout.tsx:6:1
-Module not found: Can't resolve './ProfileScreen'
-  4 | import Footer from "./Footer";
-  5 | import Header from "./Header";
-> 6 | import ProfileScreen from "./ProfileScreen";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  7 |
-  8 | interface LayoutProps {
-  9 | 	children: ReactNode;
-
-Import traces:
-  Browser:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
-
-  SSR:
-    ./src/components/Layout.tsx
-    ./src/pages/index.tsx
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
 https://nextjs.org/docs/messages/module-not-found
-[01:30:25.429] Server  LOG      ✓ Compiled in 94ms
-[01:30:46.501] Server  LOG     {}
-[01:30:46.726] Browser LOG     {"uri":"http://localhost:3000"}
-[01:30:57.733] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm
-[01:33:47.680] Server  LOG      ✓ Compiled in 203ms
-[01:33:48.763] Browser ERROR   %o
+[00:03:30.829] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
-%s
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
-%s
- {} The above error occurred in the <Main> component. React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
-[01:34:41.074] Server  LOG      ✓ Compiled in 51ms
-[01:34:42.044] Browser ERROR   %o
+https://nextjs.org/docs/messages/module-not-found
+[00:03:31.544] Server  LOG      ✓ Compiled in 19ms
+[00:03:32.562] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
 
-%s
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
 
-%s
- {} The above error occurred in the <Main> component. React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
-[02:15:29.957] Server  LOG     {}
-[02:15:29.971] Server  LOG      ✓ Compiled in 78ms
-[02:16:27.529] Server  LOG      ✓ Compiled in 33ms
-[02:16:41.659] Server  LOG      ✓ Compiled in 44ms
-[02:20:34.916] Server  LOG      ✓ Compiled in 48ms
+https://nextjs.org/docs/messages/module-not-found
+[00:03:33.187] Server  LOG      ✓ Compiled in 15ms
+[00:03:34.201] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
+
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found
+[00:03:34.420] Server  LOG      ✓ Compiled in 17ms
+[00:03:35.155] Server  LOG      ✓ Compiled in 15ms
+[00:03:36.168] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
+
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found
+[00:03:36.168] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
+
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found
+[00:03:43.701] Server  LOG      ✓ Compiled in 17ms
+[00:03:44.716] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
+
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found
+[00:03:44.949] Server  LOG      ✓ Compiled in 17ms
+[00:03:45.964] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
+
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found
+[00:03:48.107] Server  LOG      ✓ Compiled in 329ms
+[00:03:48.751] Browser ERROR   ./src/pages/signup.tsx:1:1
+Module not found: Can't resolve '@/components/signup-form'
+> 1 | import { SignupForm } from "@/components/signup-form"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Page() {
+  4 |   return (
+
+Import map: aliased to relative './src/components/signup-form' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found
+[00:04:03.583] Server  LOG     {}
+[00:04:03.758] Browser LOG     {"uri":"http://localhost:3000"}
+[00:04:14.291] Browser LOG     Download the Apollo DevTools for a better development experience: %s https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/
