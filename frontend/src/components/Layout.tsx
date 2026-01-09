@@ -6,8 +6,8 @@ import Footer from "./Footer";
 import Header from "./Header";
 
 interface LayoutProps {
-	children: ReactNode;
-	pageTitle: string;
+  children: ReactNode;
+  pageTitle: string;
 }
 
 const limelight = Limelight({

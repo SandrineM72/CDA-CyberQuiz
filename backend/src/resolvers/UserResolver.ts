@@ -54,21 +54,22 @@ export default class UserResolver {
     return startSession(context, user);
   }
 
-  @Query(() => User, {nullable: true})
-  async me(@Ctx() context: GraphQLContext) {
-    try{
-      return await getCurrentUser(context);
-    } catch(e) {
-      console.error(e);
+  @Query(() => User, {nullable:true})
+  async me(@Ctx() context: GraphQLContext){
+    try {
+      return await getCurrentUser(context)
+    } catch (error) {
+      console.error(error)
     }
-    return null;
+    return null
   }
 
   @Mutation(() => Boolean)
-  async logout(@Ctx() context:GraphQLContext) {
+  async logout(@Ctx() context: GraphQLContext) {
     endSession(context);
     return true;
   }
+
 }
 
 

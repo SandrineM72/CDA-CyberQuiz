@@ -55,7 +55,7 @@ export class User extends BaseEntity {
 	updated_at: Date;
 
 	// one to many pour to keep the data's history carried by the association 
-	@Field(() => [Attempt], {nullable: true})  // pour gérer le cas où les données n'existents pas
+	@Field(() => [Attempt], {nullable: true})
   @OneToMany(
 		() => Attempt,
 		(attempt) => attempt.user,
