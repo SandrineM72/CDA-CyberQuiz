@@ -1,132 +1,151 @@
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
 import { useSignupMutation } from "@/graphql/generated/schema";
+import { useRouter } from "next/router";
 
-export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
-  const router = useRouter();
-  const [signup, { loading: isSubmitting, error }] = useSignupMutation();
-  const [email, setEmail] = useState("");
-  const [pseudo, setPseudo] = useState("");
-  const [password, setPassword] = useState("");
-  const [age_range, setAgeRange] = useState("");
+export function SignupForm() {
+	const router = useRouter();
+	const [signup, { loading: isSubmitting, error }] = useSignupMutation();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [pseudo, setPseudo] = useState("");
+	const [age_range, setAgeRange] = useState<"tous publics" | "-12" | "-16" | "">("");
+	const [acceptedTerms, setAcceptedTerms] = useState(false);
+	const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    try {
-      e.preventDefault();
-      const result = await signup({
-        variables: {
-          data: {
-            email,
-            pseudo,
-            password,
-            age_range,
-          },
-        },
-      });
-      alert("Inscription réussie !");
-      router.push("/");
-    } catch (err) {
-      console.error(err);
-    }
-  };
+	const handleSubmit = async (e: React.FormEvent) => {
+		try {
+			e.preventDefault();
+			setErrorMessage(null);
 
-  return (
-    <Card {...props}>
-      <CardHeader>
-        <CardTitle>Créez votre compte</CardTitle>
-        <CardDescription>Entrez vos informations pour créer votre compte</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit}>
-          <FieldGroup>
-            <Field>
-              <FieldLabel htmlFor="email">Email</FieldLabel>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <FieldDescription className="text-xs">
-                Nous utiliserons cet email pour vous contacter, nous ne le partagerons pas.
-              </FieldDescription>
-            </Field>
+			if (!acceptedTerms) {
+				setErrorMessage("Vous devez accepter les conditions d'utilisation");
+				return;
+			}
 
-            <Field>
-              <FieldLabel htmlFor="pseudo">Pseudo</FieldLabel>
-              <Input
-                id="pseudo"
-                type="text"
-                placeholder="Tom Cruise"
-                required
-                onChange={(e) => setPseudo(e.target.value)}
-              />
-              <FieldDescription className="text-xs">
-                Votre pseudo aparaîtra à l'écran.
-              </FieldDescription>
-            </Field>
+			if (!age_range) {
+				setErrorMessage("Veuillez sélectionner une tranche d'âge");
+				return;
+			}
 
-            <Field>
-              <FieldLabel>Tranche d'âge</FieldLabel>
-              <RadioGroup
-                defaultValue="moins_12"
-                className="flex gap-4"
-                onValueChange={(val) => setAgeRange(val)}
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="moins_12" id="moins_12" />
-                  <Label htmlFor="moins_12">Moins de 12 ans</Label>
-                </div>
+			const result = await signup({
+				variables: {
+					data: {
+						email,
+						pseudo,
+						password,
+						age_range: age_range as "tous publics" | "-12" | "-16",
+					},
+				},
+			});
 
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="12_16" id="12_16" />
-                  <Label htmlFor="12_16">12-16 ans</Label>
-                </div>
+			if (result.data && typeof result.data === "object" && "signup" in result.data) {
+				router.push("/");
+			}
+		} catch (err: any) {
+			const message =
+				err.graphQLErrors?.[0]?.message ||
+				err.networkError?.message ||
+				err.message ||
+				"Une erreur est survenue lors de l'inscription";
+			setErrorMessage(message);
+		}
+	};
 
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="plus_16" id="plus_16" />
-                  <Label htmlFor="plus_16">Plus de 16 ans</Label>
-                </div>
-              </RadioGroup>
-              <FieldDescription className="text-xs">
-                Merci de renseigner votre tranche d'âge. Cette information est utilisée pour vous
-                proposer des films correspondant à votre âge.
-              </FieldDescription>
-            </Field>
+	return (
+		<div className="max-w-sm mx-auto px-4 py-8 space-y-6">
+			{/* Avatar Section */}
+			<div className="flex justify-center">
+				<Avatar className="h-24 w-24 bg-zinc-800 border border-white">
+					<AvatarFallback className="text-white text-lg font-semibold">
+						AVATAR
+					</AvatarFallback>
+				</Avatar>
+			</div>
 
-            <Field>
-              <FieldLabel htmlFor="password">Mot de passe</FieldLabel>
-              <Input
-                id="password"
-                type="password"
-                required
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <FieldDescription className="text-xs">
-                Le mot de passe doit contenir un minimum de 8 caractères, dont une minuscule, une
-                majuscule, un chiffre et un caractère spécial.
-              </FieldDescription>
-            </Field>
-            <FieldGroup>
-              <Field>
-                <Button type="submit" variant="outline" className="cursor-pointer mb-4">
-                  Créer compte
-                </Button>
-                <FieldDescription className="px-6 text-center">
-                  Avez-vous déjà un compte ? <a href="#">Connexion</a>
-                </FieldDescription>
-              </Field>
-            </FieldGroup>
-          </FieldGroup>
-        </form>
-      </CardContent>
-    </Card>
-  );
+			{/* Signup Form */}
+			<Card className="border-white">
+				<CardContent className="p-6">
+					<form onSubmit={handleSubmit} className="flex flex-col gap-4">
+						<Input
+							type="email"
+							placeholder="Email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+							className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-400 w-full"
+						/>
+						<Input
+							type="password"
+							placeholder="Mot de passe"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+							className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-400 w-full"
+						/>
+						<Input
+							type="text"
+							placeholder="Pseudo"
+							value={pseudo}
+							onChange={(e) => setPseudo(e.target.value)}
+							required
+							className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-400 w-full"
+						/>
+						<Select
+							value={age_range || undefined}
+							onValueChange={(val) =>
+								setAgeRange(val as "tous publics" | "-12" | "-16")
+							}
+						>
+							<SelectTrigger className="bg-zinc-800 border-zinc-700 text-white w-full">
+								<SelectValue placeholder="Tranche d'âge" />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectItem value="tous publics">Tous publics</SelectItem>
+								<SelectItem value="-12">Entre 12 et 16 ans</SelectItem>
+								<SelectItem value="-16">Plus de 16 ans</SelectItem>
+							</SelectContent>
+						</Select>
+						<div className="flex items-center space-x-2">
+							<Checkbox
+								id="terms"
+								checked={acceptedTerms}
+								onCheckedChange={(checked) => setAcceptedTerms(checked === true)}
+							/>
+							<Label
+								htmlFor="terms"
+								className="text-white text-sm cursor-pointer"
+							>
+								J'accepte les conditions d'utilisation
+							</Label>
+						</div>
+						{(errorMessage || error) && (
+							<p className="text-sm text-red-400 text-center">
+								{errorMessage || error?.message}
+							</p>
+						)}
+						<Button
+							type="submit"
+							disabled={isSubmitting}
+							className="w-full bg-zinc-800 border border-zinc-700 text-white font-bold hover:bg-zinc-700"
+						>
+							{isSubmitting ? "Inscription..." : "S'inscrire"}
+						</Button>
+					</form>
+				</CardContent>
+			</Card>
+		</div>
+	);
 }
