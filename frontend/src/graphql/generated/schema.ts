@@ -87,6 +87,12 @@ export type Query = {
 };
 
 
+export type QueryPrivateQuizzesArgs = {
+  categoryId?: InputMaybe<Scalars['Float']['input']>;
+  decadeId?: InputMaybe<Scalars['Float']['input']>;
+};
+
+
 export type QueryQuizArgs = {
   id: Scalars['Float']['input'];
 };
@@ -171,7 +177,10 @@ export type QuizQueryVariables = Exact<{
 
 export type QuizQuery = { __typename?: 'Query', quiz?: { __typename?: 'Quiz', id: number, title: string, description: string, image: string, questions: Array<{ __typename?: 'Question', id: number, title: string, choices: Array<{ __typename?: 'Choice', id: number, description: string, is_correct: boolean }> }> } | null };
 
-export type PrivateQuizzesQueryVariables = Exact<{ [key: string]: never; }>;
+export type PrivateQuizzesQueryVariables = Exact<{
+  categoryId?: InputMaybe<Scalars['Float']['input']>;
+  decadeId?: InputMaybe<Scalars['Float']['input']>;
+}>;
 
 
 export type PrivateQuizzesQuery = { __typename?: 'Query', privateQuizzes: Array<{ __typename?: 'Quiz', id: number, title: string, description: string, image: string, time_limit: number, category: { __typename?: 'Category', id: number, name: string }, decade: { __typename?: 'Decade', id: number, name: string } }> };
@@ -351,8 +360,8 @@ export type QuizLazyQueryHookResult = ReturnType<typeof useQuizLazyQuery>;
 export type QuizSuspenseQueryHookResult = ReturnType<typeof useQuizSuspenseQuery>;
 export type QuizQueryResult = ApolloReactCommon.QueryResult<QuizQuery, QuizQueryVariables>;
 export const PrivateQuizzesDocument = gql`
-    query PrivateQuizzes {
-  privateQuizzes {
+    query PrivateQuizzes($categoryId: Float, $decadeId: Float) {
+  privateQuizzes(categoryId: $categoryId, decadeId: $decadeId) {
     id
     title
     description
@@ -382,6 +391,8 @@ export const PrivateQuizzesDocument = gql`
  * @example
  * const { data, loading, error } = usePrivateQuizzesQuery({
  *   variables: {
+ *      categoryId: // value for 'categoryId'
+ *      decadeId: // value for 'decadeId'
  *   },
  * });
  */

@@ -1,5 +1,5 @@
-query PrivateQuizzes {
-  privateQuizzes {
+query PrivateQuizzes($categoryId: Float, $decadeId: Float) {
+  privateQuizzes(categoryId: $categoryId, decadeId: $decadeId) {
     id
     title
     description

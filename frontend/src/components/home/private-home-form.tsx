@@ -14,7 +14,17 @@ function formatDuration(seconds: number): string {
 
 export default function PrivateHomeForm() {
 	const router = useRouter();
-	const { data, loading, error } = usePrivateQuizzesQuery();
+	
+	// Récupération des paramètres de l'URL (categoryId et decadeId depuis la page choice)
+	const categoryId = router.query.categoryId ? Number(router.query.categoryId) : undefined;
+	const decadeId = router.query.decadeId ? Number(router.query.decadeId) : undefined;
+
+	const { data, loading, error } = usePrivateQuizzesQuery({
+		variables: {
+			categoryId: categoryId || undefined,
+			decadeId: decadeId || undefined,
+		},
+	});
 
 	const handleStartQuiz = (quizId: number) => {
 		router.push(`/quiz-details-page?id=${quizId}`);
