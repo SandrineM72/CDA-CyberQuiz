@@ -1,0 +1,18 @@
+query PrivateQuizzes {
+  privateQuizzes {
+    id
+    title
+    description
+    image
+    time_limit
+    category {
+      id
+      name
+    }
+    decade {
+      id
+      name
+    }
+  }
+}
+

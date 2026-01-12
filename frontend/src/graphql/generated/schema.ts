@@ -80,7 +80,15 @@ export type MutationSignupArgs = {
 export type Query = {
   __typename?: 'Query';
   me?: Maybe<User>;
+  privateQuizzes: Array<Quiz>;
+  quiz?: Maybe<Quiz>;
+  quizzes: Array<Quiz>;
   users: Array<User>;
+};
+
+
+export type QueryQuizArgs = {
+  id: Scalars['Float']['input'];
 };
 
 export type Question = {
@@ -155,6 +163,18 @@ export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ProfileQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: number, avatar: string, pseudo: string, age_range: string, attempts?: Array<{ __typename?: 'Attempt', id: number }> | null, won_rewards?: Array<{ __typename?: 'Reward', id: number }> | null } | null };
+
+export type QuizQueryVariables = Exact<{
+  id: Scalars['Float']['input'];
+}>;
+
+
+export type QuizQuery = { __typename?: 'Query', quiz?: { __typename?: 'Quiz', id: number, title: string, description: string, image: string, questions: Array<{ __typename?: 'Question', id: number, title: string, choices: Array<{ __typename?: 'Choice', id: number, description: string, is_correct: boolean }> }> } | null };
+
+export type PrivateQuizzesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PrivateQuizzesQuery = { __typename?: 'Query', privateQuizzes: Array<{ __typename?: 'Quiz', id: number, title: string, description: string, image: string, time_limit: number, category: { __typename?: 'Category', id: number, name: string }, decade: { __typename?: 'Decade', id: number, name: string } }> };
 
 export type SignupMutationVariables = Exact<{
   data: SignupInput;
@@ -278,6 +298,109 @@ export type ProfileQueryHookResult = ReturnType<typeof useProfileQuery>;
 export type ProfileLazyQueryHookResult = ReturnType<typeof useProfileLazyQuery>;
 export type ProfileSuspenseQueryHookResult = ReturnType<typeof useProfileSuspenseQuery>;
 export type ProfileQueryResult = ApolloReactCommon.QueryResult<ProfileQuery, ProfileQueryVariables>;
+export const QuizDocument = gql`
+    query Quiz($id: Float!) {
+  quiz(id: $id) {
+    id
+    title
+    description
+    image
+    questions {
+      id
+      title
+      choices {
+        id
+        description
+        is_correct
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useQuizQuery__
+ *
+ * To run a query within a React component, call `useQuizQuery` and pass it any options that fit your needs.
+ * When your component renders, `useQuizQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useQuizQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useQuizQuery(baseOptions: ApolloReactHooks.QueryHookOptions<QuizQuery, QuizQueryVariables> & ({ variables: QuizQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<QuizQuery, QuizQueryVariables>(QuizDocument, options);
+      }
+export function useQuizLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<QuizQuery, QuizQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<QuizQuery, QuizQueryVariables>(QuizDocument, options);
+        }
+export function useQuizSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<QuizQuery, QuizQueryVariables>) {
+          const options = baseOptions === ApolloReactHooks.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<QuizQuery, QuizQueryVariables>(QuizDocument, options);
+        }
+export type QuizQueryHookResult = ReturnType<typeof useQuizQuery>;
+export type QuizLazyQueryHookResult = ReturnType<typeof useQuizLazyQuery>;
+export type QuizSuspenseQueryHookResult = ReturnType<typeof useQuizSuspenseQuery>;
+export type QuizQueryResult = ApolloReactCommon.QueryResult<QuizQuery, QuizQueryVariables>;
+export const PrivateQuizzesDocument = gql`
+    query PrivateQuizzes {
+  privateQuizzes {
+    id
+    title
+    description
+    image
+    time_limit
+    category {
+      id
+      name
+    }
+    decade {
+      id
+      name
+    }
+  }
+}
+    `;
+
+/**
+ * __usePrivateQuizzesQuery__
+ *
+ * To run a query within a React component, call `usePrivateQuizzesQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePrivateQuizzesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePrivateQuizzesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePrivateQuizzesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<PrivateQuizzesQuery, PrivateQuizzesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<PrivateQuizzesQuery, PrivateQuizzesQueryVariables>(PrivateQuizzesDocument, options);
+      }
+export function usePrivateQuizzesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<PrivateQuizzesQuery, PrivateQuizzesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<PrivateQuizzesQuery, PrivateQuizzesQueryVariables>(PrivateQuizzesDocument, options);
+        }
+export function usePrivateQuizzesSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<PrivateQuizzesQuery, PrivateQuizzesQueryVariables>) {
+          const options = baseOptions === ApolloReactHooks.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<PrivateQuizzesQuery, PrivateQuizzesQueryVariables>(PrivateQuizzesDocument, options);
+        }
+export type PrivateQuizzesQueryHookResult = ReturnType<typeof usePrivateQuizzesQuery>;
+export type PrivateQuizzesLazyQueryHookResult = ReturnType<typeof usePrivateQuizzesLazyQuery>;
+export type PrivateQuizzesSuspenseQueryHookResult = ReturnType<typeof usePrivateQuizzesSuspenseQuery>;
+export type PrivateQuizzesQueryResult = ApolloReactCommon.QueryResult<PrivateQuizzesQuery, PrivateQuizzesQueryVariables>;
 export const SignupDocument = gql`
     mutation Signup($data: SignupInput!) {
   signup(data: $data) {
