@@ -1,4 +1,7 @@
+"use client";
+
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -10,7 +13,8 @@ import {
 } from "@/components/ui/select";
 import { useCategoriesQuery, useDecadesQuery } from "@/graphql/generated/schema";
 
-export default function ChoiceForm() {
+export default function ChoicePage() {
+	const router = useRouter();
 	const [categorie, setCategorie] = useState<string>("");
 	const [decennie, setDecennie] = useState<string>("");
 
@@ -23,23 +27,30 @@ export default function ChoiceForm() {
 	const categories = categoriesData?.categories || [];
 	const decades = decadesData?.decades || [];
 
-	const handleChoix = () => {
-		// Logique pour gérer le clic sur "Choix ?"
-		console.log("Choix ? cliqué");
-	};
-
 	const handleValider = () => {
-		// Logique pour valider les choix
-		if (!categorie || !decennie) {
-			alert("Veuillez sélectionner une catégorie et une décennie");
-			return;
+		// Construction dynamique de l'URL avec seulement les paramètres sélectionnés
+		// Les paramètres sont optionnels, donc on ne les inclut que s'ils sont définis (4 choix sont possibles)
+		const params = new URLSearchParams();
+		
+		if (categorie) {
+			params.append("categoryId", categorie);
 		}
-		console.log("Catégorie:", categorie, "Décennie:", decennie);
+		
+		if (decennie) {
+			params.append("decadeId", decennie);
+		}
+		
+		// Redirection avec les paramètres (peut être vide si rien n'est sélectionné)
+		const queryString = params.toString();
+		const url = queryString 
+			? `/connected-user-page?${queryString}`
+			: `/connected-user-page`;
+		
+		router.push(url);
 	};
 
 	return (
 		<div className="w-full max-w-sm mx-auto px-4 py-8 space-y-6">
-			{/* Le contenu de la page */}
 			<Card className="border-white">
 				<CardContent className="p-6 space-y-6">
 					{/* Image Section */}
@@ -47,21 +58,22 @@ export default function ChoiceForm() {
 						<div className="relative w-full aspect-4/3 bg-zinc-800">
 							<img
 								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyyy9gKjkNfYftUtfaFr0aKh6BsCSsNQxAjw&s"
-								alt="Forrest Gump"
+								alt="Cinéma"
 								className="absolute inset-0 w-full h-full object-cover"
 							/>
 						</div>
 					</Card>
 
-					{/* Petit bouton avec choix, ça servira à quoi après ? */}
+					{/* Bouton d'instruction */}
 					<Button
-						onClick={handleChoix}
+						onClick={() => {}}
 						className="w-full bg-zinc-800 border border-white text-white font-bold hover:bg-zinc-700"
+						disabled
 					>
-						Choisis la catégorie et décennie 👇
+						Choisis une catégorie et/ou une décennie (optionnel) 👇
 					</Button>
 
-					{/* Les menus déroulants pour choisir la catégorie et la décennie */}
+					{/* Les menus déroulants */}
 					<Card className="border-white">
 						<CardContent className="p-6">
 							<div className="flex gap-4">
@@ -114,7 +126,7 @@ export default function ChoiceForm() {
 						</CardContent>
 					</Card>
 
-					{/* Bouton pour valider les choix, logique à implémenter après échange avec la team */}
+					{/* Bouton de validation */}
 					<Button
 						onClick={handleValider}
 						className="w-full bg-zinc-800 border border-white text-white font-bold hover:bg-zinc-700"
@@ -126,4 +138,3 @@ export default function ChoiceForm() {
 		</div>
 	);
 }
-
