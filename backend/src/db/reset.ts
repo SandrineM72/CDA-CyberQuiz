@@ -55,17 +55,17 @@ async function main() {
   // ===== REWARDS =====
   const bronzeReward = await Reward.create({
     name: "Trophée Bronze",
-    image: "https://example.com/bronze.png"
+    image: "/clap_bronze.png"
   }).save();
 
   const silverReward = await Reward.create({
     name: "Trophée Argent",
-    image: "https://example.com/silver.png"
+    image: "/clap_argent.png"
   }).save();
 
   const goldReward = await Reward.create({
     name: "Trophée Or",
-    image: "https://example.com/gold.png"
+    image: "/clap_or.png"
   }).save();
 
   
@@ -75,7 +75,7 @@ async function main() {
     pseudo: "MarieCinephile",
     age_range: AgeRange.TOUS_PUBLICS,
     hashedPassword: await hash ("Password123!"),
-    avatar: "https://example.com/avatar1.png",
+    avatar: "/avatar_1-sansBG",
     is_admin: false
   }).save();
 
@@ -84,7 +84,7 @@ async function main() {
     pseudo: "JeanDuCinema",
     age_range: AgeRange.TOUS_PUBLICS,
     hashedPassword: await hash ("Password123!"),
-    avatar: "https://example.com/avatar2.png",
+    avatar: "/avatar_2-sansBG.png",
     is_admin: false
   }).save();
 
@@ -93,16 +93,16 @@ async function main() {
     pseudo: "AdminCineQuizz",
     age_range: AgeRange.TOUS_PUBLICS,
     hashedPassword: await hash("Password123!"),
-    avatar: "https://example.com/admin.png",
+    avatar: "/avatar_3-sansBG.png",
     is_admin: true
   }).save();
 
 
    // ===== QUIZ =====
   const quiz1 = await Quiz.create({
-    title: "Les Comédies Françaises Cultes",
-    description: "Testez vos connaissances sur les comédies françaises incontournables",
-    image: "https://example.com/quiz1.jpg",
+    title: "Les Comédies Cultes des années 90",
+    description: "Testez vos connaissances sur les comédies incontournables",
+    image: "/films/le_diner_de_cons.png",
     age_range: AgeRange.TOUS_PUBLICS,
     time_limit: 300,
     is_public: true,
@@ -114,7 +114,7 @@ async function main() {
   const quiz2 = await Quiz.create({
     title: "Le Cinéma d'Action des Années 80",
     description: "Plongez dans l'univers explosif du cinéma d'action",
-    image: "https://example.com/quiz2.jpg",
+    image: "/films/rambo.png",
     age_range: AgeRange.MOINS_16,
     time_limit: 600,
     is_public: true,
@@ -125,12 +125,12 @@ async function main() {
 
   const quiz3 = await Quiz.create({
     title: "Les Drames des Années 2000",
-    description: "Explorez les films dramatiques qui ont marqué les années 2000",
-    image: "https://example.com/quiz3.jpg",
+    description: "Explorez les films dramatiques qui ont marqué vos années 2000",
+    image: "/films/le_pianiste.png",
     age_range: AgeRange.MOINS_12,
     time_limit: 450,
-    is_public: false,
-    is_draft: true,
+    is_public: true,
+    is_draft: false,
     category: drameCategory,
     decade: decade2000
   }).save();
