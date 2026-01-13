@@ -16,12 +16,17 @@ import { AgeRange } from "../types";
 import { hash } from "argon2";
 
 export async function clearDB() {
-  await unlink(resolve("src/db/db.sqlite"));
+  const runner = db.createQueryRunner();
+  const tableDroppings = db.entityMetadatas.map(async(entity) =>
+  runner.query(`DROP TABLE IF EXISTS "${entity.tableName}" CASCADE`)
+  )
+  await Promise.all(tableDroppings);
+  await db.synchronize();
 }
 
 async function main() {
-  await clearDB().catch(console.error);
   await db.initialize();
+  await clearDB().catch(console.error);
 
 
 // ===== CATEGORIES =====
@@ -421,7 +426,7 @@ async function main() {
     started_at: new Date("2024-01-16T14:00:00"),
     finished_at: new Date("2024-01-16T14:08:00"),
     score: 2,
-    percentage_success: 66.67,
+    percentage_success: 66,
     duration: 480,
     passed: true
   }).save();
@@ -431,7 +436,7 @@ async function main() {
     quiz: quiz2,
     started_at: new Date("2024-01-17T16:00:00"),
     score: 1,
-    percentage_success: 33.33,
+    percentage_success: 33,
     duration: 180,
     passed: false
   }).save();
