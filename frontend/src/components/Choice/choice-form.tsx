@@ -15,32 +15,32 @@ import { useCategoriesQuery, useDecadesQuery } from "@/graphql/generated/schema"
 
 export default function ChoicePage() {
 	const router = useRouter();
-	const [categorie, setCategorie] = useState<string>("");
-	const [decennie, setDecennie] = useState<string>("");
+	const [category, setCategory] = useState<string>("");
+	const [decade, setDecade] = useState<string>("");
 
-	// Récupération des catégories depuis la base de données
+	// Retrieves categories from my database
 	const { data: categoriesData, loading: categoriesLoading, error: categoriesError } = useCategoriesQuery();
 	
-	// Récupération des décennies depuis la base de données
+	// Retrieves decade from my database
 	const { data: decadesData, loading: decadesLoading, error: decadesError } = useDecadesQuery();
 
 	const categories = categoriesData?.categories || [];
 	const decades = decadesData?.decades || [];
 
 	const handleValider = () => {
-		// Construction dynamique de l'URL avec seulement les paramètres sélectionnés
-		// Les paramètres sont optionnels, donc on ne les inclut que s'ils sont définis (4 choix sont possibles)
+		// Dynamic construction of my URL for the selected choices
+		// Parameters become optional for the user to get acces to next page
 		const params = new URLSearchParams();
 		
-		if (categorie) {
-			params.append("categoryId", categorie);
+		if (category) {
+			params.append("categoryId", category);
 		}
 		
-		if (decennie) {
-			params.append("decadeId", decennie);
+		if (decade) {
+			params.append("decadeId", decade);
 		}
 		
-		// Redirection avec les paramètres (peut être vide si rien n'est sélectionné)
+		// Redirection with the choices made earlier
 		const queryString = params.toString();
 		const url = queryString 
 			? `/connected-user-page?${queryString}`
@@ -64,7 +64,7 @@ export default function ChoicePage() {
 						</div>
 					</Card>
 
-					{/* Bouton d'instruction */}
+					{/* Instruction button */}
 					<Button
 						onClick={() => {}}
 						className="w-full bg-zinc-800 border border-white text-white font-bold hover:bg-zinc-700"
@@ -73,13 +73,13 @@ export default function ChoicePage() {
 						Choisis une catégorie et/ou une décennie (optionnel) 👇
 					</Button>
 
-					{/* Les menus déroulants */}
+					{/* Dropdown menues */}
 					<Card className="border-white">
 						<CardContent className="p-6">
 							<div className="flex gap-4">
 								<Select
-									value={categorie || undefined}
-									onValueChange={setCategorie}
+									value={category || undefined}
+									onValueChange={setCategory}
 									disabled={categoriesLoading}
 								>
 									<SelectTrigger className="bg-zinc-800 border-zinc-700 text-white flex-1">
@@ -101,8 +101,8 @@ export default function ChoicePage() {
 								</Select>
 
 								<Select
-									value={decennie || undefined}
-									onValueChange={setDecennie}
+									value={decade || undefined}
+									onValueChange={setDecade}
 									disabled={decadesLoading}
 								>
 									<SelectTrigger className="bg-zinc-800 border-zinc-700 text-white flex-1">
@@ -126,7 +126,7 @@ export default function ChoicePage() {
 						</CardContent>
 					</Card>
 
-					{/* Bouton de validation */}
+					{/* Validation button */}
 					<Button
 						onClick={handleValider}
 						className="w-full bg-zinc-800 border border-white text-white font-bold hover:bg-zinc-700"
