@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useQuizPublicQuery } from "@/graphql/generated/schema";
@@ -49,14 +48,14 @@ export default function HomePage() {
         {/* Image de présentation */}
         <div className="flex justify-center relative">
           <div className="w-full rounded-2xl overflow-hidden bg-sky-200">
-            <Image
+            {/** biome-ignore lint/performance/noImgElement: <explanation> */}
+            <img
               src="/films/forest_gump_assis.png"
               alt="Personnage"
               width={400}
               height={300}
               className="w-full h-full object-cover relative"
-              priority
-            />
+              />
           </div>
           <Link href={"/signup"}>
             <button
@@ -84,7 +83,8 @@ export default function HomePage() {
               {/* Image du quiz */}
               {quiz.image && (
                 <div className="w-full h-48 overflow-hidden rounded-t-lg relative">
-                  <Image src={quiz.image} alt={quiz.title} fill className="object-contain" />
+                  {/** biome-ignore lint/performance/noImgElement: <explanation> */}
+                  <img src={quiz.image} alt={quiz.title} className="object-contain" />
                 </div>
               )}
 
