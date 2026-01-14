@@ -5,7 +5,6 @@ export default load({
   CORS_ALLOWED_ORIGINS: String,
   NODE_ENV: String,
   JWT_SECRET: String,
-  PERPLEXITY_API_KEY: String,
   DB_HOST: String,
   DB_NAME: String,
   DB_PORT: Number,
