@@ -140,7 +140,7 @@ export function SignupForm() {
 						<Button
 							type="submit"
 							disabled={isSubmitting}
-							className="w-full bg-zinc-800 border border-zinc-700 text-white text-xl hover:bg-zinc-700"
+							className="w-full bg-zinc-800 border border-zinc-700 text-white text-xl hover:bg-zinc-700 cursor-pointer"
 						>
 							{isSubmitting ? "Inscription..." : "S'inscrire"}
 						</Button>
