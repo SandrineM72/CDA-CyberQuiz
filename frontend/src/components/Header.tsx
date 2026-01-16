@@ -5,20 +5,14 @@ import { useLogoutMutation, useProfileQuery } from "@/graphql/generated/schema";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 
-import {
-  	DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, 
-  	DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger 
-} from "@/components/ui/dropdown-menu";
-
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Limelight } from 'next/font/google';
 
 const limelight = Limelight({
-	weight: ["400"],
+	weight: ["400"]
 });
 
-
 export default function Header() {
-
 	const [openMenu, setOpenMenu] = useState(false);
 
 	const router = useRouter();
@@ -60,27 +54,41 @@ export default function Header() {
 					</DropdownMenuTrigger>
 			
 					<DropdownMenuContent sideOffset={10} className="w-60 text-white bg-stone-600 border-0" align="start">
+					{/* menu visiteur */}
 					{!user && 
 						<DropdownMenuGroup className={limelight.className}>
-							<DropdownMenuItem className="py-3 text-xl hover:bg-stone-500" >
-								Contacts
-							</DropdownMenuItem>
-							<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500">
-								Qui sommes-nous ?
-							</DropdownMenuItem>
-							<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500">
-								Protection des données
-							</DropdownMenuItem>
-							<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500">
-								Mentions légales
-							</DropdownMenuItem>
+							<Link href="/contacts">
+								<DropdownMenuItem className="py-3 text-xl hover:bg-stone-500 cursor-pointer" >
+									Contacts
+								</DropdownMenuItem>
+							</Link>
+							<Link href="/about">
+								<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500 cursor-pointer">
+									Qui sommes-nous ?
+								</DropdownMenuItem>
+							</Link>
+							
+							<Link href="/personal-data-policy">
+								<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500 cursor-pointer">
+									Protection des données
+								</DropdownMenuItem>
+							</Link>
+
+							<Link href="/legal-notices">
+								<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500 cursor-pointer">
+									Mentions légales
+								</DropdownMenuItem>
+							</Link>
 						</DropdownMenuGroup>
 					}
+					{/* menu utilisateur connecté */}
 					{user &&
 						<DropdownMenuGroup className={limelight.className}> 
-							<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500">
-							Profil
-							</DropdownMenuItem>
+							<Link href="/profile">
+								<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500 cursor-pointer">
+									Profil
+								</DropdownMenuItem>
+							</Link>
 							<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500" onClick={handleLogout}>
 							Log out
 							</DropdownMenuItem>
