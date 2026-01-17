@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import {
   Field,
   FieldDescription,
@@ -57,13 +58,15 @@ export default function LoginForm() {
       <div className="w-full max-w-md space-y-2">
         {/* Header image */}
         <div className="flex justify-center">
-          <div className="relative w-full rounded-2xl overflow-hidden bg-sky-200">
-            <img
-              src="/forest_gump_assis.png"
-              alt="Character illustration"
-              className="w-full h-full object-cover"
-            />
-          </div>
+            <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden bg-sky-200">
+              <Image
+                src="/films/forest_gump_assis.png"
+                alt="Character illustration"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
         </div>
 
         {/* Login form */}
