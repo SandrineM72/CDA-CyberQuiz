@@ -23,8 +23,15 @@ export default function LoginForm() {
           },
         },
       });
-      alert("Connexion réussie !");
-      router.push("/choicepage");
+      
+      // Vérifier si l'utilisateur est admin
+      if (result.data?.login?.is_admin) {
+        alert("Connexion réussie en tant qu'administrateur !");
+        router.push("/admin");
+      } else {
+        alert("Connexion réussie en tant que joueur !");
+        router.push("/choicepage");
+      }
     } catch (err) {
       console.error(err);
     }
@@ -36,7 +43,7 @@ export default function LoginForm() {
         <div className="flex justify-center">
           <div className="relative w-full rounded-2xl overflow-hidden bg-sky-200">
             <img
-              src="/forest_gump_assis.png"
+              src="/films/forest_gump_assis.png"
               alt="Personnage"
               className="w-full h-full object-cover"
             />
@@ -90,7 +97,7 @@ export default function LoginForm() {
                     </Button>
                     <FieldDescription className="px-6 text-center text-gray-400">
                       Pas encore de compte ?{" "}
-                      <a href="#" className="text-white hover:underline">
+                      <a href={"/signup"} className="text-white hover:underline">
                         S'inscrire
                       </a>
                     </FieldDescription>
