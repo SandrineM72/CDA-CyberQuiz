@@ -231,7 +231,7 @@ export type LogoutMutation = { __typename?: 'Mutation', logout: boolean };
 export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ProfileQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: number, avatar: string, pseudo: string, age_range: string, attempts?: Array<{ __typename?: 'Attempt', id: number }> | null, won_rewards?: Array<{ __typename?: 'Reward', id: number }> | null } | null };
+export type ProfileQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: number, avatar: string, pseudo: string, is_admin: boolean, age_range: string, attempts?: Array<{ __typename?: 'Attempt', id: number }> | null, won_rewards?: Array<{ __typename?: 'Reward', id: number }> | null } | null };
 
 export type QuizPublicQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -561,6 +561,7 @@ export const ProfileDocument = gql`
     id
     avatar
     pseudo
+    is_admin
     age_range
     attempts {
       id
