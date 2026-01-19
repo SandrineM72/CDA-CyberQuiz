@@ -70,7 +70,7 @@ export default function ChoicePage() {
 						className="w-full bg-zinc-800 border border-white text-white font-bold hover:bg-zinc-700 text-[12px]" 
 						disabled
 					>
-						Choisis une catégorie / une décennie 👇
+						Choix catégorie ou décennie 👇
 					</Button>
 
 					{/* Dropdown menues */}
