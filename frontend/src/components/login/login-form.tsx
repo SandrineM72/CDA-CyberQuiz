@@ -158,24 +158,8 @@ export default function LoginForm() {
                   </p>
                 )}
 
-                {/* Submit button */}
-                <Field>
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    variant="outline"
-                    className="mb-4 w-full border-white text-white hover:bg-white hover:text-black"
-                  >
-                    {isSubmitting ? "Signing in..." : "Sign in"}
-                  </Button>
 
-                  <FieldDescription className="px-6 text-center text-gray-400">
-                    Don't have an account?{" "}
-                    <a href="/signup" className="text-white hover:underline">
-                      Sign up
-                    </a>
-                  </FieldDescription>
-                </Field>
+
               </FieldGroup>
             </form>
           </CardContent>
