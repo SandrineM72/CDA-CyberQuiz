@@ -43,13 +43,19 @@ export default function LoginForm() {
           },
         },
       });
+      
+      // Vérifier si l'utilisateur est admin
+      if (result.data?.login?.is_admin) {
+        alert("Connexion réussie en tant qu'administrateur !");
+        router.push("/admin");
+      } else {
 
-      // Redirect on successful login
-      if (result.data?.login) {
+        alert("Connexion réussie en tant que joueur !");
         router.push("/connected-user-page");
       }
-    } catch {
-      // Errors are already handled by Apollo via `error`
+    } catch (err) {
+ 
+      console.error(err);
     }
   };
 
@@ -128,6 +134,23 @@ export default function LoginForm() {
                   </div>
                 </Field>
 
+                <FieldGroup>
+                  <Field>
+                    <Button
+                      type="submit"
+                      variant="outline"
+                      className="cursor-pointer mb-4 w-full border-white text-white hover:bg-white hover:text-black"
+                    >
+                      Se connecter
+                    </Button>
+                    <FieldDescription className="px-6 text-center text-gray-400">
+                      Pas encore de compte ?{" "}
+                      <a href={"/signup"} className="text-white hover:underline">
+                        S'inscrire
+                      </a>
+                    </FieldDescription>
+                  </Field>
+                </FieldGroup>
                 {/* Error message */}
                 {error && (
                   <p className="text-sm text-red-400 text-center">
@@ -135,24 +158,8 @@ export default function LoginForm() {
                   </p>
                 )}
 
-                {/* Submit button */}
-                <Field>
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    variant="outline"
-                    className="mb-4 w-full border-white text-white hover:bg-white hover:text-black"
-                  >
-                    {isSubmitting ? "Signing in..." : "Sign in"}
-                  </Button>
 
-                  <FieldDescription className="px-6 text-center text-gray-400">
-                    Don't have an account?{" "}
-                    <a href="#" className="text-white hover:underline">
-                      Sign up
-                    </a>
-                  </FieldDescription>
-                </Field>
+
               </FieldGroup>
             </form>
           </CardContent>
@@ -160,4 +167,5 @@ export default function LoginForm() {
       </div>
     </div>
   );
-}
+  }
+
