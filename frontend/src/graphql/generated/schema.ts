@@ -99,6 +99,8 @@ export type Query = {
   getPublicQuizzes: Array<Quiz>;
   lastAttemptByQuiz?: Maybe<Attempt>;
   me?: Maybe<User>;
+  nextPublicQuiz?: Maybe<Quiz>;
+  nextQuiz?: Maybe<Quiz>;
   privateQuizzes: Array<Quiz>;
   quiz?: Maybe<Quiz>;
   quizzes: Array<Quiz>;
@@ -121,14 +123,24 @@ export type QueryLastAttemptByQuizArgs = {
 };
 
 
+export type QueryNextPublicQuizArgs = {
+  currentQuizId: Scalars['Int']['input'];
+};
+
+
+export type QueryNextQuizArgs = {
+  currentQuizId: Scalars['Int']['input'];
+};
+
+
 export type QueryPrivateQuizzesArgs = {
-  categoryId?: InputMaybe<Scalars['Float']['input']>;
-  decadeId?: InputMaybe<Scalars['Float']['input']>;
+  categoryId?: InputMaybe<Scalars['Int']['input']>;
+  decadeId?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
 export type QueryQuizArgs = {
-  id: Scalars['Float']['input'];
+  id: Scalars['Int']['input'];
 };
 
 export type Question = {
@@ -225,6 +237,25 @@ export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
 export type LogoutMutation = { __typename?: 'Mutation', logout: boolean };
 
+export type MeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MeQuery = { __typename?: 'Query', me?: { __typename?: 'User', id: number } | null };
+
+export type NextPublicQuizQueryVariables = Exact<{
+  currentQuizId: Scalars['Int']['input'];
+}>;
+
+
+export type NextPublicQuizQuery = { __typename?: 'Query', nextPublicQuiz?: { __typename?: 'Quiz', id: number } | null };
+
+export type NextQuizQueryVariables = Exact<{
+  currentQuizId: Scalars['Int']['input'];
+}>;
+
+
+export type NextQuizQuery = { __typename?: 'Query', nextQuiz?: { __typename?: 'Quiz', id: number } | null };
+
 export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -236,15 +267,15 @@ export type QuizPublicQueryVariables = Exact<{ [key: string]: never; }>;
 export type QuizPublicQuery = { __typename?: 'Query', getPublicQuizzes: Array<{ __typename?: 'Quiz', id: number, title: string, description: string, image: string, age_range: string, time_limit: number, category: { __typename?: 'Category', id: number, name: string }, decade: { __typename?: 'Decade', id: number, name: string } }> };
 
 export type QuizQueryVariables = Exact<{
-  id: Scalars['Float']['input'];
+  id: Scalars['Int']['input'];
 }>;
 
 
 export type QuizQuery = { __typename?: 'Query', quiz?: { __typename?: 'Quiz', id: number, title: string, description: string, image: string, questions: Array<{ __typename?: 'Question', id: number, title: string, choices: Array<{ __typename?: 'Choice', id: number, description: string, is_correct: boolean }> }> } | null };
 
 export type PrivateQuizzesQueryVariables = Exact<{
-  categoryId?: InputMaybe<Scalars['Float']['input']>;
-  decadeId?: InputMaybe<Scalars['Float']['input']>;
+  categoryId?: InputMaybe<Scalars['Int']['input']>;
+  decadeId?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
 
@@ -486,6 +517,125 @@ export function useLogoutMutation(baseOptions?: ApolloReactHooks.MutationHookOpt
 export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
 export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
+export const MeDocument = gql`
+    query Me {
+  me {
+    id
+  }
+}
+    `;
+
+/**
+ * __useMeQuery__
+ *
+ * To run a query within a React component, call `useMeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMeQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<MeQuery, MeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<MeQuery, MeQueryVariables>(MeDocument, options);
+      }
+export function useMeLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options);
+        }
+export function useMeSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<MeQuery, MeQueryVariables>) {
+          const options = baseOptions === ApolloReactHooks.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<MeQuery, MeQueryVariables>(MeDocument, options);
+        }
+export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
+export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
+export type MeSuspenseQueryHookResult = ReturnType<typeof useMeSuspenseQuery>;
+export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>;
+export const NextPublicQuizDocument = gql`
+    query NextPublicQuiz($currentQuizId: Int!) {
+  nextPublicQuiz(currentQuizId: $currentQuizId) {
+    id
+  }
+}
+    `;
+
+/**
+ * __useNextPublicQuizQuery__
+ *
+ * To run a query within a React component, call `useNextPublicQuizQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNextPublicQuizQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNextPublicQuizQuery({
+ *   variables: {
+ *      currentQuizId: // value for 'currentQuizId'
+ *   },
+ * });
+ */
+export function useNextPublicQuizQuery(baseOptions: ApolloReactHooks.QueryHookOptions<NextPublicQuizQuery, NextPublicQuizQueryVariables> & ({ variables: NextPublicQuizQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<NextPublicQuizQuery, NextPublicQuizQueryVariables>(NextPublicQuizDocument, options);
+      }
+export function useNextPublicQuizLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<NextPublicQuizQuery, NextPublicQuizQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<NextPublicQuizQuery, NextPublicQuizQueryVariables>(NextPublicQuizDocument, options);
+        }
+export function useNextPublicQuizSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<NextPublicQuizQuery, NextPublicQuizQueryVariables>) {
+          const options = baseOptions === ApolloReactHooks.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<NextPublicQuizQuery, NextPublicQuizQueryVariables>(NextPublicQuizDocument, options);
+        }
+export type NextPublicQuizQueryHookResult = ReturnType<typeof useNextPublicQuizQuery>;
+export type NextPublicQuizLazyQueryHookResult = ReturnType<typeof useNextPublicQuizLazyQuery>;
+export type NextPublicQuizSuspenseQueryHookResult = ReturnType<typeof useNextPublicQuizSuspenseQuery>;
+export type NextPublicQuizQueryResult = ApolloReactCommon.QueryResult<NextPublicQuizQuery, NextPublicQuizQueryVariables>;
+export const NextQuizDocument = gql`
+    query NextQuiz($currentQuizId: Int!) {
+  nextQuiz(currentQuizId: $currentQuizId) {
+    id
+  }
+}
+    `;
+
+/**
+ * __useNextQuizQuery__
+ *
+ * To run a query within a React component, call `useNextQuizQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNextQuizQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNextQuizQuery({
+ *   variables: {
+ *      currentQuizId: // value for 'currentQuizId'
+ *   },
+ * });
+ */
+export function useNextQuizQuery(baseOptions: ApolloReactHooks.QueryHookOptions<NextQuizQuery, NextQuizQueryVariables> & ({ variables: NextQuizQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<NextQuizQuery, NextQuizQueryVariables>(NextQuizDocument, options);
+      }
+export function useNextQuizLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<NextQuizQuery, NextQuizQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<NextQuizQuery, NextQuizQueryVariables>(NextQuizDocument, options);
+        }
+export function useNextQuizSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<NextQuizQuery, NextQuizQueryVariables>) {
+          const options = baseOptions === ApolloReactHooks.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<NextQuizQuery, NextQuizQueryVariables>(NextQuizDocument, options);
+        }
+export type NextQuizQueryHookResult = ReturnType<typeof useNextQuizQuery>;
+export type NextQuizLazyQueryHookResult = ReturnType<typeof useNextQuizLazyQuery>;
+export type NextQuizSuspenseQueryHookResult = ReturnType<typeof useNextQuizSuspenseQuery>;
+export type NextQuizQueryResult = ApolloReactCommon.QueryResult<NextQuizQuery, NextQuizQueryVariables>;
 export const ProfileDocument = gql`
     query Profile {
   me {
@@ -587,7 +737,7 @@ export type QuizPublicLazyQueryHookResult = ReturnType<typeof useQuizPublicLazyQ
 export type QuizPublicSuspenseQueryHookResult = ReturnType<typeof useQuizPublicSuspenseQuery>;
 export type QuizPublicQueryResult = ApolloReactCommon.QueryResult<QuizPublicQuery, QuizPublicQueryVariables>;
 export const QuizDocument = gql`
-    query Quiz($id: Float!) {
+    query Quiz($id: Int!) {
   quiz(id: $id) {
     id
     title
@@ -639,7 +789,7 @@ export type QuizLazyQueryHookResult = ReturnType<typeof useQuizLazyQuery>;
 export type QuizSuspenseQueryHookResult = ReturnType<typeof useQuizSuspenseQuery>;
 export type QuizQueryResult = ApolloReactCommon.QueryResult<QuizQuery, QuizQueryVariables>;
 export const PrivateQuizzesDocument = gql`
-    query PrivateQuizzes($categoryId: Float, $decadeId: Float) {
+    query PrivateQuizzes($categoryId: Int, $decadeId: Int) {
   privateQuizzes(categoryId: $categoryId, decadeId: $decadeId) {
     id
     title

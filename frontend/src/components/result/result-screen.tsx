@@ -1,21 +1,25 @@
-// ResultScreen.tsx
-import Link from "next/link";
-import { Heart } from "lucide-react";
-import { Progress } from "@/components/ui/progress";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+"use client";
+
 import { useState } from "react";
+import { Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+const DEFAULT_IMAGE_URL =
+  "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&h=600&fit=crop";
 
 interface ResultScreenProps {
-  score: number;               // % venant du backend
-  time: string;                // durée formatée
-  message: string;             // message backend-driven
-  trophyImageUrl: string;
+  score: number;               // % backend
+  time: string;                // formatted time
+  message: string;
+  trophyImageUrl?: string;
   targetScore?: number;
   onNextQuiz: () => void;
   onReplayQuiz: () => void;
-  isFavorite?: boolean;
   onToggleFavorite?: () => void;
+  isFavorite?: boolean;
+  nextQuizLoading?: boolean;
 }
 
 export function ResultScreen({
@@ -26,10 +30,17 @@ export function ResultScreen({
   targetScore = 70,
   onNextQuiz,
   onReplayQuiz,
-  isFavorite = false,
   onToggleFavorite,
+  isFavorite = false,
+  nextQuizLoading = false,
 }: ResultScreenProps) {
   const [favorite, setFavorite] = useState(isFavorite);
+  const [imageError, setImageError] = useState(false);
+
+  const imageSrc =
+    imageError || !trophyImageUrl
+      ? DEFAULT_IMAGE_URL
+      : trophyImageUrl;
 
   const handleFavoriteClick = () => {
     setFavorite((prev) => !prev);
@@ -43,66 +54,100 @@ export function ResultScreen({
   };
 
   return (
-    <div className="px-4 py-8">
-      <div className="max-w-sm mx-auto space-y-5">
+    <div className="w-full max-w-sm mx-auto flex flex-col items-center px-4 py-6 gap-6">
 
-        {/* Trophée */}
-        <div className="relative overflow-hidden rounded-3xl border-4 border-zinc-600 bg-zinc-950/60">
-          <img
-            src={trophyImageUrl}
-            alt="Trophée"
-            className="w-full h-full object-cover"
-          />
+      {/* Image */}
+      <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden bg-zinc-800">
+        <img
+          src={imageSrc}
+          alt="Quiz result"
+          className="w-full h-full object-cover"
+          onError={() => setImageError(true)}
+        />
 
-          <button
-            onClick={handleFavoriteClick}
-            className="absolute bottom-2 right-2 p-2 bg-black/50 rounded-full hover:bg-black/70"
-            aria-label="Ajouter aux favoris"
-          >
-            <Heart
-              className={cn(
-                "w-8 h-8",
-                favorite ? "fill-red-500 text-red-500" : "text-red-500"
-              )}
-            />
-          </button>
-        </div>
-
-        {/* Score */}
-        <div className="rounded-3xl border-4 border-zinc-600 bg-zinc-950/60 py-6">
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl font-semibold text-white">{score}%</p>
-            <Progress
-              value={score}
-              className={cn(
-                "h-3",
-                "[&>div]:transition-all",
-                `[&>div]:${getProgressBarColor()}`
-              )}
-            />
-          </div>
-        </div>
-
-        {/* Message */}
-        <div className="rounded-3xl border-4 border-zinc-600 bg-zinc-950/60 py-6 text-center">
-          <p className="text-2xl font-semibold text-white">
-            {message} · {time}
-          </p>
-        </div>
-
-        {/* Actions */}
-        <Button onClick={onNextQuiz} className="w-full h-20 text-2xl">
-          Quiz suivant
-        </Button>
-
-        <Button
-          onClick={onReplayQuiz}
-          variant="outline"
-          className="w-full h-20 text-2xl"
+        <button
+          onClick={handleFavoriteClick}
+          className="absolute bottom-2 right-2 p-2 bg-black/50 rounded-full hover:bg-black/70 z-20"
+          aria-label="Ajouter aux favoris"
         >
-          Rejouer ce quiz
-        </Button>
+          <Heart
+            className={cn(
+              "w-8 h-8",
+              favorite
+                ? "fill-red-500 text-red-500"
+                : "text-red-500"
+            )}
+          />
+        </button>
       </div>
+
+      {/* Result Card */}
+      <Card className="w-full border-gray-700 bg-zinc-900 relative overflow-hidden">
+        {/* Bokeh */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-yellow-400 rounded-full blur-2xl" />
+          <div className="absolute top-32 right-16 w-16 h-16 bg-yellow-500 rounded-full blur-xl" />
+          <div className="absolute bottom-20 left-20 w-12 h-12 bg-yellow-300 rounded-full blur-lg" />
+          <div className="absolute bottom-32 right-10 w-14 h-14 bg-yellow-400 rounded-full blur-xl" />
+        </div>
+
+        <CardContent className="p-6 space-y-6 relative z-10">
+
+          {/* Progress */}
+          <div className="relative w-full h-12 bg-zinc-700 rounded-full overflow-hidden">
+            <div
+              className={cn(
+                "h-full flex items-center justify-end pr-4 transition-all duration-500",
+                getProgressBarColor()
+              )}
+              style={{ width: `${score}%` }}
+            >
+              {score >= 10 && (
+                <span className="text-white text-xl font-bold">
+                  {score}%
+                </span>
+              )}
+            </div>
+
+            {score < 10 && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-white text-xl font-bold">
+                  {score}%
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Message */}
+          <Button
+            variant="outline"
+            className="w-full py-4 bg-zinc-800 border-gray-700 text-white text-lg cursor-default"
+            disabled
+          >
+            {message} · {time}
+          </Button>
+
+          {/* Actions */}
+          <div className="space-y-3">
+            <Button
+              variant="outline"
+              className="w-full py-4 bg-zinc-800 border-gray-700 text-white hover:bg-zinc-700"
+              onClick={onNextQuiz}
+              disabled={nextQuizLoading}
+            >
+              {nextQuizLoading ? "Chargement..." : "Quiz suivant"}
+            </Button>
+
+            <Button
+              variant="outline"
+              className="w-full py-4 bg-zinc-800 border-gray-700 text-white hover:bg-zinc-700"
+              onClick={onReplayQuiz}
+            >
+              Rejouer ce quiz
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
