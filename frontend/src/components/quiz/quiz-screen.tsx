@@ -22,6 +22,7 @@ export default function QuizScreen() {
 	const totalQuestionsRef = useRef<number>(0);
 	const startTimeRef = useRef<number>(Date.now());
 	const correctAnswersRef = useRef<number>(0);
+	const submitRef = useRef(false);
 
 	const quiz = data?.quiz;
 	const totalQuestions = quiz?.questions?.length || 0;
@@ -86,6 +87,9 @@ export default function QuizScreen() {
 	};
 
 	const handleQuizComplete = async () => {
+		if(submitRef.current) return; // This will prevent a next submission of the attempt
+		submitRef.current = true;
+
 		try {
 			const duration = Math.floor((Date.now() - startTimeRef.current) / 1000); // Duration in seconds
 			const score = correctAnswersRef.current;
@@ -103,8 +107,10 @@ export default function QuizScreen() {
 				router.push(`/result?attemptId=${result.data.createAttempt.id}&quizId=${quizId}`);
 			} else {
 				setErrorMessage("Error saving attempt");
+				submitRef.current = false; // re-authorisation in case of failure
 			}
 		} catch (err: any) {
+			submitRef.current = false;
 			console.error("Error creating attempt:", err);
 			setErrorMessage(err.message || "An error occurred");
 		}
