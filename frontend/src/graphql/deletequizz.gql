@@ -1,3 +1,0 @@
-mutation DeleteQuizz($id: Int!) {
-  deleteQuizz(id: $id)
-}

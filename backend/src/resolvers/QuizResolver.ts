@@ -1,5 +1,5 @@
 import { Arg, Ctx, Int, Mutation, Query, Resolver } from "type-graphql";
-import { Quiz } from "../entities/Quiz";
+import { Quiz, UpdateQuizInput } from "../entities/Quiz";
 import { getCurrentUser } from "../auth";
 import { GraphQLContext, AgeRange } from "../types";
 import { GraphQLError } from "graphql/error";
@@ -22,7 +22,7 @@ export default class QuizResolver {
 			],
 			order: {
 				id: "ASC",
-				questions: {id: "ASC"} // pour un ordre affiché cohérent dans admin/games/1 par ex
+				questions: {id: "ASC", choices: {id: "ASC"}}  // pour un ordre affiché cohérent dans admin/games/1 par ex
 			}
 		});
 	}
@@ -118,12 +118,27 @@ export default class QuizResolver {
 	}
 
 	@Mutation(() => String)
-	async deleteQuizz(@Arg("id", () => Int) id: number) {
+	async deleteQuiz(@Arg("id", () => Int) id: number) {
 		const quizToDelete = await Quiz.findOneBy({id});
 		if(!quizToDelete) {
 			throw new GraphQLError("Quiz not found", {extensions : { code: "NOT_FOUND", http: { status: 404 } } }); 
 		}
 		await quizToDelete.remove();
 		return "Quiz supprimé";
+	}
+
+	@Mutation(() => String)
+	async updateQuiz(@Arg("id", () => Int) id: number, @Arg("data", () => UpdateQuizInput, {validate: true}) data: UpdateQuizInput ) {
+		const quizToUpdate = await Quiz.findOne({
+			where: {id: id},
+			relations: ["category", "decade", "questions"]
+		});
+
+		if (!quizToUpdate) throw new GraphQLError("quiz not found", { extensions: { code: "NOT_FOUND", http: { status: 404 } } });
+
+		Object.assign(quizToUpdate, data);
+		await quizToUpdate.save();
+
+		return "Quiz modifié correctement";
 	}
 }

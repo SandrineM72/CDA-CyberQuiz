@@ -4,10 +4,12 @@ import DecadeResolver from "./resolvers/DecadeResolver";
 import CategoryResolver from "./resolvers/CategoryResolver";
 import QuizResolver from "./resolvers/QuizResolver";
 import AttemptResolver from "./resolvers/AttemptResolver";
+import QuestionResolver from "./resolvers/QuestionResolver";
+import ChoiceResolver from "./resolvers/ChoiceResolver";
 
 
 export async function getSchema() {
 return buildSchema({
-    resolvers: [UserResolver, QuizResolver, DecadeResolver, CategoryResolver, AttemptResolver],
+    resolvers: [UserResolver, QuizResolver, DecadeResolver, CategoryResolver, AttemptResolver, QuestionResolver, ChoiceResolver],
 });
 }

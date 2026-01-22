@@ -1,10 +1,9 @@
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 import {
 	BaseEntity,
 	Column,
 	CreateDateColumn,
 	Entity,
-	JoinTable,
 	ManyToMany,
 	ManyToOne,
 	OneToMany,
@@ -16,7 +15,8 @@ import { Decade } from "./Decade";
 import { Question } from "./Question";
 import { User } from "./User";
 import { Attempt } from "./Attempt";
-import { AgeRange } from "../types";
+import { AgeRange, ObjectId } from "../types";
+import { IsBoolean, IsEnum, IsUrl, Length, Min } from "class-validator";
 
 @ObjectType()
 @Entity()
@@ -95,3 +95,42 @@ export class Quiz extends BaseEntity {
 	@ManyToMany(() => User, user => user.liked_quizzes, {cascade: true, onDelete: "CASCADE"})
 	liked_by: User[];
 }
+
+@InputType()
+export class UpdateQuizInput {
+	@Field()
+	@Length(5, 100, { message: "Le titre doit contenir entre 5 et 100 caractères" })
+	title: string;
+
+	@Field()
+	@Length(5, 100, { message: "La description doit contenir entre 5 et 100 caractères" })
+	description: string;
+
+	@Field()
+	@Min(0, { message: "la limite de temps doit être positif" })
+	time_limit: number
+
+	@Field()
+	@IsUrl()
+	image: string;
+
+	@Field()
+	@IsBoolean()
+	is_public: boolean;
+
+	@Field()
+	@IsBoolean()
+	is_draft: boolean;
+
+	@Field()
+	@IsEnum(AgeRange, {message: "La valeur doit être '-16', '-12' ou 'tous publics'"})
+	age_range: AgeRange
+
+	@Field(() => ObjectId)
+	category: ObjectId;
+
+	@Field(() => ObjectId)
+	decade: ObjectId;
+
+}
+

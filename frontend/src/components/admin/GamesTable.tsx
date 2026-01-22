@@ -57,8 +57,8 @@ export default function GamesTable() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {quizzes.map((quiz) => (
-              <TableRow key={quiz.id} className="border-gray-700 font-[Arial] hover:bg-gray-600 cursor-pointer" onClick={() => router.push(`/admin/games/${quiz.id}`)}>
+            {quizzes.map((quiz,index) => (
+              <TableRow key={quiz.id+index} className="border-gray-700 font-[Arial] hover:bg-gray-600 cursor-pointer" onClick={() => router.push(`/admin/games/${quiz.id}`)}>
                 <TableCell className="text-gray-300 font-medium p-5 border-2 border-gray-500">{quiz.title}</TableCell>
                 <TableCell className="text-gray-300 font-medium p-5 border-2 border-gray-500">{quiz.description}</TableCell>
                 <TableCell className="text-gray-300 text-right p-5 border-2 border-gray-500">{quiz.age_range}</TableCell>
