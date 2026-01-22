@@ -25,7 +25,6 @@ export default function QuizScreen() {
 	const totalQuestionsRef = useRef<number>(0);
 	const startTimeRef = useRef<number>(Date.now());
 	const correctAnswersRef = useRef<number>(0);
-	const submitRef = useRef(false);
 
 	const quiz = data?.quiz;
 	const totalQuestions = quiz?.questions?.length || 0;
@@ -90,9 +89,6 @@ export default function QuizScreen() {
 	};
 
 	const handleQuizComplete = async () => {
-		if(submitRef.current) return; // This will prevent a next submission of the attempt
-		submitRef.current = true;
-
 		try {
 			const duration = Math.floor((Date.now() - startTimeRef.current) / 1000); // Duration in seconds
 			const score = correctAnswersRef.current;
@@ -110,10 +106,8 @@ export default function QuizScreen() {
 				router.push(`/result?attemptId=${result.data.createAttempt.id}&quizId=${quizId}`);
 			} else {
 				setErrorMessage("Error saving attempt");
-				submitRef.current = false; // re-authorisation in case of failure
 			}
 		} catch (err: any) {
-			submitRef.current = false;
 			console.error("Error creating attempt:", err);
 			setErrorMessage(err.message || "An error occurred");
 		}
@@ -185,12 +179,12 @@ export default function QuizScreen() {
 							<Button
 								key={index}
 								onClick={() => handleAnswerClick(index)}
-								variant={selected === index ? "destructive" : "outline"}
+								variant={selected === index ? "default" : "outline"}
 								disabled={selected !== null}
 								className={cn(
 									"py-4 px-2 font-serif font-bold text-center border-gray-700 text-sm wrap-break-word whitespace-normal h-auto min-h-12",
 									selected === index
-										? "bg-red-600 text-white hover:bg-red-700"
+										? "bg-blue-600 text-white hover:bg-blue-700 border-blue-600"
 										: "bg-transparent text-white hover:bg-gray-800",
 									selected !== null && selected !== index && "opacity-50 cursor-not-allowed"
 								)}
