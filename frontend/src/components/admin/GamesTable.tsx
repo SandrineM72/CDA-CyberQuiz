@@ -29,16 +29,18 @@ export default function GamesTable() {
     );
   }
 
+
   const quizzes = data?.allQuizzes || []; // on met un tableau vide pour utiliser la prop length malgré tout
   return (
     <Card className="bg-gray-900 border-gray-700">
       <CardHeader>
         <CardTitle className="text-white">Liste des quiz ({quizzes.length} quiz)</CardTitle>
         <CardDescription className="text-gray-400">
-          Gestion des quiz
+          Cliquer sur un quiz pour accéder à ses détails
         </CardDescription>
       </CardHeader>
       <CardContent>
+        {quizzes.length === 0 ? <h2 className="text-2xl text-white">Aucun quiz actuellement</h2> : 
         <Table>
           <TableHeader>
             <TableRow className="border-gray-700 bg-gray-800">
@@ -73,6 +75,7 @@ export default function GamesTable() {
             ))}
           </TableBody>
         </Table>
+        }
       </CardContent>
     </Card>
   );

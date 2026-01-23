@@ -74,9 +74,13 @@ export function SignupForm() {
 				router.push("/login");
 			}
 		} catch (err: any) {
-			const message =
+
+			
+			
+			const message = 
 				err.graphQLErrors?.[0]?.message ||
 				err.networkError?.message ||
+				err.errors?.[0]?.extensions.validationErrors?.[0]?.constraints.isStrongPassword ||
 				err.message ||
 				"Une erreur est survenue lors de l'inscription";
 			setErrorMessage(message);
@@ -90,7 +94,7 @@ export function SignupForm() {
 				<Dialog>
 						<DialogTrigger asChild>
 							{/* <Button variant="outline"> */}
-								<Avatar className="h-34 w-34 border-2 border-zinc-700">
+								<Avatar className="h-34 w-34 border-2 border-zinc-700 hover:border-zinc-400 hover:bg-gray-800">
 									<AvatarImage src={avatar && avatar.startsWith("https://") ? avatar : undefined} /> 
 									<AvatarFallback className="text-white font-semibold">AVATAR</AvatarFallback>
 								</Avatar>
@@ -106,12 +110,12 @@ export function SignupForm() {
 							<div className="grid gap-4">
 								<div className="grid gap-3">
 									<Label htmlFor="avatar">URL</Label>
-									<Input id="avatar" name="avatar" defaultValue={avatar} onChange={(e) => setAvatar(e.currentTarget.value)} />
+									<Input id="avatar" name="avatar" defaultValue={avatar} onChange={(e) => setAvatar(e.currentTarget.value.startsWith("https://") ? e.currentTarget.value : "")} />
 								</div>
 							</div>
 							<DialogFooter>
 								<DialogClose asChild>
-									<Button variant="outline" onClick={() => setAvatar("") }>Annuler</Button>
+									<Button variant="outline" onClick={() => setAvatar(prev => prev) }>Annuler</Button>
 								</DialogClose>
 								<DialogClose asChild>
 									<Button type="submit" variant="outline" className="cursor-pointer">Enregister</Button>
@@ -178,7 +182,7 @@ export function SignupForm() {
 								<SelectItem value="-16">Entre 12 et 16 ans</SelectItem>
 							</SelectContent>
 						</Select>
-						<div className="flex items-center space-x-2">
+						<div className="flex items-center space-x-2 text-white">
 							<Checkbox
 								id="terms"
 								checked={acceptedTerms}
@@ -186,7 +190,7 @@ export function SignupForm() {
 							/>
 							<Label
 								htmlFor="terms"
-								className="text-white text-sm cursor-pointer"
+								className="text-sm cursor-pointer"
 							>
 								J'accepte les conditions d'utilisation
 							</Label>

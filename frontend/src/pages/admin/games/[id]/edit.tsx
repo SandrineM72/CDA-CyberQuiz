@@ -24,6 +24,7 @@ const EditQuizPage = () => {
     const [updateQuiz] = useUpdateQuizMutation(); // hook mise à jour d'un quiz
     const [updateQuestion]= useUpdateQuestionMutation(); // hook maj question
     const [updateChoice] = useUpdateChoiceMutation(); // hook maj choice
+    const [errorMessage,setErrorMessage] = useState(null);
 
     const {data: quizData, loading, error, refetch} = useQuizQuery({variables : {id: id}}); // récupération quiz
     const quiz = quizData?.quiz || null;
@@ -63,49 +64,58 @@ const EditQuizPage = () => {
 
     // soumission formulaire
     const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-        console.log("formulaire soumis");
-        
-        const data = {
-            title,
-            description,
-            age_range: ageRange,
-            time_limit: timeLimit,
-            is_draft: isDraft,
-            is_public: isPublic,
-            image,
-            category : {id: categoryId},
-            decade: {id: decadeId},
-        };
+        try {
+            e.preventDefault();
+            console.log("formulaire soumis");
+            
+            const data = {
+                title,
+                description,
+                age_range: ageRange,
+                time_limit: timeLimit,
+                is_draft: isDraft,
+                is_public: isPublic,
+                image,
+                category : {id: categoryId},
+                decade: {id: decadeId},
+            };
 
 
-        questionsToMake.forEach( async (question: { id: any; title: any; choices: any }) => {
-            await updateQuestion({
-                variables: { 
-                id: question.id,
-                data: {title: question.title}
-                }
-            });
-
-            question.choices.forEach(async (choice: {id: number, description: string, is_correct: boolean}) => {
-                await updateChoice({
-                    variables: {
-                        updateChoiceId: choice.id,
-                        data: {description: choice.description, is_correct: choice.is_correct}
+            questionsToMake.forEach( async (question: { id: any; title: any; choices: any }) => {
+                await updateQuestion({
+                    variables: { 
+                    id: question.id,
+                    data: {title: question.title}
                     }
-                })
+                });
+
+                question.choices.forEach(async (choice: {id: number, description: string, is_correct: boolean}) => {
+                    await updateChoice({
+                        variables: {
+                            updateChoiceId: choice.id,
+                            data: {description: choice.description, is_correct: choice.is_correct}
+                        }
+                    })
+                });
+
             });
 
-        });
+            await updateQuiz({variables: {
+                id: quiz.id,
+                data: data, 
+            }});
+            
 
-        await updateQuiz({variables: {
-            id: quiz.id,
-            data: data, 
-         }});
-         
-
-         await refetch();
-         router.push(`/admin/games/${id}`);
+            await refetch();
+            router.push(`/admin/games/${id}`);
+        } catch(err:any) {
+            const message = 
+				err.graphQLErrors?.[0]?.message ||
+				err.networkError?.message ||
+				err.errors?.[0]?.extensions.validationErrors?.[0]?.constraints.isUrl ||
+				err.message || "une erreur est survenue ";
+            setErrorMessage(message);
+        }
     }
 
     // chargement données
@@ -122,6 +132,10 @@ const EditQuizPage = () => {
         );
     }
 
+    if(errorMessage) {
+        alert(errorMessage);
+        router.push("/admin/games");
+    }
     
 
     const handleQuestionChange = (question: any, e: React.ChangeEvent<HTMLInputElement>) => {
@@ -281,7 +295,7 @@ const EditQuizPage = () => {
                                 <Dialog>
                                     <DialogTrigger asChild>
                                         {/* <Button variant="outline"> */}
-                                            <div className="w-[300px] h-[300px] border-2 border-zinc-700">
+                                            <div className="w-[400px] h-[300px] border-2 border-zinc-700 hover:border-zinc-400 hover:cursor-pointer">
                                                 {(image && image.startsWith("https://")) && <img src={image} className="object-cover w-full h-full"/>}
                                                 {image && !image.startsWith("https://") && <p className="text-white font-semibold w-full h-full text-center relative top-35">IMAGE QUIZZ</p>}
                                                 {!image && <p className="text-white font-semibold w-full h-full text-center relative top-35">IMAGE QUIZZ</p>}
@@ -363,7 +377,7 @@ const EditQuizPage = () => {
                                     )} 
                                 </CardContent>
                                 </Card>
-                                <Button type="submit" /* disabled={isSubmitting} */  className="w-md bg-green-600 border border-zinc-700 text-white text-xl hover:bg-green-500 cursor-pointer m-auto">
+                                <Button type="submit" /* disabled={isSubmitting} */  className="w-[200px] bg-green-600 border border-zinc-700 text-white text-xl hover:bg-green-500 cursor-pointer m-auto">
                                     Valider
                                 </Button>
                         </form>

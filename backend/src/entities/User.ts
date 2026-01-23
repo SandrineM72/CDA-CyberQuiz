@@ -39,7 +39,7 @@ export class User extends BaseEntity {
 	hashedPassword: string;
 
 	@Field()
-	@Column({ type: "text", nullable: true })
+	@Column({ type: "text"})
 	avatar: string;
 
 	@Field()

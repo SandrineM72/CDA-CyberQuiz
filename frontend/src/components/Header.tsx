@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { useLogoutMutation, useProfileQuery } from "@/graphql/generated/schema";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
-
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Limelight } from 'next/font/google';
 
@@ -21,10 +20,7 @@ export default function Header() {
 	});
 
 	const [logout] = useLogoutMutation();
-	data?.me && console.log("data  depuis header : ", data);
-
 	const user = data?.me || null;
-	user && console.log("user depuis header : ", user);
 
 	const handleLogout = async (e: FormEvent) => {
 		try {
@@ -41,7 +37,7 @@ export default function Header() {
 	return (
 		<header className="p-4 bg-zinc-900 text-white">
 			<div className="max-w-sm mx-auto flex justify-between items-center">
-				<Link href="/" className="w-max">
+				<Link href={`${user ? "/connected-user-page" :"/"} `} className="w-max">
 					<h1 className="text-2xl font-bold">CinéQuizz</h1>
 				</Link>
 

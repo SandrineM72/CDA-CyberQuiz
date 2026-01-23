@@ -34,7 +34,7 @@ export class Quiz extends BaseEntity {
 	description: string;
 
 	@Field()
-	@Column({ type: "text" })
+	@Column({ type: "text"})
 	image: string;
 
 	@Field()
