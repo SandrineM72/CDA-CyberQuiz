@@ -37,7 +37,7 @@ export default function Header() {
 	return (
 		<header className="p-4 bg-zinc-900 text-white">
 			<div className="max-w-sm mx-auto flex justify-between items-center">
-				<Link href={`${user ? "/connected-user-page" :"/"} `} className="w-max">
+				<Link href={`${user ? "/connected-user-page" : "/"}`} className="w-max">
 					<h1 className="text-2xl font-bold">CinéQuizz</h1>
 				</Link>
 
@@ -85,6 +85,13 @@ export default function Header() {
 									Profil
 								</DropdownMenuItem>
 							</Link>
+							{
+								user.is_admin && <Link href="/admin">
+									<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500 cursor-pointer">
+										Admin
+									</DropdownMenuItem>
+								</Link>
+							}
 							<DropdownMenuItem className="pb-3 text-xl hover:bg-stone-500" onClick={handleLogout}>
 							Log out
 							</DropdownMenuItem>

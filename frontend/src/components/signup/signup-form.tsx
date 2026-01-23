@@ -207,8 +207,8 @@ export function SignupForm() {
 						>
 							{isSubmitting ? "Inscription..." : "S'inscrire"}
 						</Button>
-						<FieldDescription className="px-5 text-center text-gray-400">
-							Vous avez déjà un compte ? {" "}
+						<FieldDescription className="px-6 text-center text-gray-400">
+							Déjà un compte ? {" "}
 							<Link href="/login" className="text-white hover:underline">
 								login
 							</Link>
