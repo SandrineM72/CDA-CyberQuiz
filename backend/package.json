@@ -10,17 +10,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ComicScrip/cda-nov25-p1-g2.git"
+    "url": "git+https://github.com/SandrineM72/CDA-CyberQuiz.git"
   },
   "keywords": [
     "ads"
   ],
-  "author": "Pierre Genthon",
+  "author": "SandrineM72",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ComicScrip/cda-nov25-p1-g2"
+    "url": "https://github.com/SandrineM72/CDA-CyberQuiz"
   },
-  "homepage": "https://github.com/ComicScrip/cda-nov25-p1-g2#readme",
+  "homepage": "https://github.com/SandrineM72/CDA-CyberQuiz#readme",
   "dependencies": {
     "@apollo/server": "^5.2.0",
     "@as-integrations/fastify": "^3.1.0",
