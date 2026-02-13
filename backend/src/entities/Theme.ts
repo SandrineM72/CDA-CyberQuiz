@@ -19,7 +19,7 @@ export class Theme extends BaseEntity {
 	@Column("text")  // nullable:false par défaut
 	name: string;
 
-	@Field(() => [Quiz])
+	@Field(() => [Quiz], { nullable: true }) 
 	@OneToMany(() => Quiz, quiz => quiz.theme)
-	quizzes: Quiz[];
+	quizzes?: Quiz[];
 }
