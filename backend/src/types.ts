@@ -7,13 +7,7 @@ export class ObjectId {
   id: number;
 }
 
-export enum AgeRange {
-  TOUS_PUBLICS = "tous publics",
-  MOINS_12 = "-12",
-  MOINS_16 = "-16"
-  }
-
-  export interface GraphQLContext{
-    res: FastifyReply;
-    req: FastifyRequest;
-  }
+export interface GraphQLContext {
+  res: FastifyReply;
+  req: FastifyRequest;
+}

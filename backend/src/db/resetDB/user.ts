@@ -29,7 +29,7 @@ export async function createUsers() {
 
     const user3 = await User.create({
     email: "theo@example.com",
-    pseudo: "theoTrouvetout",
+    pseudo: "TheoTrouvetout",
     hashedPassword: await hash("Password123!"),
     avatar: "https://i.pravatar.cc/150?img=04",
     is_admin: false
