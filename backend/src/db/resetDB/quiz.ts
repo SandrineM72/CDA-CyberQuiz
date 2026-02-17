@@ -5,7 +5,9 @@ import type { Level } from "../../entities/Level";
 interface CreateQuizzesParams {
   phishingTheme: Theme;
   passwordTheme: Theme;
-  wifiTheme: Theme;
+  networkTheme: Theme;
+  malwareTheme: Theme;
+  privacyTheme: Theme;
   beginnerLevel: Level;
   advancedLevel: Level;
   expertLevel: Level;
@@ -14,337 +16,409 @@ interface CreateQuizzesParams {
 export async function createQuizzes({
   phishingTheme,
   passwordTheme,
-  wifiTheme,
+  networkTheme,
+  malwareTheme,
+  privacyTheme,
   beginnerLevel,
   advancedLevel,
   expertLevel,
 }: CreateQuizzesParams) {
-  // ===== QUIZZES PUBLICS (3 SEULEMENT POUR L'ÉCRAN D'ACCUEIL) =====
-  const quiz1 = await Quiz.create({
-    title: "Phishing : repérer les arnaques par mail",
-    description: "Commencer le quiz d'essai niveau débutant",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    time_limit: 300,
-    is_public: true,
-    is_draft: false,
-    theme: phishingTheme,
-    level: beginnerLevel
-  }).save();
 
-  const quiz2 = await Quiz.create({
-    title: "Mots de passe sécurisés",
-    description: "Commencer le quiz d'essai niveau avancé",
-    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=600&fit=crop",
-    time_limit: 450,
-    is_public: true,
-    is_draft: false,
-    theme: passwordTheme,
-    level: advancedLevel
-  }).save();
+  // ========================================
+  // THÈME 1 : PHISHING ET INGÉNIERIE SOCIALE
+  // ========================================
 
-  const quiz3 = await Quiz.create({
-    title: "Réseaux WiFi publics",
-    description: "Commencer le quiz d'essai niveau expert",
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
-    time_limit: 600,
-    is_public: true,
-    is_draft: false,
-    theme: wifiTheme,
-    level: expertLevel
-  }).save();
-
-  // ===== QUIZZES PRIVÉS (NÉCESSITENT CONNEXION) =====
-  const quiz4 = await Quiz.create({
-    title: "Phishing Avancé",
-    description: "Détectez les attaques de phishing sophistiquées",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    time_limit: 450,
-    is_public: false,
-    is_draft: false,
-    theme: phishingTheme,
-    level: advancedLevel
-  }).save();
-
-  const quiz5 = await Quiz.create({
-    title: "Mots de Passe Avancés",
-    description: "Techniques avancées de gestion des mots de passe",
-    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=600&fit=crop",
-    time_limit: 450,
-    is_public: false,
-    is_draft: false,
-    theme: passwordTheme,
-    level: advancedLevel
-  }).save();
-
-  const quiz6 = await Quiz.create({
-    title: "Sécurité WiFi Avancée",
-    description: "Protégez-vous efficacement sur les réseaux publics",
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
-    time_limit: 450,
-    is_public: false,
-    is_draft: false,
-    theme: wifiTheme,
-    level: advancedLevel
-  }).save();
-
-  const quiz7 = await Quiz.create({
-    title: "Expert Phishing",
-    description: "Maîtrisez la détection des attaques de phishing les plus sophistiquées",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    time_limit: 600,
-    is_public: false,
-    is_draft: false,
-    theme: phishingTheme,
-    level: expertLevel
-  }).save();
-
-  const quiz8 = await Quiz.create({
-    title: "Expert Mots de Passe",
-    description: "Devenez un expert de la sécurité des identifiants",
-    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=600&fit=crop",
-    time_limit: 600,
-    is_public: false,
-    is_draft: false,
-    theme: passwordTheme,
-    level: expertLevel
-  }).save();
-
-  const quiz9 = await Quiz.create({
-    title: "Expert Réseaux WiFi",
-    description: "Maîtrisez tous les aspects de la sécurité WiFi",
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
-    time_limit: 600,
-    is_public: false,
-    is_draft: false,
-    theme: wifiTheme,
-    level: expertLevel
-  }).save();
-
-  const quiz10 = await Quiz.create({
-    title: "Attaques Ciblées",
-    description: "Reconnaître les attaques de spear phishing",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    time_limit: 500,
-    is_public: false,
-    is_draft: false,
-    theme: phishingTheme,
-    level: expertLevel
-  }).save();
-
-  const quiz11 = await Quiz.create({
-    title: "Gestionnaires de Mots de Passe",
-    description: "Tout savoir sur les gestionnaires de mots de passe",
-    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=600&fit=crop",
-    time_limit: 400,
-    is_public: false,
-    is_draft: false,
-    theme: passwordTheme,
-    level: advancedLevel
-  }).save();
-
-  const quiz12 = await Quiz.create({
-    title: "VPN et Sécurité",
-    description: "Utiliser un VPN sur les réseaux publics",
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
-    time_limit: 400,
-    is_public: false,
-    is_draft: false,
-    theme: wifiTheme,
-    level: advancedLevel
-  }).save();
-
-  const quiz13 = await Quiz.create({
-    title: "Ingénierie Sociale",
-    description: "Comprendre les techniques d'ingénierie sociale",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    time_limit: 550,
-    is_public: false,
-    is_draft: false,
-    theme: phishingTheme,
-    level: expertLevel
-  }).save();
-
-  const quiz14 = await Quiz.create({
-    title: "Authentification Multi-Facteurs",
-    description: "Sécurisez vos comptes avec la 2FA",
-    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=600&fit=crop",
-    time_limit: 350,
-    is_public: false,
-    is_draft: false,
-    theme: passwordTheme,
-    level: advancedLevel
-  }).save();
-
-  const quiz15 = await Quiz.create({
-    title: "Protocoles de Sécurité WiFi",
-    description: "WPA, WPA2, WPA3 : comprendre les différences",
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
-    time_limit: 450,
-    is_public: false,
-    is_draft: false,
-    theme: wifiTheme,
-    level: expertLevel
-  }).save();
-
-  const quiz16 = await Quiz.create({
-    title: "Emails Suspects",
-    description: "Identifier les signaux d'alerte dans vos emails",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    time_limit: 350,
-    is_public: false,
-    is_draft: false,
-    theme: phishingTheme,
-    level: beginnerLevel
-  }).save();
-
-  const quiz17 = await Quiz.create({
-    title: "Mots de Passe Faibles",
-    description: "Éviter les erreurs courantes",
-    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=600&fit=crop",
-    time_limit: 300,
-    is_public: false,
-    is_draft: false,
-    theme: passwordTheme,
-    level: beginnerLevel
-  }).save();
-
-  const quiz18 = await Quiz.create({
-    title: "Hotspots Malveillants",
-    description: "Reconnaître les faux points d'accès WiFi",
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
-    time_limit: 400,
-    is_public: false,
-    is_draft: false,
-    theme: wifiTheme,
-    level: advancedLevel
-  }).save();
-
-  const quiz19 = await Quiz.create({
-    title: "Attaques par SMS",
-    description: "Se protéger du smishing",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    time_limit: 350,
-    is_public: false,
-    is_draft: false,
-    theme: phishingTheme,
-    level: advancedLevel
-  }).save();
-
-  const quiz20 = await Quiz.create({
-    title: "Biométrie et Sécurité",
-    description: "Avantages et limites de l'authentification biométrique",
-    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=600&fit=crop",
-    time_limit: 400,
-    is_public: false,
-    is_draft: false,
-    theme: passwordTheme,
-    level: expertLevel
-  }).save();
-
-  const quiz21 = await Quiz.create({
-    title: "Man-in-the-Middle",
-    description: "Comprendre les attaques MITM sur WiFi",
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
-    time_limit: 500,
-    is_public: false,
-    is_draft: false,
-    theme: wifiTheme,
-    level: expertLevel
-  }).save();
-
-  const quiz22 = await Quiz.create({
-    title: "Clone de Sites Web",
-    description: "Détecter les sites frauduleux",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    time_limit: 450,
-    is_public: false,
-    is_draft: false,
-    theme: phishingTheme,
-    level: advancedLevel
-  }).save();
-
-  const quiz23 = await Quiz.create({
-    title: "Fuites de Données",
-    description: "Vérifier si vos mots de passe ont été compromis",
-    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=600&fit=crop",
-    time_limit: 400,
-    is_public: false,
-    is_draft: false,
-    theme: passwordTheme,
-    level: advancedLevel
-  }).save();
-
-  const quiz24 = await Quiz.create({
-    title: "Cybersécurité au Quotidien",
-    description: "Les bases de la sécurité informatique pour tous",
+  // ----- Niveau Débutant -----
+  const phishing_beginner_1 = await Quiz.create({
+    title: "Premiers pas contre le phishing",
+    description: "Apprenez à reconnaître les emails suspects du quotidien",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
-    time_limit: 350,
+    time_limit: 300,
+    is_public: true, // QUIZ PUBLIC THEME 1 NIVEAU DEBUTANT
+    is_draft: false,
+    theme: phishingTheme,
+    level: beginnerLevel
+  }).save();
+
+  const phishing_beginner_2 = await Quiz.create({
+    title: "Réseaux sociaux et arnaques",
+    description: "Protégez-vous des pièges sur Facebook, Instagram et autres",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 300,
     is_public: false,
     is_draft: false,
     theme: phishingTheme,
     level: beginnerLevel
   }).save();
 
-  const quiz25 = await Quiz.create({
-    title: "Sécurité Mobile",
-    description: "Protéger vos smartphones et tablettes",
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
+  // ----- Niveau Avancé -----
+  const phishing_advanced_1 = await Quiz.create({
+    title: "Phishing ciblé en entreprise",
+    description: "Reconnaître les attaques sophistiquées au travail",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
     time_limit: 400,
-    is_public: false,
-    is_draft: false,
-    theme: wifiTheme,
-    level: beginnerLevel
-  }).save();
-
-  const quiz26 = await Quiz.create({
-    title: "Ransomware et Menaces",
-    description: "Comprendre et se protéger des ransomwares",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    time_limit: 500,
     is_public: false,
     is_draft: false,
     theme: phishingTheme,
     level: advancedLevel
   }).save();
 
-  const quiz27 = await Quiz.create({
-    title: "Navigation Sécurisée",
-    description: "Bonnes pratiques pour surfer en toute sécurité",
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
-    time_limit: 380,
+  const phishing_advanced_2 = await Quiz.create({
+    title: "Vérification d'URL et domaines",
+    description: "Détecter les sites frauduleux et les faux domaines",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 400,
     is_public: false,
     is_draft: false,
-    theme: wifiTheme,
+    theme: phishingTheme,
+    level: advancedLevel
+  }).save();
+
+  // ----- Niveau Expert -----
+  const phishing_expert_1 = await Quiz.create({
+    title: "Business Email Compromise (BEC)",
+    description: "Comprendre et contrer les attaques BEC ciblant les dirigeants",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 500,
+    is_public: false,
+    is_draft: false,
+    theme: phishingTheme,
+    level: expertLevel
+  }).save();
+
+  const phishing_expert_2 = await Quiz.create({
+    title: "Ingénierie sociale avancée",
+    description: "Techniques de manipulation psychologique et défenses",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 500,
+    is_public: false,
+    is_draft: false,
+    theme: phishingTheme,
+    level: expertLevel
+  }).save();
+
+  // ========================================
+  // THÈME 2 : MOTS DE PASSE ET AUTHENTIFICATION
+  // ========================================
+
+  // ----- Niveau Débutant -----
+  const password_beginner_1 = await Quiz.create({
+    title: "Créer des mots de passe solides",
+    description: "Les bases pour protéger vos comptes en ligne",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 300,
+    is_public: false,
+    is_draft: false,
+    theme: passwordTheme,
     level: beginnerLevel
+  }).save();
+
+  const password_beginner_2 = await Quiz.create({
+    title: "Double authentification pour tous",
+    description: "Pourquoi et comment activer la 2FA sur vos comptes",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 300,
+    is_public: false,
+    is_draft: false,
+    theme: passwordTheme,
+    level: beginnerLevel
+  }).save();
+
+  // ----- Niveau Avancé -----
+  const password_advanced_1 = await Quiz.create({
+    title: "Gestionnaires de mots de passe",
+    description: "Utiliser un gestionnaire pour sécuriser tous vos comptes",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 400,
+    is_public: true, // QUIZ PUBLIC THEME  NIVEAU AVANCE
+    is_draft: false,
+    theme: passwordTheme,
+    level: advancedLevel
+  }).save();
+
+  const password_advanced_2 = await Quiz.create({
+    title: "Fuites de données et compromission",
+    description: "Vérifier si vos mots de passe ont été exposés",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 400,
+    is_public: false,
+    is_draft: false,
+    theme: passwordTheme,
+    level: advancedLevel
+  }).save();
+
+  // ----- Niveau Expert -----
+  const password_expert_1 = await Quiz.create({
+    title: "Authentification moderne et biométrie",
+    description: "Passkeys, FIDO2 et authentification sans mot de passe",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 500,
+    is_public: false,
+    is_draft: false,
+    theme: passwordTheme,
+    level: expertLevel
+  }).save();
+
+  const password_expert_2 = await Quiz.create({
+    title: "Attaques par force brute et dictionnaire",
+    description: "Comprendre comment les pirates cassent les mots de passe",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 500,
+    is_public: false,
+    is_draft: false,
+    theme: passwordTheme,
+    level: expertLevel
+  }).save();
+
+  // ========================================
+  // THÈME 3 : RÉSEAUX ET CONNEXIONS
+  // ========================================
+
+  // ----- Niveau Débutant -----
+  const network_beginner_1 = await Quiz.create({
+    title: "WiFi public : les dangers",
+    description: "Comprendre les risques des réseaux WiFi gratuits",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 300,
+    is_public: false,
+    is_draft: false,
+    theme: networkTheme,
+    level: beginnerLevel
+  }).save();
+
+  const network_beginner_2 = await Quiz.create({
+    title: "Navigation sécurisée au quotidien",
+    description: "Bonnes pratiques pour surfer sur Internet en toute sécurité",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 300,
+    is_public: false,
+    is_draft: false,
+    theme: networkTheme,
+    level: beginnerLevel
+  }).save();
+
+  // ----- Niveau Avancé -----
+  const network_advanced_1 = await Quiz.create({
+    title: "VPN et chiffrement",
+    description: "Utiliser un VPN pour protéger vos connexions",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 400,
+    is_public: false,
+    is_draft: false,
+    theme: networkTheme,
+    level: advancedLevel
+  }).save();
+
+  const network_advanced_2 = await Quiz.create({
+    title: "Hotspots malveillants",
+    description: "Reconnaître et éviter les faux points d'accès WiFi",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 400,
+    is_public: false,
+    is_draft: false,
+    theme: networkTheme,
+    level: advancedLevel
+  }).save();
+
+  // ----- Niveau Expert -----
+  const network_expert_1 = await Quiz.create({
+    title: "Attaques Man-in-the-Middle",
+    description: "Comprendre et détecter les interceptions de communication",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 500,
+    is_public: true, // QUIZ PUBLIC THEME 3 NIVEAU EXPERT
+    is_draft: false,
+    theme: networkTheme,
+    level: expertLevel
+  }).save();
+
+  const network_expert_2 = await Quiz.create({
+    title: "Protocoles de sécurité WiFi",
+    description: "WEP, WPA, WPA2, WPA3 : comprendre les différences",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 500,
+    is_public: false,
+    is_draft: false,
+    theme: networkTheme,
+    level: expertLevel
+  }).save();
+
+  // ========================================
+  // THÈME 4 : MALWARES ET MENACES
+  // ========================================
+
+  // ----- Niveau Débutant -----
+  const malware_beginner_1 = await Quiz.create({
+    title: "Reconnaître les virus et malwares",
+    description: "Identifier les signes d'infection de votre ordinateur",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 300,
+    is_public: false,
+    is_draft: false,
+    theme: malwareTheme,
+    level: beginnerLevel
+  }).save();
+
+  const malware_beginner_2 = await Quiz.create({
+    title: "Téléchargements sécurisés",
+    description: "Éviter les pièges lors du téléchargement de logiciels",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 300,
+    is_public: false,
+    is_draft: false,
+    theme: malwareTheme,
+    level: beginnerLevel
+  }).save();
+
+  // ----- Niveau Avancé -----
+  const malware_advanced_1 = await Quiz.create({
+    title: "Ransomwares : comprendre et prévenir",
+    description: "Se protéger des logiciels de rançon",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 400,
+    is_public: false,
+    is_draft: false,
+    theme: malwareTheme,
+    level: advancedLevel
+  }).save();
+
+  const malware_advanced_2 = await Quiz.create({
+    title: "Trojans et spywares",
+    description: "Détecter les logiciels espions et chevaux de Troie",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 400,
+    is_public: false,
+    is_draft: false,
+    theme: malwareTheme,
+    level: advancedLevel
+  }).save();
+
+  // ----- Niveau Expert -----
+  const malware_expert_1 = await Quiz.create({
+    title: "APT et menaces persistantes",
+    description: "Comprendre les attaques ciblées et sophistiquées",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 500,
+    is_public: false,
+    is_draft: false,
+    theme: malwareTheme,
+    level: expertLevel
+  }).save();
+
+  const malware_expert_2 = await Quiz.create({
+    title: "Zero-day et exploits avancés",
+    description: "Menaces inconnues et vulnérabilités non corrigées",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 500,
+    is_public: false,
+    is_draft: false,
+    theme: malwareTheme,
+    level: expertLevel
+  }).save();
+
+  // ========================================
+  // THÈME 5 : PROTECTION DES DONNÉES
+  // ========================================
+
+  // ----- Niveau Débutant -----
+  const privacy_beginner_1 = await Quiz.create({
+    title: "Vie privée sur les réseaux sociaux",
+    description: "Protéger vos données personnelles en ligne",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 300,
+    is_public: false,
+    is_draft: false,
+    theme: privacyTheme,
+    level: beginnerLevel
+  }).save();
+
+  const privacy_beginner_2 = await Quiz.create({
+    title: "Paramètres de confidentialité essentiels",
+    description: "Configurer correctement vos comptes en ligne",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 300,
+    is_public: false,
+    is_draft: false,
+    theme: privacyTheme,
+    level: beginnerLevel
+  }).save();
+
+  // ----- Niveau Avancé -----
+  const privacy_advanced_1 = await Quiz.create({
+    title: "RGPD et droits numériques",
+    description: "Comprendre vos droits sur vos données personnelles",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 400,
+    is_public: false,
+    is_draft: false,
+    theme: privacyTheme,
+    level: advancedLevel
+  }).save();
+
+  const privacy_advanced_2 = await Quiz.create({
+    title: "Chiffrement et anonymat en ligne",
+    description: "Outils pour protéger votre vie privée numérique",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 400,
+    is_public: false,
+    is_draft: false,
+    theme: privacyTheme,
+    level: advancedLevel
+  }).save();
+
+  // ----- Niveau Expert -----
+  const privacy_expert_1 = await Quiz.create({
+    title: "Surveillance numérique et traçage",
+    description: "Comprendre le tracking publicitaire et la collecte de données",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 500,
+    is_public: false,
+    is_draft: false,
+    theme: privacyTheme,
+    level: expertLevel
+  }).save();
+
+  const privacy_expert_2 = await Quiz.create({
+    title: "Métadonnées et empreinte numérique",
+    description: "Ce que révèlent vos données cachées",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+    time_limit: 500,
+    is_public: false,
+    is_draft: false,
+    theme: privacyTheme,
+    level: expertLevel
   }).save();
 
   return {
-    quiz1,
-    quiz2,
-    quiz3,
-    quiz4,
-    quiz5,
-    quiz6,
-    quiz7,
-    quiz8,
-    quiz9,
-    quiz10,
-    quiz11,
-    quiz12,
-    quiz13,
-    quiz14,
-    quiz15,
-    quiz16,
-    quiz17,
-    quiz18,
-    quiz19,
-    quiz20,
-    quiz21,
-    quiz22,
-    quiz23,
-    quiz24,
-    quiz25,
-    quiz26,
-    quiz27,
+    phishing_beginner_1,
+    phishing_beginner_2,
+    phishing_advanced_1,
+    phishing_advanced_2,
+    phishing_expert_1,
+    phishing_expert_2,
+    password_beginner_1,
+    password_beginner_2,
+    password_advanced_1,
+    password_advanced_2,
+    password_expert_1,
+    password_expert_2,
+    network_beginner_1,
+    network_beginner_2,
+    network_advanced_1,
+    network_advanced_2,
+    network_expert_1,
+    network_expert_2,
+    malware_beginner_1,
+    malware_beginner_2,
+    malware_advanced_1,
+    malware_advanced_2,
+    malware_expert_1,
+    malware_expert_2,
+    privacy_beginner_1,
+    privacy_beginner_2,
+    privacy_advanced_1,
+    privacy_advanced_2,
+    privacy_expert_1,
+    privacy_expert_2,
   };
 }
