@@ -5,12 +5,6 @@ query GlobalStats {
       month
       year
     }
-    ageDistribution {
-      age_range
-      count
-      percentage
-      formattedLabel
-    }
     userGrowth {
       period
       count

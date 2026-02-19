@@ -1,0 +1,6 @@
+query Levels {
+  levels {
+    id
+    name
+  }
+}

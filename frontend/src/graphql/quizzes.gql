@@ -1,18 +1,17 @@
-query PrivateQuizzes($categoryId: Int, $decadeId: Int) {
-  privateQuizzes(categoryId: $categoryId, decadeId: $decadeId) {
+query PrivateQuizzes($themeId: Int, $levelId: Int) {
+  privateQuizzes(themeId: $themeId, levelId: $levelId) {
     id
     title
     description
     image
     time_limit
-    category {
+    theme {
       id
       name
     }
-    decade {
+    level {
       id
       name
     }
   }
 }
-

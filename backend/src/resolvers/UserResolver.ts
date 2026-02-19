@@ -1,5 +1,5 @@
 import { Arg, Ctx, Mutation, Query, Resolver, Int } from "type-graphql";
-import { LoginInput, SignupInput, User } from "../entities/User";
+import { LoginInput, SignupInput, UpdateUserInput, User } from "../entities/User";
 import { GraphQLError } from "graphql/error";
 import { hash, verify } from "argon2";
 import { GraphQLContext } from "../types";
@@ -47,7 +47,7 @@ export default class UserResolver {
 
     const isValidPassword = await verify(user.hashedPassword, data.password);
     if(!isValidPassword){
-      throw new GraphQLError("Pseudo ou mot de passe incorect", {
+      throw new GraphQLError("Pseudo ou mot de passe incorrect", {
         extensions: {code: "INVALID_CREDENTIALS", http: { status: 401}},
       });
     }
@@ -73,6 +73,63 @@ export default class UserResolver {
   async logout(@Ctx() context: GraphQLContext) {
     endSession(context);
     return true;
+  }
+
+  @Mutation(() => User)
+  async updateUser(
+    @Arg("data", () => UpdateUserInput, { validate: true }) data: UpdateUserInput,
+    @Ctx() context: GraphQLContext,
+  ) {
+    // Vérifier que l'utilisateur est connecté
+    const currentUser = await getCurrentUser(context);
+    if (!currentUser) {
+      throw new GraphQLError("Vous devez être connecté pour modifier votre profil", {
+        extensions: { code: "UNAUTHORIZED", http: { status: 401 }},
+      });
+    }
+
+    // Récupérer l'utilisateur complet depuis la base
+    const user = await User.findOne({ where: { id: currentUser.id } });
+    if (!user) {
+      throw new GraphQLError("Utilisateur introuvable", {
+        extensions: { code: "USER_NOT_FOUND", http: { status: 404 }},
+      });
+    }
+
+    // Vérifier le mot de passe actuel
+    const isValidPassword = await verify(user.hashedPassword, data.password);
+    if (!isValidPassword) {
+      throw new GraphQLError("Mot de passe incorrect", {
+        extensions: { code: "INVALID_PASSWORD", http: { status: 401 }},
+      });
+    }
+
+    // Mettre à jour le pseudo si fourni
+    if (data.pseudo && data.pseudo !== user.pseudo) {
+      // Vérifier que le nouveau pseudo n'est pas déjà utilisé
+      const existingUser = await User.findOne({ where: { pseudo: data.pseudo } });
+      if (existingUser) {
+        throw new GraphQLError("Ce pseudo est déjà utilisé", {
+          extensions: { code: "PSEUDO_ALREADY_TAKEN", http: { status: 400 }},
+        });
+      }
+      user.pseudo = data.pseudo;
+    }
+
+    // Mettre à jour l'avatar si fourni
+    if (data.avatar) {
+      user.avatar = data.avatar;
+    }
+
+    // Mettre à jour le mot de passe si fourni
+    if (data.newPassword) {
+      user.hashedPassword = await hash(data.newPassword);
+    }
+
+    // Sauvegarder les modifications
+    await user.save();
+
+    return user;
   }
 
   @Mutation(() => String)
