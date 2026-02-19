@@ -2,74 +2,78 @@ import { Pencil } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
-interface ProfileScreenProps {
-  username: string;
-  ageRange: string;
-  quizCount: number;
-  trophyCount: number;
+interface ProfileFormProps {
+  pseudo: string;
+  quizStarted: number;
+  quizCompleted: number;
+  totalScore: number;
   avatarUrl?: string;
-  onEditAvatar?: () => void;
 }
 
-export default function ProfileScreen({
-  username,
-  ageRange,
-  quizCount,
-  trophyCount,
+export default function ProfileForm({
+  pseudo,
+  quizStarted,
+  quizCompleted,
+  totalScore,
   avatarUrl,
-  onEditAvatar,
-}: ProfileScreenProps) {
+}: ProfileFormProps) {
   return (
-    <div className="max-w-sm mx-auto px-6 py-8">
-      {/* Avatar Section */}
-      <section className="mb-10">
-        <div className="relative flex justify-center">
+    <div className="flex w-full items-start justify-center px-6 pt-2 pb-8 md:px-10">
+      <div className="w-full max-w-md space-y-4">
+        {/* Avatar Section */}
+        <div className="flex justify-center">
           <div className="relative">
-            <Avatar className="h-[150px] w-[150px] border-2 border-zinc-600">
-              <AvatarImage src={avatarUrl} alt={`Avatar de ${username}`} />
-              <AvatarFallback className="bg-zinc-800 text-sm font-semibold tracking-wide">
-                AVATAR
+            <Avatar className="h-[200px] w-[200px] border-4 border-[#00bb0d] bg-black">
+              <AvatarImage src={avatarUrl} alt={`Avatar de ${pseudo}`} />
+              <AvatarFallback className="bg-black text-white text-xl font-semibold">
+                Avatar
               </AvatarFallback>
             </Avatar>
-            <Button
-              size="icon"
-              className="absolute -right-2 top-2 h-10 w-10 rounded-full bg-white hover:bg-zinc-100"
-              aria-label="Modifier l'avatar"
-              onClick={onEditAvatar}
-            >
-              <Pencil className="h-5 w-5 text-zinc-900" />
-            </Button>
           </div>
         </div>
-      </section>
 
-      {/* Stats Section */}
-      <section className="flex flex-col gap-4">
-        <Card className="bg-transparent border-2 border-zinc-600 hover:border-zinc-500 transition-colors">
-          <CardContent className="p-5 text-center">
-            <span className="text-base font-medium">{username}</span>
-          </CardContent>
-        </Card>
+        {/* Stats Section */}
+        <div className="space-y-3">
+          <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
+            <CardContent className="p-4 text-center">
+              <span className="text-[#565656] text-base font-medium">Pseudo</span>
+              <p className="text-white text-lg font-semibold mt-1">{pseudo}</p>
+            </CardContent>
+          </Card>
 
-        <Card className="bg-transparent border-2 border-zinc-600 hover:border-zinc-500 transition-colors">
-          <CardContent className="p-5 text-center">
-            <span className="text-base font-medium">{ageRange}</span>
-          </CardContent>
-        </Card>
+          <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
+            <CardContent className="p-4 text-center">
+              <span className="text-[#565656] text-base font-medium">{quizStarted} quiz lancés</span>
+            </CardContent>
+          </Card>
 
-        <Card className="bg-transparent border-2 border-zinc-600 hover:border-zinc-500 transition-colors">
-          <CardContent className="p-5 text-center">
-            <span className="text-base font-medium">{quizCount} quizz lancés</span>
-          </CardContent>
-        </Card>
+          <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
+            <CardContent className="p-4 text-center">
+              <span className="text-[#565656] text-base font-medium">{quizCompleted} quiz terminés</span>
+            </CardContent>
+          </Card>
 
-        <Card className="bg-transparent border-2 border-zinc-600 hover:border-zinc-500 transition-colors">
-          <CardContent className="p-5 text-center">
-            <span className="text-base font-medium">{trophyCount} trophées obtenus</span>
-          </CardContent>
-        </Card>
-      </section>
+          <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
+            <CardContent className="p-4 text-center">
+              <span className="text-[#565656] text-base font-medium">Score global : {totalScore}</span>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Modify profile button */}
+        <div className="flex justify-center pt-2">
+          <Link href="/profile-modify-page" className="w-3/4">
+            <Button
+              type="button"
+              className="w-full bg-[#00bb0d] text-black border-4 border-[#00bb0d] hover:bg-transparent hover:text-[#00bb0d] rounded-full h-12 text-base font-semibold"
+            >
+              Modifier mon profil
+            </Button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

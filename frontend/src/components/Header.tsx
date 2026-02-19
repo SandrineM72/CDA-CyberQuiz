@@ -15,7 +15,7 @@ export default function Header() {
 	const [openMenu, setOpenMenu] = useState(false);
 
 	const router = useRouter();
-	const {data, loading, refetch} = useProfileQuery({
+	const {data, refetch} = useProfileQuery({
 		fetchPolicy: "cache-and-network"
 	});
 

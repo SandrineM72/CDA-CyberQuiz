@@ -83,17 +83,30 @@ export class SignupInput {
 
   @Field({nullable: true})
   avatar: string;
-
 }
 
 @InputType()
 export class LoginInput {
-
   @Field()
   pseudo : string;
 
   @Field()
   @IsStrongPassword({}, {message: "Le mot de passe doit contenir un minimum de 8 caractères, dont une minuscule, une majuscule, un chiffre et un caractère spécial."},)
   password: string;
+}
 
+@InputType()
+export class UpdateUserInput {
+  @Field({ nullable: true })
+  pseudo?: string;
+
+  @Field({ nullable: true })
+  avatar?: string;
+
+  @Field()
+  password: string; // mot de passe actuel (requis pour valider la modification)
+
+  @Field({ nullable: true })
+  @IsStrongPassword({}, {message: "Le nouveau mot de passe doit contenir un minimum de 8 caractères, dont une minuscule, une majuscule, un chiffre et un caractère spécial."},)
+  newPassword?: string;
 }

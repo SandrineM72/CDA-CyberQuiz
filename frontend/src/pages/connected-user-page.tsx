@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import PrivateHomeForm from "@/components/home/private-home-form";
+import PrivateHomeForm from "@/components/user/private-home-form";
 
 export default function ConnectedUserPage() {
 	return (

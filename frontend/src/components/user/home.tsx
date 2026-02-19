@@ -48,7 +48,7 @@ export default function HomePage() {
               <p className="text-white text-center text-sm">
                 Choisissez un quiz d'essai pour tester CyberQuiz !
               </p>
-              <Link href="/quiz-welcome" className="w-full">
+              <Link href="/quiz-welcome-page" className="w-full">
                 <Button
                   type="button"
                   className="w-full bg-[#00bb0d] text-black border-4 border-[#00bb0d] hover:bg-transparent hover:text-[#00bb0d] rounded-full h-12 text-base font-semibold"

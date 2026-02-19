@@ -4,7 +4,6 @@ login(data: $data) {
   pseudo
   email
   is_admin
-  age_range
   avatar
   created_at
   updated_at

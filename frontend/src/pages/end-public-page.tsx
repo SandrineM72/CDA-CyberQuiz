@@ -1,4 +1,3 @@
-// biome-ignore assist/source/organizeImports: <explanation>
 import Layout from "@/components/Layout";
 import EndPage from "@/components/user/end";
 

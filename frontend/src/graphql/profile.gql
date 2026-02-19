@@ -4,9 +4,10 @@ query Profile {
     avatar
     pseudo
     is_admin
-    age_range
     attempts {
       id
+      score
+      finished_at
     }
     won_rewards {
       id

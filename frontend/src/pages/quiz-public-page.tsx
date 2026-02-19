@@ -1,11 +1,10 @@
 import Layout from "@/components/Layout";
-import QuizScreen from "@/components/user/public-quiz";
+import PublicQuiz from "@/components/public-quiz";
 
-export default function QuizPage() {
-	return (
-		<Layout pageTitle="Quiz">
-			<QuizScreen />
-		</Layout>
-	);
+export default function QuizPublicPage() {
+  return (
+    <Layout pageTitle="Quiz">
+      <PublicQuiz />
+    </Layout>
+  );
 }
-

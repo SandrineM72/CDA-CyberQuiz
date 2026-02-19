@@ -3,15 +3,14 @@ query allQuizzes {
     id
     title
     description
-    age_range
     time_limit
     is_public
     is_draft
-    category {
+    theme {
       id
       name
     }
-    decade {
+    level {
       id
       name
     }

@@ -1,128 +1,182 @@
 import { useRouter } from "next/router";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import {
-  useAttemptQuery,
-  useNextPublicQuizQuery,
-  useNextQuizQuery,
-  useMeQuery,
+  useQuizQuery,
+  useCreateAttemptMutation,
 } from "@/graphql/generated/schema";
-import { ResultScreen } from "../result/result-screen";
+import { useEffect, useState } from "react";
 
-export default function ResultContainer() {
+export default function PublicAnswers() {
   const router = useRouter();
-  const attemptId = Number(router.query.attemptId);
+  const { quizId, questionIndex, answers: answersParam, duration } = router.query;
 
-  /* =======================
-       AUTH (JWT HttpOnly)
-     Source of truth: backend
-     ======================= */
-  const { data: meData, loading: meLoading } = useMeQuery();
-  const isAuthenticated = Boolean(meData?.me);
+  const [createAttempt] = useCreateAttemptMutation();
+  const [isProcessing, setIsProcessing] = useState(false);
 
-  /* =======================
-     Current attempt
-     ======================= */
-  const {
-    data: attemptData,
-    loading: attemptLoading,
-    error: attemptError,
-  } = useAttemptQuery({
-    variables: { id: attemptId },
-    skip: !attemptId,
+  const parsedQuizId = quizId ? Number(quizId) : undefined;
+  const parsedQuestionIndex = questionIndex ? Number(questionIndex) : 0;
+  const parsedDuration = duration ? Number(duration) : 0;
+  
+  const answersArray = answersParam 
+    ? JSON.parse(answersParam as string) 
+    : [];
+
+  const { data, loading, error } = useQuizQuery({
+    variables: { id: parsedQuizId! },
+    skip: !parsedQuizId,
   });
 
-  const quizId = attemptData?.attempt?.quiz?.id;
+  const quiz = data?.quiz;
+  const currentQuestion = quiz?.questions?.[parsedQuestionIndex];
+  const totalQuestions = quiz?.questions?.length ?? 0;
 
-  /* =======================
-        Next PUBLIC quiz
-     (unauthenticated users)
-     ======================= */
-  const {
-    data: nextPublicQuizData,
-    loading: nextPublicQuizLoading,
-  } = useNextPublicQuizQuery({
-    variables: { currentQuizId: quizId! },
-    skip: !quizId || isAuthenticated,
-  });
+  // Déterminer le bouton et l'action
+  const isLastQuestionOfQuiz = parsedQuestionIndex === totalQuestions - 1;
+  const totalAnswered = answersArray.length;
 
-  /* =======================
-       Next GLOBAL quiz
-     (authenticated users)
-     ======================= */
-  const {
-    data: nextQuizData,
-    loading: nextQuizLoading,
-  } = useNextQuizQuery({
-    variables: { currentQuizId: quizId! },
-    skip: !quizId || !isAuthenticated,
-  });
+  // Cas 1 : Pas fini le quiz actuel
+  const isCase1 = !isLastQuestionOfQuiz;
+  // Cas 2 : Quiz fini mais moins de 9 questions au total
+  const isCase2 = isLastQuestionOfQuiz && totalAnswered < 9;
+  // Cas 3 : 9 questions répondues (3 quiz terminés)
+  const isCase3 = totalAnswered >= 9;
 
-  /* ===============================
-     Global loading / error states
-     =============================== */
-  if (meLoading || attemptLoading) {
-    return <p className="text-white">Loading...</p>;
-  }
+  const handleNextAction = async () => {
+    if (isProcessing) return;
+    setIsProcessing(true);
 
-  if (attemptError || !attemptData?.attempt) {
-    return <p className="text-red-500">Result not found</p>;
-  }
-
-  const attempt = attemptData.attempt;
-
-  /* =======================
-     Business actions
-     ======================= */
-
-  // Replay → same quiz (a new Attempt will be created later)
-  const handleReplayQuiz = () => {
-    router.push(`/quiz-details-page?id=${attempt.quiz.id}`);
-  };
-
-  // Next quiz (full and robust logic)
-  const handleNextQuiz = () => {
-
-    if (isAuthenticated) {
-      if (nextQuizLoading) return;
-
-      const nextQuiz = nextQuizData?.nextQuiz;
-
-      if (!nextQuiz) {
-        // End of authenticated user journey
-        router.push("/connected-user-page");
-        return;
+    try {
+      if (isCase1) {
+        // Prochaine question du même quiz
+        router.push({
+          pathname: '/quiz-public-page',
+          query: {
+            id: parsedQuizId,
+            questionIndex: parsedQuestionIndex + 1,
+            answers: JSON.stringify(answersArray),
+            duration: parsedDuration,
+          },
+        });
+      } else if (isCase2) {
+        // Créer l'attempt pour ce quiz, puis retour à welcome-quiz
+        await createAttempt({
+          variables: {
+            quizId: parsedQuizId!,
+            answers: answersArray,
+            duration: parsedDuration,
+          },
+        });
+        router.push('/quiz-welcome');
+      } else if (isCase3) {
+        // Créer l'attempt pour ce dernier quiz, puis aller à public-score
+        const result = await createAttempt({
+          variables: {
+            quizId: parsedQuizId!,
+            answers: answersArray,
+            duration: parsedDuration,
+          },
+        });
+        router.push('/public-score-page');
       }
-
-      router.push(`/quiz-details-page?id=${nextQuiz.id}`);
-      return;
+    } catch (err) {
+      console.error(err);
+      setIsProcessing(false);
     }
-
-    // UNAUTHENTICATED USER
-    if (nextPublicQuizLoading) return;
-
-    const nextPublicQuiz = nextPublicQuizData?.nextPublicQuiz;
-
-    if (!nextPublicQuiz) {
-      // End of public quiz journey
-      router.push("/");
-      return;
-    }
-
-    router.push(`/quiz-details-page?id=${nextPublicQuiz.id}`);
   };
+
+  const getButtonText = () => {
+    if (isCase1) return "Compris, question suivante !";
+    if (isCase2) return "Choisir un autre quiz";
+    if (isCase3) return "Les 3 quiz sont terminés - voir mes scores";
+    return "Continuer";
+  };
+
+  // Trouver la réponse choisie et la bonne réponse
+  const userAnswer = answersArray.find(
+    (a: any) => a.questionId === currentQuestion?.id
+  );
+  const correctChoice = currentQuestion?.choices.find((c) => c.is_correct);
+
+  if (loading) {
+    return (
+      <div className="flex w-full items-start justify-center px-6 pt-2 pb-8 md:px-10">
+        <div className="w-full max-w-md">
+          <p className="text-center text-white">Chargement...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !quiz || !currentQuestion) {
+    return (
+      <div className="flex w-full items-start justify-center px-6 pt-2 pb-8 md:px-10">
+        <div className="w-full max-w-md">
+          <p className="text-center text-[#c00f00]">
+            {error?.message || "Question introuvable"}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <ResultScreen
-      score={attempt.percentage_success}
-      time={`${attempt.duration}s`}
-      message={attempt.passed ? "Bravo!" : "Almost there!"}
-      trophyImageUrl={
-        attempt.passed
-          ? "/images/trophy-success.jpg"
-          : "/images/trophy-fail.jpg"
-      }
-      onReplayQuiz={handleReplayQuiz}
-      onNextQuiz={handleNextQuiz}
-      nextQuizLoading={nextQuizLoading || nextPublicQuizLoading}
-    />
+    <div className="flex w-full items-start justify-center px-6 pt-2 pb-8 md:px-10">
+      <div className="w-full max-w-md space-y-4">
+        {/* Image point d'interrogation */}
+        <div className="flex justify-center">
+          <div className="relative w-full aspect-[4/3] overflow-hidden border-4 border-[#00bb0d]">
+            <Image
+              src="/images/question_mark_right_green.jpg"
+              alt="Point d'interrogation"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* Explanation Card */}
+        <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
+          <CardContent className="px-4 py-6">
+            <div className="space-y-4">
+              {/* Explication */}
+              <div className="bg-[#565656] p-4">
+                <p className="text-white text-base">
+                  {currentQuestion.explanation}
+                </p>
+              </div>
+
+              {/* Bouton action */}
+              <Button
+                onClick={handleNextAction}
+                disabled={isProcessing}
+                className="w-full bg-[#00bb0d] text-black border-4 border-[#00bb0d] hover:bg-transparent hover:text-[#00bb0d] rounded-full h-12 text-base font-semibold"
+              >
+                {isProcessing ? "Chargement..." : getButtonText()}
+              </Button>
+
+              {/* Answers avec couleurs */}
+              <div className="space-y-3">
+                {currentQuestion.choices.map((choice) => (
+                  <Button
+                    key={choice.id}
+                    disabled
+                    className={`w-full h-12 text-base font-semibold rounded-full border-4 ${
+                      choice.is_correct
+                        ? 'bg-[#00bb0d] border-[#00bb0d] text-black'
+                        : 'bg-[#c00f00] border-[#c00f00] text-white'
+                    }`}
+                  >
+                    {choice.description}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   );
 }
