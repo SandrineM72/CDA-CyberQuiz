@@ -153,6 +153,27 @@ export default class AttemptResolver {
 		return completedCount;
 	}
 
+	// ✨ NOUVELLE QUERY : Retourne les IDs des quiz uniques complétés par le GuestUser
+	@Query(() => [Int])
+	async guestUserCompletedQuizIds(
+		@Ctx() context: GraphQLContext
+	): Promise<number[]> {
+		const user = await getUserOrDefault(context);
+		
+		const attempts = await Attempt.find({
+			where: {
+				user: { id: user.id },
+				finished_at: Not(IsNull()),
+			},
+			relations: ["quiz"],
+		});
+		
+		// Extraire les quiz IDs uniques
+		const uniqueQuizIds = [...new Set(attempts.map(a => a.quiz.id))];
+		
+		return uniqueQuizIds;
+	}
+
 	// Pour public-score : récupère les 3 derniers attempts
 	@Query(() => [Attempt])
 	async guestUserRecentAttempts(
@@ -186,5 +207,20 @@ export default class AttemptResolver {
 			relations: ["quiz"],
 			order: { finished_at: "DESC" },
 		});
+	}
+
+	// ✨ NOUVELLE MUTATION : Supprimer tous les attempts du GuestUser
+	@Mutation(() => Boolean)
+	async clearGuestUserAttempts(
+		@Ctx() context: GraphQLContext
+	): Promise<boolean> {
+		const user = await getUserOrDefault(context);
+		
+		// Supprimer tous les attempts de ce user
+		await Attempt.delete({
+			user: { id: user.id },
+		});
+		
+		return true;
 	}
 }

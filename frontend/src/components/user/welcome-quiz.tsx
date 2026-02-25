@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useQuizPublicQuery } from "@/graphql/generated/schema";
+import { useQuizPublicQuery, useGuestUserCompletedQuizIdsQuery } from "@/graphql/generated/schema";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
@@ -8,6 +8,13 @@ import Image from "next/image";
 export default function WelcomeQuiz() {
   const router = useRouter();
   const { data, loading, error } = useQuizPublicQuery();
+  
+  // ✨ AJOUTÉ : Récupérer les IDs des quiz complétés
+  // fetchPolicy: 'network-only' force le rechargement depuis le serveur à chaque fois
+  const { data: completedData } = useGuestUserCompletedQuizIdsQuery({
+    fetchPolicy: 'network-only',
+  });
+  const completedQuizIds = completedData?.guestUserCompletedQuizIds || [];
 
   const handleStartQuiz = (quizId: number) => {
     router.push(`/public-quiz-page?id=${quizId}`);
@@ -57,7 +64,7 @@ export default function WelcomeQuiz() {
 
   return (
     <div className="flex w-full items-start justify-center px-6 pt-2 pb-8 md:px-10">
-      <div className="w-full max-w-md space-y-4">
+      <div className="w-full max-w-sm space-y-4">
         {/* Header image */}
         <div className="flex justify-center">
           <div className="relative w-full h-54 overflow-hidden border-4 border-[#00bb0d]">
@@ -76,7 +83,7 @@ export default function WelcomeQuiz() {
           <Link href="/signup-page" className="w-3/4">
             <Button
               type="button"
-              className="w-full bg-[#00bb0d] text-black border-4 border-[#00bb0d] hover:bg-transparent hover:text-[#00bb0d] rounded-full h-16 text-base font-semibold leading-tight"
+              className="w-full bg-[#00bb0d] text-black border-4 border-[#00bb0d] hover:bg-transparent hover:text-[#00bb0d] rounded-full h-18 text-base font-semibold leading-tight"
             >
               S'inscrire ou se<br />connecter pour accéder<br />à tout CyberQuiz
             </Button>
@@ -85,27 +92,39 @@ export default function WelcomeQuiz() {
 
         {/* Liste des quiz (maximum 3) */}
         <div className="space-y-3">
-          {quizList.map((quiz) => (
-            <Card
-              key={quiz.id}
-              className="bg-black border-2 border-[#00bb0d] rounded-none"
-            >
-              <CardContent className="px-4">
-                {/* Titre du thème */}
-                <h3 className="text-[#565656] text-lg font-semibold text-center mb-3">
-                  {quiz.theme?.name || "Thème inconnu"}
-                </h3>
+          {quizList.map((quiz) => {
+            // ✨ AJOUTÉ : Vérifier si ce quiz a déjà été complété
+            const isCompleted = completedQuizIds.includes(quiz.id);
+            
+            return (
+              <Card
+                key={quiz.id}
+                className="bg-black border-2 border-[#00bb0d] rounded-none"
+              >
+                <CardContent className="px-4">
+                  {/* Titre du thème avec indicateur de complétion */}
+                  <h3 className="text-[#565656] text-lg font-semibold text-center mb-3">
+                    {quiz.theme?.name || "Thème inconnu"}
+                    {isCompleted && (
+                      <span className="ml-2 text-[#00bb0d]">✓</span>
+                    )}
+                  </h3>
 
-                {/* Bouton pour démarrer */}
-                <Button
-                  onClick={() => handleStartQuiz(quiz.id)}
-                  className="w-full bg-black text-white border-2 border-[#00bb0d] hover:bg-[#00bb0d] hover:text-black rounded-none h-12 text-sm font-semibold"
-                >
-                  Commencer le quiz d'essai<br />niveau {quiz.level?.name || "inconnu"}
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+                  {/* Bouton pour démarrer */}
+                  <Button
+                    onClick={() => handleStartQuiz(quiz.id)}
+                    className="w-full bg-black text-white border-2 border-[#00bb0d] hover:bg-[#00bb0d] hover:text-black rounded-none h-12 text-sm font-semibold"
+                  >
+                    {isCompleted ? (
+                      <>Recommencer le quiz d'essai<br />niveau {quiz.level?.name || "inconnu"}</>
+                    ) : (
+                      <>Commencer le quiz d'essai<br />niveau {quiz.level?.name || "inconnu"}</>
+                    )}
+                  </Button>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </div>

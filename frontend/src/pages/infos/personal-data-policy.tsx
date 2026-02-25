@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 const PersonalDataPolicy = () => {
     return(
         <Layout pageTitle="Protection des données">
-            <div className="flex w-full items-center justify-center p-5 md:p-10">
+            <div className="flex w-full items-start justify-center px-6 pt-2 pb-8 md:px-10">
                 <div className="w-full max-w-sm">
                         <Card className="border-2 border-[#00bb0d] m-0 p-0 text-white bg-black rounded-none">
                             <CardHeader className="bg-[#565656] rounded-none py-3 border-b-4 border-[#00bb0d]">
