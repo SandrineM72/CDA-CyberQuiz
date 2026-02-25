@@ -2,12 +2,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { useGuestUserRecentAttemptsQuery } from "@/graphql/generated/schema";
+import { useGuestUserRecentAttemptsQuery, useClearGuestUserAttemptsMutation } from "@/graphql/generated/schema";
+import { useEffect } from "react";
 
 export default function PublicScore() {
   // Récupérer les 3 derniers attempts du GuestUser
   const { data, loading } = useGuestUserRecentAttemptsQuery();
   const attempts = data?.guestUserRecentAttempts || [];
+
+  // ✨ AJOUTÉ : Mutation pour nettoyer les attempts après affichage
+  const [clearAttempts] = useClearGuestUserAttemptsMutation();
 
   // Calcul du score global (moyenne des 3 quiz)
   const globalScore = attempts.length > 0
@@ -22,6 +26,14 @@ export default function PublicScore() {
     const remainingSeconds = seconds % 60;
     return `${minutes} min ${remainingSeconds}`;
   };
+
+  // ✨ AJOUTÉ : Nettoyer les attempts quand l'utilisateur quitte la page
+  useEffect(() => {
+    return () => {
+      // Fonction de nettoyage appelée quand le composant se démonte
+      clearAttempts();
+    };
+  }, [clearAttempts]);
 
   if (loading) {
     return (

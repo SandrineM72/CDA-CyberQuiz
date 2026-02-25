@@ -87,6 +87,7 @@ export type LoginInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   adminUpdateUser: User;
+  clearGuestUserAttempts: Scalars['Boolean']['output'];
   createAttempt: Attempt;
   deleteQuiz: Scalars['String']['output'];
   deleteUser: Scalars['String']['output'];
@@ -173,6 +174,7 @@ export type Query = {
   attemptsByQuiz: Array<Attempt>;
   getPublicQuizzes: Array<Quiz>;
   globalStats: GlobalStats;
+  guestUserCompletedQuizIds: Array<Scalars['Int']['output']>;
   guestUserCompletedQuizzes: Scalars['Int']['output'];
   guestUserRecentAttempts: Array<Attempt>;
   lastAttemptByQuiz?: Maybe<Attempt>;
@@ -320,7 +322,7 @@ export type UpdateUserInput = {
   avatar?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   newPassword?: InputMaybe<Scalars['String']['input']>;
-  password: Scalars['String']['input'];
+  password?: InputMaybe<Scalars['String']['input']>;
   pseudo?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -364,6 +366,11 @@ export type AttemptQueryVariables = Exact<{
 
 export type AttemptQuery = { __typename?: 'Query', attempt?: { __typename?: 'Attempt', id: number, score: number, percentage_success: number, passed: boolean, duration: number, quiz: { __typename?: 'Quiz', id: number } } | null };
 
+export type ClearGuestUserAttemptsMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ClearGuestUserAttemptsMutation = { __typename?: 'Mutation', clearGuestUserAttempts: boolean };
+
 export type CreateAttemptMutationVariables = Exact<{
   quizId: Scalars['Int']['input'];
   answers: Array<AnswerInput> | AnswerInput;
@@ -386,6 +393,11 @@ export type DeleteUserMutationVariables = Exact<{
 
 
 export type DeleteUserMutation = { __typename?: 'Mutation', deleteUser: string };
+
+export type GuestUserCompletedQuizIdsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GuestUserCompletedQuizIdsQuery = { __typename?: 'Query', guestUserCompletedQuizIds: Array<number> };
 
 export type GuestUserCompletedQuizzesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -666,6 +678,36 @@ export type AttemptQueryHookResult = ReturnType<typeof useAttemptQuery>;
 export type AttemptLazyQueryHookResult = ReturnType<typeof useAttemptLazyQuery>;
 export type AttemptSuspenseQueryHookResult = ReturnType<typeof useAttemptSuspenseQuery>;
 export type AttemptQueryResult = ApolloReactCommon.QueryResult<AttemptQuery, AttemptQueryVariables>;
+export const ClearGuestUserAttemptsDocument = gql`
+    mutation ClearGuestUserAttempts {
+  clearGuestUserAttempts
+}
+    `;
+export type ClearGuestUserAttemptsMutationFn = ApolloReactCommon.MutationFunction<ClearGuestUserAttemptsMutation, ClearGuestUserAttemptsMutationVariables>;
+
+/**
+ * __useClearGuestUserAttemptsMutation__
+ *
+ * To run a mutation, you first call `useClearGuestUserAttemptsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useClearGuestUserAttemptsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [clearGuestUserAttemptsMutation, { data, loading, error }] = useClearGuestUserAttemptsMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useClearGuestUserAttemptsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ClearGuestUserAttemptsMutation, ClearGuestUserAttemptsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<ClearGuestUserAttemptsMutation, ClearGuestUserAttemptsMutationVariables>(ClearGuestUserAttemptsDocument, options);
+      }
+export type ClearGuestUserAttemptsMutationHookResult = ReturnType<typeof useClearGuestUserAttemptsMutation>;
+export type ClearGuestUserAttemptsMutationResult = ApolloReactCommon.MutationResult<ClearGuestUserAttemptsMutation>;
+export type ClearGuestUserAttemptsMutationOptions = ApolloReactCommon.BaseMutationOptions<ClearGuestUserAttemptsMutation, ClearGuestUserAttemptsMutationVariables>;
 export const CreateAttemptDocument = gql`
     mutation CreateAttempt($quizId: Int!, $answers: [AnswerInput!]!, $duration: Int!) {
   createAttempt(quizId: $quizId, answers: $answers, duration: $duration) {
@@ -763,6 +805,43 @@ export function useDeleteUserMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type DeleteUserMutationHookResult = ReturnType<typeof useDeleteUserMutation>;
 export type DeleteUserMutationResult = ApolloReactCommon.MutationResult<DeleteUserMutation>;
 export type DeleteUserMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteUserMutation, DeleteUserMutationVariables>;
+export const GuestUserCompletedQuizIdsDocument = gql`
+    query GuestUserCompletedQuizIds {
+  guestUserCompletedQuizIds
+}
+    `;
+
+/**
+ * __useGuestUserCompletedQuizIdsQuery__
+ *
+ * To run a query within a React component, call `useGuestUserCompletedQuizIdsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGuestUserCompletedQuizIdsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGuestUserCompletedQuizIdsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGuestUserCompletedQuizIdsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GuestUserCompletedQuizIdsQuery, GuestUserCompletedQuizIdsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GuestUserCompletedQuizIdsQuery, GuestUserCompletedQuizIdsQueryVariables>(GuestUserCompletedQuizIdsDocument, options);
+      }
+export function useGuestUserCompletedQuizIdsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GuestUserCompletedQuizIdsQuery, GuestUserCompletedQuizIdsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GuestUserCompletedQuizIdsQuery, GuestUserCompletedQuizIdsQueryVariables>(GuestUserCompletedQuizIdsDocument, options);
+        }
+export function useGuestUserCompletedQuizIdsSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<GuestUserCompletedQuizIdsQuery, GuestUserCompletedQuizIdsQueryVariables>) {
+          const options = baseOptions === ApolloReactHooks.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<GuestUserCompletedQuizIdsQuery, GuestUserCompletedQuizIdsQueryVariables>(GuestUserCompletedQuizIdsDocument, options);
+        }
+export type GuestUserCompletedQuizIdsQueryHookResult = ReturnType<typeof useGuestUserCompletedQuizIdsQuery>;
+export type GuestUserCompletedQuizIdsLazyQueryHookResult = ReturnType<typeof useGuestUserCompletedQuizIdsLazyQuery>;
+export type GuestUserCompletedQuizIdsSuspenseQueryHookResult = ReturnType<typeof useGuestUserCompletedQuizIdsSuspenseQuery>;
+export type GuestUserCompletedQuizIdsQueryResult = ApolloReactCommon.QueryResult<GuestUserCompletedQuizIdsQuery, GuestUserCompletedQuizIdsQueryVariables>;
 export const GuestUserCompletedQuizzesDocument = gql`
     query GuestUserCompletedQuizzes {
   guestUserCompletedQuizzes

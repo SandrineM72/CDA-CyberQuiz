@@ -5,7 +5,7 @@ import Image from "next/image";
 import {
   useQuizQuery,
   useCreateAttemptMutation,
-  useGuestUserCompletedQuizzesQuery,
+  useGuestUserCompletedQuizIdsQuery,
 } from "@/graphql/generated/schema";
 import { useState } from "react";
 
@@ -29,9 +29,9 @@ export default function PublicAnswers() {
     skip: !parsedQuizId,
   });
 
-  // Récupérer le nombre de quiz terminés par le GuestUser
-  const { data: completedData, refetch: refetchCompleted } = useGuestUserCompletedQuizzesQuery();
-  const completedQuizzes = completedData?.guestUserCompletedQuizzes || 0;
+  // ✨ MODIFIÉ : Récupérer les IDs des quiz uniques complétés par le GuestUser
+  const { data: completedData, refetch: refetchCompleted } = useGuestUserCompletedQuizIdsQuery();
+  const completedQuizIds = completedData?.guestUserCompletedQuizIds || [];
 
   const quiz = data?.quiz;
   const currentQuestion = quiz?.questions?.[parsedQuestionIndex];
@@ -40,12 +40,20 @@ export default function PublicAnswers() {
   // Déterminer le bouton et l'action
   const isLastQuestionOfQuiz = parsedQuestionIndex === totalQuestions - 1;
 
+  // ✨ MODIFIÉ : Vérifier si APRÈS avoir terminé ce quiz, on aura 3 quiz différents
+  // On ajoute le quiz actuel s'il n'est pas déjà dans la liste
+  const quizIdsAfterCompletion = parsedQuizId && !completedQuizIds.includes(parsedQuizId)
+    ? [...completedQuizIds, parsedQuizId]
+    : completedQuizIds;
+  
+  const hasCompletedAllThreeQuizzes = quizIdsAfterCompletion.length >= 3;
+
   // Cas 1 : Pas fini le quiz actuel (< 3 questions)
   const isCase1 = !isLastQuestionOfQuiz;
-  // Cas 2 : Quiz fini, mais le user n'a pas encore terminé 3 quiz
-  const isCase2 = isLastQuestionOfQuiz && completedQuizzes < 2; // < 2 car on va en créer un de plus
-  // Cas 3 : Le user a déjà 2 quiz terminés, celui-ci sera le 3ème
-  const isCase3 = isLastQuestionOfQuiz && completedQuizzes >= 2;
+  // Cas 2 : Quiz fini, mais le user n'a pas encore terminé 3 quiz différents
+  const isCase2 = isLastQuestionOfQuiz && !hasCompletedAllThreeQuizzes;
+  // Cas 3 : Le user a déjà complété 3 quiz différents (ou va le faire avec celui-ci)
+  const isCase3 = isLastQuestionOfQuiz && hasCompletedAllThreeQuizzes;
 
   // Trouver la réponse choisie par l'utilisateur
   const userAnswer = answersArray.find(
@@ -81,7 +89,7 @@ export default function PublicAnswers() {
           },
         });
         
-        // Recharger le nombre de quiz complétés
+        // Recharger les IDs des quiz complétés
         await refetchCompleted();
         
         // Retour à welcome-quiz pour choisir un autre quiz
