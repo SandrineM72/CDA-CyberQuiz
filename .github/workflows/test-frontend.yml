@@ -2,7 +2,7 @@ name: Test frontend
 
 on:
   push:
-  branches: [ main, dev ]
+    branches: [ main, dev ]
     paths: [ 'frontend/**' ]
   # workflow_call: à utiliser quand on veut chaîner des tests
 
