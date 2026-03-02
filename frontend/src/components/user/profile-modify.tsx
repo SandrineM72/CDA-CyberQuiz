@@ -14,7 +14,7 @@ type OpenSection = "avatar" | "pseudo" | "email" | "password" | null;
 export default function ProfileModify() {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const pasteZoneRef = useRef<HTMLDivElement>(null);
+  const pasteZoneRef = useRef<HTMLButtonElement>(null);
 
   // Récupérer les infos du profil
   const { data, loading, refetch } = useProfileQuery({
@@ -57,7 +57,7 @@ export default function ProfileModify() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
 
-  // 👇 Gestion du copier-coller d'image directement sur la zone dédiée
+  // Gestion du copier-coller d'image directement sur la zone dédiée
   useEffect(() => {
     const zone = pasteZoneRef.current;
     if (!zone) return;
@@ -255,9 +255,9 @@ export default function ProfileModify() {
   return (
     <div className="flex w-full items-start justify-center px-6 pt-2 pb-8 md:px-10">
       <div className="w-full max-w-sm space-y-4">
-        {/* Avatar Section */}
+
         <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
-          <CardContent className="px-4">
+          <CardContent className="p-4">
             <div className="flex flex-col items-center space-y-2">
               <Avatar className="w-24 h-24 border-4 border-[#00bb0d]">
                 <AvatarImage src={user.avatar || undefined} alt={user.pseudo} />
@@ -272,10 +272,8 @@ export default function ProfileModify() {
           </CardContent>
         </Card>
 
-        {/* Insertion composant pour stats individuelles */}
         <UserStatsCard />
 
-        {/* Modify Avatar Card */}
         <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
           <CardHeader
             className="cursor-pointer hover:bg-[#00bb0d] hover:bg-opacity-10 transition-colors px-4"
@@ -298,12 +296,12 @@ export default function ProfileModify() {
             <CardContent className="px-4 pb-4">
               <form onSubmit={handleAvatarSubmit}>
                 <FieldGroup className="gap-4">
-                  {/* Zone de collage d'image */}
-                  <div 
+                  <button
+                    type="button"
                     ref={pasteZoneRef}
-                    tabIndex={0}
                     className="w-full p-8 border-2 border-dashed border-[#00bb0d] bg-[#565656] rounded-lg text-center cursor-pointer hover:bg-[#00bb0d] hover:bg-opacity-10 transition-colors"
                     onClick={() => fileInputRef.current?.click()}
+                    aria-label="Sélectionner ou coller une image"
                   >
                     {newAvatarUrl ? (
                       <img src={newAvatarUrl} alt="Preview" className="w-24 h-24 mx-auto rounded-full object-cover" />
@@ -314,7 +312,7 @@ export default function ProfileModify() {
                         <p className="text-xs text-gray-400 mt-1">Ctrl+V pour coller</p>
                       </div>
                     )}
-                  </div>
+                  </button>
 
                   <input
                     ref={fileInputRef}
@@ -333,7 +331,7 @@ export default function ProfileModify() {
                     disabled={avatarLoading}
                     className="w-full bg-[#00bb0d] text-black border-4 border-[#00bb0d] hover:bg-transparent hover:text-[#00bb0d] rounded-full h-12 text-base font-semibold"
                   >
-                    {avatarLoading ? "Validation..." : "Valider l'avatar"}
+                    {avatarLoading ? "Validation..." : "Valider le nouvel avatar"}
                   </Button>
                 </FieldGroup>
               </form>
@@ -341,7 +339,6 @@ export default function ProfileModify() {
           )}
         </Card>
 
-        {/* Modify Pseudo Card */}
         <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
           <CardHeader
             className="cursor-pointer hover:bg-[#00bb0d] hover:bg-opacity-10 transition-colors px-4"
@@ -388,7 +385,7 @@ export default function ProfileModify() {
                     disabled={pseudoLoading}
                     className="w-full bg-[#00bb0d] text-black border-4 border-[#00bb0d] hover:bg-transparent hover:text-[#00bb0d] rounded-full h-12 text-base font-semibold"
                   >
-                    {pseudoLoading ? "Validation..." : "Valider le pseudo"}
+                    {pseudoLoading ? "Validation..." : "Valider le nouveau pseudo"}
                   </Button>
                 </FieldGroup>
               </form>
@@ -396,7 +393,6 @@ export default function ProfileModify() {
           )}
         </Card>
 
-        {/* Modify Email Card */}
         <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
           <CardHeader
             className="cursor-pointer hover:bg-[#00bb0d] hover:bg-opacity-10 transition-colors px-4"
@@ -417,7 +413,9 @@ export default function ProfileModify() {
 
           {openSection === "email" && (
             <CardContent className="px-4 pb-4">
-              <p className="text-[#565656] text-sm mb-4">Email actuel : <span className="text-white">{user.email}</span></p>
+              <p className="text-[#565656] text-sm mb-4">Email actuel : 
+              {/* user.email à réparer */}
+              <span className="text-white">{user.email}</span></p>
               <form onSubmit={handleEmailSubmit}>
                 <FieldGroup className="gap-4">
                   <Field>
@@ -436,7 +434,7 @@ export default function ProfileModify() {
 
                   <Field>
                     <FieldLabel htmlFor="emailPassword" className="text-white text-base mb-2">
-                      Mot de passe actuel
+                      Saisir votre mot de passe pour valider
                     </FieldLabel>
                     <Input
                       id="emailPassword"
@@ -465,7 +463,6 @@ export default function ProfileModify() {
           )}
         </Card>
 
-        {/* Modify Password Card */}
         <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
           <CardHeader
             className="cursor-pointer hover:bg-[#00bb0d] hover:bg-opacity-10 transition-colors px-4"
@@ -488,6 +485,30 @@ export default function ProfileModify() {
             <CardContent className="px-4 pb-4">
               <form onSubmit={handlePasswordSubmit}>
                 <FieldGroup className="gap-4">
+
+                  <Field>
+                    <FieldLabel htmlFor="currentPasswordForPwd" className="text-white text-base mb-2">
+                      Mot de passe actuel
+                    </FieldLabel>
+                    <div className="relative">
+                      <Input
+                        id="currentPasswordForPwd"
+                        type={showCurrentPassword ? "text" : "password"}
+                        placeholder="••••••••"
+                        value={currentPassword}
+                        onChange={(e) => setCurrentPassword(e.target.value)}
+                        className="bg-[#565656] border-[#00bb0d] border-2 text-white rounded-none h-12 pr-10"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#a5a5a5] hover:text-white"
+                      >
+                        {showCurrentPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                  </Field>
+
                   <Field>
                     <FieldLabel htmlFor="newPassword" className="text-white text-base mb-2">
                       Nouveau mot de passe
@@ -513,13 +534,13 @@ export default function ProfileModify() {
 
                   <Field>
                     <FieldLabel htmlFor="confirmPassword" className="text-white text-base mb-2">
-                      Confirmation mot de passe
+                      Confirmation nouveau mot de passe
                     </FieldLabel>
                     <div className="relative">
                       <Input
                         id="confirmPassword"
                         type={showConfirmPassword ? "text" : "password"}
-                        placeholder="Confirmation"
+                        placeholder="Nouveau mot de passe"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         className="bg-[#565656] border-[#00bb0d] border-2 text-white rounded-none h-12 pr-10"
@@ -534,28 +555,7 @@ export default function ProfileModify() {
                     </div>
                   </Field>
 
-                  <Field>
-                    <FieldLabel htmlFor="currentPasswordForPwd" className="text-white text-base mb-2">
-                      Mot de passe actuel
-                    </FieldLabel>
-                    <div className="relative">
-                      <Input
-                        id="currentPasswordForPwd"
-                        type={showCurrentPassword ? "text" : "password"}
-                        placeholder="••••••••"
-                        value={currentPassword}
-                        onChange={(e) => setCurrentPassword(e.target.value)}
-                        className="bg-[#565656] border-[#00bb0d] border-2 text-white rounded-none h-12 pr-10"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#a5a5a5] hover:text-white"
-                      >
-                        {showCurrentPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                      </button>
-                    </div>
-                  </Field>
+
 
                   {passwordError && (
                     <p className="text-sm text-[#c00f00] text-center">{passwordError}</p>
