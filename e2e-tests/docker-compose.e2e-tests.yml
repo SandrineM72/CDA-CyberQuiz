@@ -13,7 +13,9 @@ services:
     restart: always
     tmpfs: /var/lib/postgresql
     ports:
-      - 5433:5432
+      - 5434:5432
+    networks:
+      - e2e-network
 
   backend:
     stop_grace_period: 0s
@@ -21,7 +23,7 @@ services:
       - ./.env
     build: ../backend
     ports:
-      - 4000:4000
+      - 4001:4000
     volumes:
       - ../backend/src:/app/src
     environment:
@@ -31,21 +33,29 @@ services:
       test: 'curl --fail --request GET -H ''content-type:application/json'' --url ''http://localhost:4000/?query=%7B__typename%7D'''
       interval: 2s
       timeout: 5s
-      retries: 30
+      retries: 10
       start_period: 10s
     depends_on:
       testDB:
         condition: service_healthy
+    networks:
+      - e2e-network
 
   frontend:
     stop_grace_period: 0s
     build: '../frontend'
     environment:
-      - NEXT_PUBLIC_GRAPHQL_API_URL=http://localhost:4000
+      - NEXT_PUBLIC_GRAPHQL_API_URL=http://localhost:4001
     ports:
-      - 3001:3001
+      - 3002:3000
     volumes:
       - ../frontend/src:/app/src
     depends_on:
       backend:
         condition: service_healthy
+    networks:
+      - e2e-network
+
+networks:
+  e2e-network:
+    driver: bridge

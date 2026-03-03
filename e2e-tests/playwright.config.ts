@@ -28,7 +28,7 @@ const config: PlaywrightTestConfig = {
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
     trace: "on-first-retry",
-    baseURL: process.env.BASE_URL || "http://localhost:3001",
+    baseURL: process.env.BASE_URL || "http://localhost:3002",
   },
   projects: [
     // {

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLogoutMutation, useProfileQuery } from "@/graphql/generated/schema";
 import { useRouter } from "next/router";
-import { FormEvent, useState } from "react";
+import { type FormEvent, useState } from "react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Quantico } from 'next/font/google';
 
