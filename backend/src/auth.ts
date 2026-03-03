@@ -4,7 +4,7 @@ import env from "./env";
 import { GraphQLContext } from "./types";
 import { UnauthenticatedError } from "./entities/errors";
 
-const cookieName = "authToken"; // nom cookie
+export const cookieName = "authToken"; // nom cookie
 
 export interface JWTPayload{ // interface pour le payload du JWT (ici, on aura une propriété id pour l'id de l'user connecté)
     userId: number;

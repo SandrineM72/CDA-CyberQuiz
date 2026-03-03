@@ -1,7 +1,7 @@
 import AdminLayout from "@/components/AdminLayout";
 import AdminSidebar from "@/components/admin/AdminSidebar";
-import Link from "next/link";
 import { CircleUserRound, Gamepad2, ChartArea } from "lucide-react";
+import Image from "next/image";
 
 const adminSections = [
 	{
@@ -45,9 +45,8 @@ export default function AdminHomePage() {
 							))}
 						</ul>
 
-						{/* Image Spock */}
 						<div className="flex justify-center">
-							<img
+							<Image
 								src="/illustrations/Startrek.jpg"
 								alt="Spock - Live long and prosper"
 								className="max-w-md rounded-none border-4 border-[#00bb0d]"

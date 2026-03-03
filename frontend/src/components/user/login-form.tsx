@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import {
   Field,
-  FieldDescription,
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field";
@@ -17,24 +16,13 @@ import Link from "next/link";
 export default function LoginForm() {
   const router = useRouter();
 
-  // GraphQL login mutation
   const [login, { loading: isSubmitting, error }] = useLoginMutation();
 
-  // Form state
   const [pseudo, setPseudo] = useState("");
   const [password, setPassword] = useState("");
-
-  // UI state for password visibility
   const [showPassword, setShowPassword] = useState(false);
-  
   const [errorMessage, setErrorMessage] = useState(null);
 
-  /**
-   * Handle form submission
-   * - Calls the login mutation
-   * - Stores the token in localStorage
-   * - Redirects the user on success
-   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -48,8 +36,6 @@ export default function LoginForm() {
         },
       });
       
-     
-      // Vérifier si l'utilisateur est admin
       if (result.data?.login?.is_admin) {
         alert("Connexion réussie en tant qu'administrateur !");
         router.push("/admin");
@@ -71,7 +57,6 @@ export default function LoginForm() {
   return (
     <div className="flex w-full items-start justify-center px-6 pt-2 pb-8 md:px-10">
       <div className="w-full max-w-sm space-y-4">
-        {/* Header image */}
         <div className="flex justify-center">
           <div className="relative w-full h-54 overflow-hidden border-4 border-[#00bb0d]">
             <Image
@@ -84,12 +69,10 @@ export default function LoginForm() {
           </div>
         </div>
 
-        {/* Login form */}
         <Card className="bg-black border-2 border-[#00bb0d] rounded-none">
           <CardContent className="px-4">
-            <form onSubmit={handleSubmit} autoComplete="off">
+            <form onSubmit={handleSubmit} autoComplete="off" data-testid="login-form">
               <FieldGroup className="gap-4">
-                {/* Pseudo field */}
                 <Field>
                   <FieldLabel htmlFor="pseudo" className="text-white text-base mb-2">
                     Pseudo
@@ -102,10 +85,10 @@ export default function LoginForm() {
                     value={pseudo}
                     onChange={(e) => setPseudo(e.target.value)}
                     className="bg-[#565656] border-[#00bb0d] border-2 text-white placeholder:text-[#a5a5a5] rounded-none h-12"
+                    data-testid="login-pseudo"
                   />
                 </Field>
 
-                {/* Password field with visibility toggle */}
                 <Field>
                   <FieldLabel htmlFor="password" className="text-white text-base mb-2">
                     Mot de passe
@@ -118,9 +101,9 @@ export default function LoginForm() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="bg-[#565656] border-[#00bb0d] border-2 text-white rounded-none h-12 pr-10"
+                      data-testid="login-password"
                     />
 
-                    {/* Toggle password visibility */}
                     <button
                       type="button"
                       onClick={() => setShowPassword((prev) => !prev)}
@@ -140,23 +123,21 @@ export default function LoginForm() {
                   </div>
                 </Field>
 
-                {/* Submit button */}
                 <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-black text-white border-4 border-[#00bb0d] hover:bg-[#00bb0d] hover:text-black rounded-full h-12 text-base font-semibold mt-4"
+                  data-testid="login-submit"
                 >
                   Se connecter
                 </Button>
 
-                {/* Error message */}
                 {error && (
-                  <p className="text-sm text-[#c00f00] text-center">
+                  <p className="text-sm text-[#c00f00] text-center" data-testid="login-error">
                     {errorMessage || error?.message}
                   </p>
                 )}
 
-                {/* Sign up link section */}
                 <div className="text-center space-y-3">
                   <p className="text-white text-sm">
                     Pas encore de compte ?
