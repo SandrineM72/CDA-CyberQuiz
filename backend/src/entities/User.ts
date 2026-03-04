@@ -11,7 +11,6 @@ import {
 	UpdateDateColumn,
 } from "typeorm";
 import { Reward } from "./Reward";
-import { Quiz } from "./Quiz";
 import { Attempt } from "./Attempt";
 import { IsEmail, IsStrongPassword } from "class-validator";
 import { IsBoolean, IsOptional, IsUrl, Length, MinLength } from "class-validator";
@@ -42,7 +41,6 @@ export class User extends BaseEntity {
 	@Column({default: false})
 	is_admin: boolean;
 
-	// 👇 Champ last_login ajouté précédemment
 	@Field()
 	@Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
 	last_login: Date;
@@ -55,7 +53,6 @@ export class User extends BaseEntity {
 	@UpdateDateColumn()
 	updated_at: Date;
 
-	// one to many pour to keep the data's history carried by the association 
 	@Field(() => [Attempt], {nullable: true})
   	@OneToMany(
 		() => Attempt,
@@ -67,7 +64,6 @@ export class User extends BaseEntity {
 	@JoinTable()
 	@ManyToMany(() => Reward)
 	won_rewards: Reward[];
-
 }
 
 @InputType()

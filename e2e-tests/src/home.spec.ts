@@ -30,7 +30,7 @@ test("not connected user should have burger menu with correct sections", async (
     await expect(page.getByTestId("menu-contacts")).toHaveText("Contacts");
     
     await expect(page.getByTestId("menu-about")).toBeVisible();
-    await expect(page.getByTestId("menu-about")).toHaveText("Qui sommes-nous ?");
+    await expect(page.getByTestId("menu-about")).toHaveText("A propos");
     
     await expect(page.getByTestId("menu-personal-data")).toBeVisible();
     await expect(page.getByTestId("menu-personal-data")).toHaveText("Protection des données");
