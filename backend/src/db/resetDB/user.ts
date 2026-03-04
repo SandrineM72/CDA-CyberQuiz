@@ -2,7 +2,7 @@ import { User } from "../../entities/User";
 import { hash } from "argon2";
 
 export async function createUsers() {
-  // Create dedicated guest user for unauthenticated visitors (no admin rights)
+
   const guestUser = await User.create({
     email: "guest@cyberquiz.com",
     pseudo: "GuestUser",
