@@ -5,6 +5,7 @@ on:
     branches: [ main, dev ]
     paths: [ 'frontend/**' ]
   # workflow_call: à utiliser quand on veut chaîner des tests
+  # https://docs.github.com/en/enterprise-cloud@latest/actions/how-tos/reuse-automations/reuse-workflows
 
 jobs:
   testing-frontend:
