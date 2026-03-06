@@ -1,25 +1,43 @@
 import { Reward } from "../../entities/Reward";
 
 export async function createRewards() {
-  const bronzeReward = await Reward.create({
-    name: "Trophée Bronze",
-    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop"
+  const woodReward = await Reward.create({
+    name: "Trophée Bois",
+    image: "/trophees/trophee_bois_debutant.png"
   }).save();
 
-  const silverReward = await Reward.create({
-    name: "Trophée Argent",
-    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop"
+  const crystalReward = await Reward.create({
+    name: "Trophée Cristal",
+    image: "/trophees/trophee_cristal_avance.png"
   }).save();
 
-  const goldReward = await Reward.create({
-    name: "Trophée Or",
-    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop"
+  const steelReward = await Reward.create({
+    name: "Trophée Acier",
+    image: "/trophees/trophee_acier_expert.png"
+  }).save();
+
+  const woodLock = await Reward.create({
+    name: "Verrou Bois",
+    image: "/trophees/verrou_bois_debutant.png"
+  }).save();
+
+  const crystalLock = await Reward.create({
+    name: "Verrou Cristal",
+    image: "/trophees/verrou_cristal_avance.png"
+  }).save();
+
+  const steelLock = await Reward.create({
+    name: "Verrou Acier",
+    image: "/trophees/verrou_acier_expert.png"
   }).save();
 
   return {
-    bronzeReward,
-    silverReward,
-    goldReward,
+    woodReward,
+    crystalReward,
+    steelReward,
+    woodLock,
+    crystalLock,
+    steelLock
   };
 }
 
