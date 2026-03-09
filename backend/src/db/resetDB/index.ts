@@ -104,8 +104,8 @@ async function main() {
     user2: users.user2,
     quiz1: quizzes.phishing_beginner_1,
     quiz2: quizzes.password_beginner_1,
-    bronzeReward: rewards.bronzeReward,
-    silverReward: rewards.silverReward,
+    woodReward: rewards.woodReward,
+    crystalReward: rewards.crystalReward,
   });
 
   await db.destroy();
