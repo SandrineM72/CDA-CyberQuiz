@@ -7,8 +7,8 @@ interface CreateRelationsParams {
   user2: User;
   quiz1: Quiz;
   quiz2: Quiz;
-  bronzeReward: Reward;
-  silverReward: Reward;
+  woodReward: Reward;
+  crystalReward: Reward;
 }
 
 export async function createRelations({
@@ -16,17 +16,17 @@ export async function createRelations({
   user2,
   quiz1,
   quiz2,
-  bronzeReward,
-  silverReward,
+  woodReward,
+  crystalReward,
 }: CreateRelationsParams) {
 
   // Trophies (table trophy)
   // user1 a débloqué le trophée bronze et argent
-  user1.won_rewards = [bronzeReward, silverReward];
+  user1.won_rewards = [woodReward, crystalReward];
   await user1.save();
 
   // user2 a débloqué le trophée bronze
-  user2.won_rewards = [bronzeReward];
+  user2.won_rewards = [woodReward];
   await user2.save();
 }
 
