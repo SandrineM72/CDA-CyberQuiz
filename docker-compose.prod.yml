@@ -37,7 +37,7 @@ services:
     container_name: ${DEPLOY_ENV:-staging}-frontend
     image: sandrinem72/cyberquiz-front:${DEPLOY_ENV:-staging}
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3001/ || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://localhost:3001/login-page || exit 1"]
       interval: 2s
       timeout: 3s
       retries: 10
