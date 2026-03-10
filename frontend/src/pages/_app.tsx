@@ -3,13 +3,14 @@ import "@/styles/globals.css";
 import { ApolloProvider } from "@apollo/client/react";
 import type { AppProps } from "next/app";
 import client from "@/graphql/client";
+import dynamic from "next/dynamic";
 
 const quantico = Quantico({
   weight: "400",
   subsets: ["latin"],
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <div className={quantico.className}>
@@ -18,3 +19,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </ApolloProvider>
   );
 }
+
+export default dynamic(() => Promise.resolve(App), { ssr: false });

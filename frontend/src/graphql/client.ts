@@ -1,8 +1,6 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 
-const uri = typeof window === "undefined"
-  ? process.env.GRAPHQL_API_URL_SSR || "http://backend:4001/graphql"
-  : process.env.NEXT_PUBLIC_GRAPHQL_API_URL || "http://localhost:4001/graphql";
+const uri = process.env.NEXT_PUBLIC_GRAPHQL_API_URL || "/graphql";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
