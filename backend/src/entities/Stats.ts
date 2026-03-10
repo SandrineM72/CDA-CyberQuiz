@@ -39,7 +39,6 @@ export class AttemptsSuccessRate {
 	total: number;
 }
 
-// ➕ NOUVEAUX TYPES pour les tops
 @ObjectType()
 export class TopQuizStat {
 	@Field(() => Quiz)
@@ -81,7 +80,6 @@ export class GlobalStats {
 	@Field(() => Float)
 	averageScore: number;
 
-	// ➕ NOUVEAUX CHAMPS
 	@Field(() => [TopQuizStat])
 	topQuizzes: TopQuizStat[];
 
