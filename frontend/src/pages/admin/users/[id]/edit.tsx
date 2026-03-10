@@ -108,6 +108,20 @@ const EditUserPage = () => {
 		router.push("/admin/users");
 	}
 
+	// Vérification finale que user n'est pas null avant le rendu du formulaire
+	if (!user) {
+		return (
+			<AdminLayout pageTitle={`Utilisateur n°${router.query.id} - Admin`}>
+				<div className="flex">
+					<AdminSidebar />
+					<main className="flex-1 p-8 bg-black text-white">
+						<p>Utilisateur introuvable</p>
+					</main>
+				</div>
+			</AdminLayout>
+		);
+	}
+
 	return (
 		<AdminLayout pageTitle={`Édition Utilisateur n°${id} - Admin`}>
 			<div className="flex">

@@ -103,7 +103,7 @@ export default function Header() {
 							) : (
 								<Link href="/profile-modify-page">
 									<DropdownMenuItem className="py-3 text-xl hover:bg-[#00bb0d] hover:text-black cursor-pointer rounded-none">
-										Profil
+										Profil & scores
 									</DropdownMenuItem>
 								</Link>
 							)}
