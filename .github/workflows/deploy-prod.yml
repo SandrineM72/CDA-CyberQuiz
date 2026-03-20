@@ -33,9 +33,9 @@ jobs:
 
   notify-vps:
     needs:
-      -e2e-tests
-      -build-and-push-server
-      -build-and-push-client
+      - e2e-tests
+      - build-and-push-server
+      - build-and-push-client
     runs-on: ubuntu-latest
     steps:
       - name : Trigger Webhook on VPS
