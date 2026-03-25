@@ -320,7 +320,7 @@ export default function ProfileModify() {
                     {newAvatarUrl ? (
                       <Image
                         src={newAvatarUrl}
-                        alt="Preview"
+                        alt="Mon avatar"
                         width={96}
                         height={96}
                         className="mx-auto rounded-full object-cover"

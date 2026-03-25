@@ -109,7 +109,7 @@ export default function PublicQuiz() {
           <div className="relative w-full h-54 overflow-hidden border-4 border-[#00bb0d]">
             <Image
               src="/illustrations/code_dark.jpg"
-              alt="Quiz"
+              alt=""
               fill
               className="object-cover"
               priority

@@ -21,7 +21,8 @@ import {
 } from "@/graphql/generated/schema";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
+import { useAdminFocus } from "./AdminSidebar";
 
 export default function UsersTable() {
 	const router = useRouter();
@@ -30,6 +31,9 @@ export default function UsersTable() {
 	const [deletingId, setDeletingId] = useState<number | null>(null);
 	const [currentPage, setCurrentPage] = useState(1);
 	const itemsPerPage = 8;
+
+	// Récupérer la ref "Utilisateurs" depuis la sidebar
+	const { usersRef } = useAdminFocus();
 
 	const handleDelete = async (id: number, pseudo: string) => {
 		if (
@@ -50,6 +54,13 @@ export default function UsersTable() {
 			alert(`Erreur lors de la suppression : ${errorMessage}`);
 		} finally {
 			setDeletingId(null);
+		}
+	};
+
+	// Fonction pour retourner à la sidebar
+	const handleBackToSidebar = () => {
+		if (usersRef?.current) {
+			usersRef.current.focus();
 		}
 	};
 
@@ -117,7 +128,6 @@ export default function UsersTable() {
 							<TableRow key={user.id} className="border-gray-700 hover:bg-gray-800">
 								<TableCell>
 									{user.avatar ? (
-										// biome-ignore lint/performance/noImgElement: <explanation>
 										<img
 											src={user.avatar}
 											alt={user.pseudo}
@@ -149,14 +159,14 @@ export default function UsersTable() {
 										variant="outline"
 										size="sm"
 										onClick={() => router.push(`/admin/users/${user.id}/edit`)}
-										className="text-white border-gray-600 hover:bg-green-700"
+										className="text-white border-gray-600 hover:bg-green-700 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
 									>
 										Modifier
 									</Button>
 									<Button
 										variant="destructive"
-										size="sm"							className="text-white border-gray-600 hover:bg-red-900"
-									
+										size="sm"
+										className="text-white border-gray-600 hover:bg-red-900 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
 										onClick={() => handleDelete(user.id, user.pseudo)}
 										disabled={deletingId === user.id}
 									>
@@ -176,7 +186,7 @@ export default function UsersTable() {
 							size="sm"
 							onClick={goToPreviousPage}
 							disabled={currentPage === 1}
-							className="text-white border-gray-600 hover:bg-gray-700 disabled:opacity-50"
+							className="text-white border-gray-600 hover:bg-gray-700 disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
 						>
 							<ChevronLeft className="w-4 h-4 mr-1" />
 							Précédent
@@ -189,13 +199,24 @@ export default function UsersTable() {
 							size="sm"
 							onClick={goToNextPage}
 							disabled={currentPage === totalPages}
-							className="text-white border-gray-600 hover:bg-gray-700 disabled:opacity-50"
+							className="text-white border-gray-600 hover:bg-gray-700 disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
 						>
 							Suivant
 							<ChevronRight className="w-4 h-4 ml-1" />
 						</Button>
 					</div>
 				)}
+
+				{/* Bouton Retour */}
+				<div className="flex justify-center mt-8">
+					<Button
+						onClick={handleBackToSidebar}
+						className="bg-gray-700 text-white border-2 border-gray-600 hover:bg-gray-600 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 px-6 py-2"
+					>
+						<ArrowLeft className="w-4 h-4 mr-2" />
+						Retour au menu
+					</Button>
+				</div>
 			</CardContent>		
 		</Card>
 	);

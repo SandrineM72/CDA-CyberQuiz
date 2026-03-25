@@ -75,7 +75,7 @@ export function SignupForm() {
           			<div className="relative w-full h-54 overflow-hidden border-4 border-[#00bb0d]">
 						<Image
 							src="/illustrations/smartphone_lock_plant-green.png"
-							alt="smartphone and plant"
+							alt=""
 							fill
 							className="object-cover"
 							priority

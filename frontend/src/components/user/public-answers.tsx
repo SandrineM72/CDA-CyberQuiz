@@ -154,7 +154,7 @@ export default function PublicAnswers() {
           <div className="relative w-full h-34 overflow-hidden border-4 border-[#00bb0d]">
             <Image
               src="/illustrations/question_mark_right_green.jpg"
-              alt="Point d'interrogation"
+              alt=""
               fill
               className="object-cover"
               priority

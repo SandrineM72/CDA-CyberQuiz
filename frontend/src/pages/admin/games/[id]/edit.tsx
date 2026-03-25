@@ -1,18 +1,9 @@
-import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminSidebar, { AdminFocusProvider } from "@/components/admin/AdminSidebar";
+import { useAdminFocus } from "@/components/admin/AdminSidebar";
 import AdminLayout from "@/components/AdminLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-	Dialog,
-	DialogClose,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -32,8 +23,9 @@ import {
 } from "@/graphql/generated/schema";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
+import { ArrowLeft } from "lucide-react";
 
-const EditQuizPage = () => {
+function EditQuizPageContent() {
 	const router = useRouter();
 	const id = Number(router.query.id);
 
@@ -50,17 +42,22 @@ const EditQuizPage = () => {
 	} = useQuizQuery({ variables: { id: id }, skip: !id });
 	const quiz = quizData?.quiz || null;
 
+	// Récupérer la ref "Quiz" depuis la sidebar
+	const { gamesRef } = useAdminFocus();
+
+	// Fonction pour retourner à la sidebar
+	const handleBackToSidebar = () => {
+		if (gamesRef?.current) {
+			gamesRef.current.focus();
+		}
+	};
+
 	// Test quiz
 	if (isNaN(id) || !quiz) {
 		return (
-			<AdminLayout pageTitle={`Quiz n°${router.query.id} - Admin`}>
-				<div className="flex">
-					<AdminSidebar />
-					<main className="flex-1 p-8 bg-black text-white">
-						<h1 className="text-2xl">Quiz inexistant</h1>
-					</main>
-				</div>
-			</AdminLayout>
+			<main className="flex-1 p-8 bg-black text-white">
+				<h1 className="text-2xl">Quiz inexistant</h1>
+			</main>
 		);
 	}
 
@@ -157,14 +154,9 @@ const EditQuizPage = () => {
 	// Chargement données
 	if (loading) {
 		return (
-			<AdminLayout pageTitle={`Quiz n°${router.query.id} - Admin`}>
-				<div className="flex">
-					<AdminSidebar />
-					<main className="flex-1 p-8 bg-black text-white">
-						<p>Chargement des données...</p>
-					</main>
-				</div>
-			</AdminLayout>
+			<main className="flex-1 p-8 bg-black text-white">
+				<p>Chargement des données...</p>
+			</main>
 		);
 	}
 
@@ -246,223 +238,255 @@ const EditQuizPage = () => {
 	};
 
 	return (
-		<AdminLayout pageTitle={`Édition Quiz n°${id} - Admin`}>
-			<div className="flex">
-				<AdminSidebar />
-				<main className="flex-1 p-8 bg-black">
-					<form onSubmit={handleSubmit}>
-						<Card className="w-full border-gray-700 bg-gray-900 p-5">
-							<CardContent>
-								{/* Header avec titre et bouton retour */}
-								<div className="flex justify-between items-center mb-5">
-									<h2 className="text-2xl text-white">
-										Édition du quiz {quiz.id}
-									</h2>
-									<Button
-										type="button"
-										onClick={() => router.push(`/admin/games/${id}`)}
-										className="w-[200px] bg-[#00bb0d] border border-zinc-700 text-black text-xl hover:bg-green-500 cursor-pointer"
-									>
-										Retour au quiz {quiz.id}
-									</Button>
-								</div>
+		<main className="flex-1 p-8 bg-black">
+			<form onSubmit={handleSubmit}>
+				<Card className="w-full border-gray-700 bg-gray-900 p-5">
+					<CardContent>
+						{/* Header avec titre et bouton retour */}
+						<div className="flex justify-between items-center mb-5">
+							<h2 className="text-2xl text-white">
+								Édition du quiz {quiz.id}
+							</h2>
+							<Button
+								type="button"
+								onClick={() => router.push(`/admin/games/${id}`)}
+								className="w-[200px] bg-[#00bb0d] border border-zinc-700 text-black text-xl hover:bg-green-500 cursor-pointer focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+							>
+								Retour au quiz {quiz.id}
+							</Button>
+						</div>
 
-								<Label className="text-white block mb-2">
-										Titre
-									</Label>
-								<Input
-									type="text"
-									id="title"
-									placeholder="Titre du quiz"
-									value={title}
-									onChange={(e) => setTitle(e.currentTarget.value)}
-									required
-									className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:bg-zinc-300 focus:text-black focus:font-[arial] mb-5"
-								/>
+						<Label className="text-white block mb-2">
+							Titre
+						</Label>
+						<Input
+							type="text"
+							id="title"
+							placeholder="Titre du quiz"
+							value={title}
+							onChange={(e) => setTitle(e.currentTarget.value)}
+							required
+							className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:bg-zinc-300 focus:text-black focus:font-[arial] mb-5"
+						/>
 
-								<Label className="text-white block mb-2">
-									Description
-								</Label>
-								<Input
-									type="text"
-									id="description"
-									placeholder="Description du quiz"
-									value={description}
-									onChange={(e) => setDescription(e.currentTarget.value)}
-									required
-									className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:bg-zinc-300 focus:text-black focus:font-[arial] mb-8"
-								/>
+						<Label className="text-white block mb-2">
+							Description
+						</Label>
+						<Input
+							type="text"
+							id="description"
+							placeholder="Description du quiz"
+							value={description}
+							onChange={(e) => setDescription(e.currentTarget.value)}
+							required
+							className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:bg-zinc-300 focus:text-black focus:font-[arial] mb-8"
+						/>
 
-								<Label className="text-white block mb-2">Level</Label>
-								<Select
-									value={"" + levelId}
-									onValueChange={(val) => setLevelId(Number(val))}
-								>
-									<SelectTrigger
-										className={`bg-zinc-800 border-zinc-700 w-full mb-5 ${
-											true ? "text-white" : "text-zinc-500"
-										}`}
-									>
-										<SelectValue placeholder="Level" />
-									</SelectTrigger>
-									<SelectContent>
-										{levels?.map((elem) => (
-											<SelectItem key={elem.id} value={"" + elem.id}>
-												{elem.name}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
+						<Label className="text-white block mb-2">Level</Label>
+						<Select
+							value={"" + levelId}
+							onValueChange={(val) => setLevelId(Number(val))}
+						>
+							<SelectTrigger
+								className={`bg-zinc-800 border-zinc-700 w-full mb-5 ${
+									true ? "text-white" : "text-zinc-500"
+								}`}
+							>
+								<SelectValue placeholder="Level" />
+							</SelectTrigger>
+							<SelectContent>
+								{levels?.map((elem) => (
+									<SelectItem key={elem.id} value={"" + elem.id}>
+										{elem.name}
+									</SelectItem>
+								))}
+							</SelectContent>
+						</Select>
 
-								<Label className="text-white block mb-2">Thème</Label>
-								<Select
-									value={"" + themeId}
-									onValueChange={(val) => setThemeId(Number(val))}
-								>
-									<SelectTrigger
-										className={`bg-zinc-800 border-zinc-700 w-full mb-8 ${
-											true ? "text-white" : "text-zinc-500"
-										}`}
-									>
-										<SelectValue placeholder="Thème" />
-									</SelectTrigger>
-									<SelectContent>
-										{themes?.map((elem) => (
-											<SelectItem key={elem.id} value={"" + elem.id}>
-												{elem.name}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
+						<Label className="text-white block mb-2">Thème</Label>
+						<Select
+							value={"" + themeId}
+							onValueChange={(val) => setThemeId(Number(val))}
+						>
+							<SelectTrigger
+								className={`bg-zinc-800 border-zinc-700 w-full mb-8 ${
+									true ? "text-white" : "text-zinc-500"
+								}`}
+							>
+								<SelectValue placeholder="Thème" />
+							</SelectTrigger>
+							<SelectContent>
+								{themes?.map((elem) => (
+									<SelectItem key={elem.id} value={"" + elem.id}>
+										{elem.name}
+									</SelectItem>
+								))}
+							</SelectContent>
+						</Select>
 
-								<div className="flex items-center space-x-2 mb-4">
-									<Checkbox
-										id="draft"
-										checked={isDraft}
-										onCheckedChange={(checked) => setIsDraft(checked === true)}
-										className="text-white"
-									/>
+						<div className="flex items-center space-x-2 mb-4">
+							<Checkbox
+								id="draft"
+								checked={isDraft}
+								onCheckedChange={(checked) => setIsDraft(checked === true)}
+								onKeyDown={(e) => {
+									if (e.key === 'Enter') {
+										e.preventDefault();
+										setIsDraft(!isDraft);
+									}
+								}}
+								className="text-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+							/>
+							<Label
+								htmlFor="draft"
+								className="text-white cursor-pointer"
+							>
+								Brouillon
+							</Label>
+						</div>
+						
+						<div className="flex items-center space-x-2 mb-8">
+							<Checkbox
+								id="public"
+								checked={isPublic}
+								onCheckedChange={(checked) =>
+									setIsPublic(checked === true)
+								}
+								onKeyDown={(e) => {
+									if (e.key === 'Enter') {
+										e.preventDefault();
+										setIsPublic(!isPublic);
+									}
+								}}
+								className="text-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+							/>
+							<Label
+								htmlFor="public"
+								className="text-white cursor-pointer"
+							>
+								Public
+							</Label>
+						</div>
+
+						<h3 className="text-xl text-white mb-5">
+							Questions et réponses du quiz {quiz.id}
+						</h3>
+
+						{questionsToMake?.map(
+							(
+								question: {
+									id: number | null | undefined;
+									title: string | number | readonly string[] | undefined;
+									choices: any[];
+								},
+								index: number
+							) => (
+								<Card key={question.id} className="p-10 mb-5 bg-gray-800">
 									<Label
-										htmlFor="draft"
-										className="text-white cursor-pointer"
+										htmlFor={`question${index + 1}`}
+										className="p-3 bg-[#00bb0d] text-black text-xl inline-block mb-3"
 									>
-										Brouillon
+										Question {index + 1}
 									</Label>
-								</div>
-								
-								<div className="flex items-center space-x-2 mb-8">
-									<Checkbox
-										id="public"
-										checked={isPublic}
-										onCheckedChange={(checked) =>
-											setIsPublic(checked === true)
-										}
-										className="text-white"
+									<Input
+										type="text"
+										id={`question${index + 1}`}
+										placeholder="Question du quiz"
+										value={question.title}
+										onChange={(e) => handleQuestionChange(question, e)}
+										required
+										className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:bg-zinc-300 focus:text-black focus:font-[arial]"
 									/>
-									<Label
-										htmlFor="public"
-										className="text-white cursor-pointer"
-									>
-										Public
-									</Label>
-								</div>
+									<div className="m-5">
+										{question.choices.map(
+											(
+												choice: {
+													id: number;
+													description: string;
+													is_correct: boolean;
+												},
+												ind: number
+											) => (
+												<div key={choice.id}>
+													<Label
+														htmlFor={`question${index + 1}choice${ind + 1}`}
+														className="text-sm w-[250px] text-white"
+													>
+														Proposition {ind + 1}
+														<input
+															type="radio"
+															name={"" + question.id}
+															checked={choice.is_correct}
+															id={`question${index + 1}choice${ind + 1}correct`}
+															onChange={(e) =>
+																handleCorrectChoiceChange(question, choice, e)
+															}
+															className={`text-white inline-block w-4 h-4 ml-5 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900`}
+														/>
+														<Label
+															htmlFor={`question${index + 1}choice${
+																ind + 1
+															}correct`}
+															className={`inline text-[10px] p-2 ${
+																choice.is_correct && "text-green-400"
+															}`}
+														>
+															Bonne réponse
+														</Label>
+													</Label>
 
-								<h3 className="text-xl text-white mb-5">
-									Questions et réponses du quiz {quiz.id}
-								</h3>
+													<Input
+														type="text"
+														id={`question${index + 1}choice${ind + 1}`}
+														value={"" + choice.description}
+														onChange={(e) =>
+															handleChoiceChange(question, choice, e)
+														}
+														required
+														className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 mt-5 mb-10  focus:bg-zinc-300 focus:text-black focus:font-[arial]"
+													/>
+												</div>
+											)
+										)}
+									</div>
+								</Card>
+							)
+						)}
 
-								{questionsToMake?.map(
-									(
-										question: {
-											id: number | null | undefined;
-											title: string | number | readonly string[] | undefined;
-											choices: any[];
-										},
-										index: number
-									) => (
-										<Card key={question.id} className="p-10 mb-5 bg-gray-800">
-											<Label
-												htmlFor={`question${index + 1}`}
-												className="p-3 bg-[#00bb0d] text-black text-xl inline-block mb-3"
-											>
-												Question {index + 1}
-											</Label>
-											<Input
-												type="text"
-												id={`question${index + 1}`}
-												placeholder="Question du quiz"
-												value={question.title}
-												onChange={(e) => handleQuestionChange(question, e)}
-												required
-												className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:bg-zinc-300 focus:text-black focus:font-[arial]"
-											/>
-											<div className="m-5">
-												{question.choices.map(
-													(
-														choice: {
-															id: number;
-															description: string;
-															is_correct: boolean;
-														},
-														ind: number
-													) => (
-														<div key={choice.id}>
-															<Label
-																htmlFor={`question${index + 1}choice${ind + 1}`}
-																className="text-sm w-[250px] text-white"
-															>
-																Proposition {ind + 1}
-																<input
-																	type="radio"
-																	name={"" + question.id}
-																	checked={choice.is_correct}
-																	id={`question${index + 1}choice${ind + 1}correct`}
-																	onChange={(e) =>
-																		handleCorrectChoiceChange(question, choice, e)
-																	}
-																	className={`text-white inline-block w-4 h-4 ml-5`}
-																/>
-																<Label
-																	htmlFor={`question${index + 1}choice${
-																		ind + 1
-																	}correct`}
-																	className={`inline text-[10px] p-2 ${
-																		choice.is_correct && "text-green-400"
-																	}`}
-																>
-																	Bonne réponse
-																</Label>
-															</Label>
+						<Button
+							type="submit"
+							className="w-[200px] h-12 bg-[#00bb0d] border border-zinc-700 text-black text-xl hover:bg-green-500 cursor-pointer focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black block mx-auto mt-6 flex items-center justify-center"
+						>
+							Valider
+						</Button>
 
-															<Input
-																type="text"
-																id={`question${index + 1}choice${ind + 1}`}
-																value={"" + choice.description}
-																onChange={(e) =>
-																	handleChoiceChange(question, choice, e)
-																}
-																required
-																className="bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 mt-5 mb-10  focus:bg-zinc-300 focus:text-black focus:font-[arial]"
-															/>
-														</div>
-													)
-												)}
-											</div>
-										</Card>
-									)
-								)}
+						{/* Bouton Retour */}
+						<div className="flex justify-center mt-8">
+							<Button
+								type="button"
+								onClick={handleBackToSidebar}
+								className="bg-gray-700 text-white border-2 border-gray-600 hover:bg-gray-600 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 px-6 py-2"
+							>
+								<ArrowLeft className="w-4 h-4 mr-2" />
+								Retour au menu
+							</Button>
+						</div>
+					</CardContent>
+				</Card>
+			</form>
+		</main>
+	);
+}
 
-								<Button
-									type="submit"
-									className="w-[200px] h-12 bg-[#00bb0d] border border-zinc-700 text-black text-xl hover:bg-green-500 cursor-pointer block mx-auto mt-6 flex items-center justify-center"
-								>
-									Valider
-								</Button>
-							</CardContent>
-						</Card>
-					</form>
-				</main>
-			</div>
+const EditQuizPage = () => {
+	return (
+		<AdminLayout pageTitle={`Édition Quiz - Admin`}>
+			<AdminFocusProvider>
+				<div className="flex">
+					<AdminSidebar />
+					<EditQuizPageContent />
+				</div>
+			</AdminFocusProvider>
 		</AdminLayout>
 	);
 };
