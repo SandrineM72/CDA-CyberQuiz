@@ -23,7 +23,7 @@ export default function EndPage() {
           <div className="relative w-full aspect-[4/3] overflow-hidden border-4 border-[#00bb0d]">
             <Image
               src="/illustrations/smartphone_lock_plant-green.png"
-              alt="Fin du quiz"
+              alt=""
               fill
               className="object-cover"
               priority

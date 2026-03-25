@@ -187,7 +187,7 @@ const EditUserPage = () => {
 										<div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#00bb0d]">
 											<img
 												src={avatar}
-												alt="Avatar preview"
+												alt="Avatar"
 												className="w-full h-full object-cover"
 												onError={(e) => {
 													e.currentTarget.style.display = "none";

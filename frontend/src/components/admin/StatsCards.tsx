@@ -2,6 +2,7 @@
 
 import { useGlobalStatsQuery } from "@/graphql/generated/schema";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
 	TrendingUp,
 	CheckCircle,
@@ -10,10 +11,22 @@ import {
 	Trophy,
 	Target,
 	Layers,
+	ArrowLeft,
 } from "lucide-react";
+import { useAdminFocus } from "./AdminSidebar";
 
 export default function StatsCards() {
 	const { data, loading, error } = useGlobalStatsQuery();
+
+	// Récupérer la ref "Statistiques" depuis la sidebar
+	const { statsRef } = useAdminFocus();
+
+	// Fonction pour retourner à la sidebar
+	const handleBackToSidebar = () => {
+		if (statsRef?.current) {
+			statsRef.current.focus();
+		}
+	};
 
 	if (loading) {
 		return (
@@ -37,10 +50,12 @@ export default function StatsCards() {
 
 	return (
 		<div className="p-6 space-y-6">
-			<h2 className="text-2xl font-bold text-white mb-6">Statistiques Globales</h2>
+			<h2 className="text-2xl font-bold text-white mb-6">
+				Statistiques Globales
+			</h2>
 
 			{/* User Growth Card */}
-			<Card className="border-gray-700 bg-gray-900">
+			<Card className="border-gray-700 bg-gray-900" tabIndex={0}>
 				<CardContent className="p-6">
 					<div className="flex items-center gap-3 mb-4">
 						<TrendingUp className="w-6 h-6 text-green-400" />
@@ -63,7 +78,7 @@ export default function StatsCards() {
 			</Card>
 
 			{/* Attempts Success Rate Card */}
-			<Card className="border-gray-700 bg-gray-900">
+			<Card className="border-gray-700 bg-gray-900" tabIndex={0}>
 				<CardContent className="p-6">
 					<div className="flex items-center gap-3 mb-4">
 						<BarChart3 className="w-6 h-6 text-orange-400" />
@@ -97,11 +112,13 @@ export default function StatsCards() {
 			</Card>
 
 			{/* Average Score Card */}
-			<Card className="border-gray-700 bg-gray-900">
+			<Card className="border-gray-700 bg-gray-900" tabIndex={0}>
 				<CardContent className="p-6">
 					<div className="flex items-center gap-3 mb-4">
 						<BarChart3 className="w-6 h-6 text-indigo-400" />
-						<h3 className="text-lg font-semibold text-white">Score moyen global</h3>
+						<h3 className="text-lg font-semibold text-white">
+							Score moyen global
+						</h3>
 					</div>
 					<div className="text-center">
 						<div className="text-5xl font-bold text-indigo-400 mb-2">
@@ -121,7 +138,7 @@ export default function StatsCards() {
 			</Card>
 
 			{/* Top 5 Quiz les plus joués */}
-			<Card className="border-gray-700 bg-gray-900">
+			<Card className="border-gray-700 bg-gray-900" tabIndex={0}>
 				<CardContent className="p-6">
 					<div className="flex items-center gap-3 mb-4">
 						<Trophy className="w-6 h-6 text-yellow-400" />
@@ -173,7 +190,7 @@ export default function StatsCards() {
 			</Card>
 
 			{/* Top 5 Levels les plus joués */}
-			<Card className="border-gray-700 bg-gray-900">
+			<Card className="border-gray-700 bg-gray-900" tabIndex={0}>
 				<CardContent className="p-6">
 					<div className="flex items-center gap-3 mb-4">
 						<Target className="w-6 h-6 text-blue-400" />
@@ -210,7 +227,7 @@ export default function StatsCards() {
 			</Card>
 
 			{/* Top 5 Themes les plus joués */}
-			<Card className="border-gray-700 bg-gray-900">
+			<Card className="border-gray-700 bg-gray-900" tabIndex={0}>
 				<CardContent className="p-6">
 					<div className="flex items-center gap-3 mb-4">
 						<Layers className="w-6 h-6 text-purple-400" />
@@ -245,6 +262,17 @@ export default function StatsCards() {
 					</div>
 				</CardContent>
 			</Card>
+
+			{/* Bouton Retour */}
+			<div className="flex justify-center mt-8 pb-4">
+				<Button
+					onClick={handleBackToSidebar}
+					className="bg-gray-700 text-white border-2 border-gray-600 hover:bg-gray-600 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 px-6 py-2"
+				>
+					<ArrowLeft className="w-4 h-4 mr-2" />
+					Retour au menu
+				</Button>
+			</div>
 		</div>
 	);
 }

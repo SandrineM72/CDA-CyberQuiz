@@ -60,7 +60,7 @@ export function ResultScreen({
       <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden bg-zinc-800">
         <img
           src={imageSrc}
-          alt="Quiz result"
+          alt=""
           className="w-full h-full object-cover"
           onError={() => setImageError(true)}
         />

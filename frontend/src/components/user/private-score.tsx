@@ -90,7 +90,7 @@ export default function PrivateScore() {
           <div className="relative w-full aspect-[4/3] overflow-hidden border-4 border-[#00bb0d]">
             <Image
               src="/illustrations/trophy_blue_green.jpg"
-              alt="Trophée"
+              alt=""
               fill
               className="object-cover"
               priority

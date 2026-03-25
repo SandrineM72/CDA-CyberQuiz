@@ -17,13 +17,24 @@ import { Button } from "@/components/ui/button";
 import { useAllQuizzesQuery } from "@/graphql/generated/schema";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
+import { useAdminFocus } from "./AdminSidebar";
 
 export default function GamesTable() {
 	const router = useRouter();
 	const { data, loading, error } = useAllQuizzesQuery();
 	const [currentPage, setCurrentPage] = useState(1);
 	const itemsPerPage = 8;
+
+	// Récupérer la ref "Quiz" depuis la sidebar
+	const { gamesRef } = useAdminFocus();
+
+	// Fonction pour retourner à la sidebar
+	const handleBackToSidebar = () => {
+		if (gamesRef?.current) {
+			gamesRef.current.focus();
+		}
+	};
 
 	if (loading) {
 		return (
@@ -110,8 +121,17 @@ export default function GamesTable() {
 									{currentQuizzes.map((quiz, index) => (
 										<TableRow
 											key={quiz.id}
-											className="border-gray-700 font-[Arial] hover:bg-gray-600 cursor-pointer"
+											className="border-gray-700 font-[Arial] hover:bg-gray-600 cursor-pointer focus-within:bg-gray-600"
 											onClick={() => router.push(`/admin/games/${quiz.id}`)}
+											onKeyDown={(e) => {
+												if (e.key === 'Enter' || e.key === ' ') {
+													e.preventDefault();
+													router.push(`/admin/games/${quiz.id}`);
+												}
+											}}
+											tabIndex={0}
+											role="button"
+											aria-label={`Voir détails du quiz ${quiz.title}`}
 										>
 											<TableCell className="text-gray-300 font-medium p-5 border-2 border-gray-500 text-center">
 												{startIndex + index + 1}
@@ -151,7 +171,7 @@ export default function GamesTable() {
 									size="sm"
 									onClick={goToPreviousPage}
 									disabled={currentPage === 1}
-									className="text-white border-gray-600 hover:bg-gray-700 disabled:opacity-50"
+									className="text-white border-gray-600 hover:bg-gray-700 disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
 								>
 									<ChevronLeft className="w-4 h-4 mr-1" />
 									Précédent
@@ -164,13 +184,24 @@ export default function GamesTable() {
 									size="sm"
 									onClick={goToNextPage}
 									disabled={currentPage === totalPages}
-									className="text-white border-gray-600 hover:bg-gray-700 disabled:opacity-50"
+									className="text-white border-gray-600 hover:bg-gray-700 disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
 								>
 									Suivant
 									<ChevronRight className="w-4 h-4 ml-1" />
 								</Button>
 							</div>
 						)}
+
+						{/* Bouton Retour */}
+						<div className="flex justify-center mt-8">
+							<Button
+								onClick={handleBackToSidebar}
+								className="bg-gray-700 text-white border-2 border-gray-600 hover:bg-gray-600 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 px-6 py-2"
+							>
+								<ArrowLeft className="w-4 h-4 mr-2" />
+								Retour au menu
+							</Button>
+						</div>
 					</>
 				)}
 			</CardContent>
