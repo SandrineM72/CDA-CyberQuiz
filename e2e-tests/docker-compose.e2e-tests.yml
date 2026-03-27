@@ -48,7 +48,7 @@ services:
     environment:
       - NEXT_PUBLIC_GRAPHQL_API_URL=http://localhost:4001/graphql
     ports:
-      - 3002:3001
+      - 3002:3000
     volumes:
       - ../frontend/src:/app/src
     depends_on:
