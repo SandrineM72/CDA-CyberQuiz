@@ -36,4 +36,4 @@ jobs:
     steps:
       - name: Trigger Webhook on VPS
         run: |
-          curl -X POST -H "X-Webhook-Secret: ${{ secrets.WEBHOOK_SECRET }}" https://ops.cyberquiz.culturecook.fr/hooks/redeploy-cyberquiz-staging
+          curl -X POST -H "X-Webhook-Secret: ${{ secrets.WEBHOOK_SECRET_STAGING }}" https://ops.cyberquiz.culturecook.fr/hooks/redeploy-cyberquiz-staging
