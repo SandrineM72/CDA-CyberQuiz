@@ -1,6 +1,6 @@
 services:
   db:
-    container_name: ${DEPLOY_ENV:-staging}-db
+    container_name: ${DEPLOY_ENV:-production}-db
     stop_grace_period: 1s
     image: postgres:18.1-alpine3.23
     environment: 
@@ -15,8 +15,8 @@ services:
       - db-data:/var/lib/postgresql/data
 
   backend:
-    container_name: ${DEPLOY_ENV:-staging}-backend
-    image: sandrinem72/cyberquiz-back:${DEPLOY_ENV:-staging}
+    container_name: ${DEPLOY_ENV:-production}-backend
+    image: sandrinem72/cyberquiz-back:${DEPLOY_ENV:-production}
     depends_on:
       db:
         condition: service_healthy
@@ -33,8 +33,8 @@ services:
       retries: 10
   
   frontend:
-    container_name: ${DEPLOY_ENV:-staging}-frontend
-    image: sandrinem72/cyberquiz-front:${DEPLOY_ENV:-staging}
+    container_name: ${DEPLOY_ENV:-production}-frontend
+    image: sandrinem72/cyberquiz-front:${DEPLOY_ENV:-production}
     healthcheck:
       test: ["CMD-SHELL", "pgrep -f 'next start' || exit 1"]
       interval: 2s
@@ -42,7 +42,7 @@ services:
       retries: 10
 
   gateway:
-    container_name: ${DEPLOY_ENV:-staging}-gateway
+    container_name: ${DEPLOY_ENV:-production}-gateway
     build:
       context: gateway
     depends_on:
@@ -61,4 +61,4 @@ services:
 
 volumes:
   db-data:
-    name: "${DEPLOY_ENV:-staging}-db-data"
+    name: "${DEPLOY_ENV:-production}-db-data"
