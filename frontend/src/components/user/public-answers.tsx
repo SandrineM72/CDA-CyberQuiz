@@ -169,11 +169,13 @@ export default function PublicAnswers() {
               {/* Explication avec Bravo/Dommage */}
               <div className="bg-[#565656] p-4 space-y-2">
                 {/* Message Bravo ou Dommage */}
-                <p className={`text-lg font-semibold text-center ${
-                  isCorrectAnswer ? 'text-[#00bb0d]' : 'text-[#c00f00]'
-                }`}>
-                  {isCorrectAnswer ? 'Bravo !' : 'Dommage !'}
-                </p>
+                <div className="flex justify-center">
+                  <p className={`text-lg font-semibold bg-white px-4 py-1 ${
+                    isCorrectAnswer ? 'text-[#00bb0d]' : 'text-[#c00f00]'
+                  }`}>
+                    {isCorrectAnswer ? 'Bravo !' : 'Dommage !'}
+                  </p>
+                </div>
                 
                 {/* Explication */}
                 <p className="text-white text-sm font-normal leading-relaxed">
