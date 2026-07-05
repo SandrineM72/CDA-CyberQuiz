@@ -1,0 +1,11 @@
+query Users {
+  users {
+    id
+    email
+    pseudo
+    age_range
+    avatar
+    is_admin
+    created_at
+  }
+}
